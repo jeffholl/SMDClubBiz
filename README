@@ -28,3 +28,13 @@
   Jeffrey H.	jeffhol90@gmail.com
   Daniel F.		dsfraser@gmail.com
   Mostafa R.	
+
+  Rails commands run during setup
+  -------------------------------
+  >  rails new clubbiz
+  >  echo "gem 'devise" > Gemfile
+  >  bundle install
+  >  bundle update
+  >  rails generate devise:install
+  // Follow setup steps presented 1-2
+  
