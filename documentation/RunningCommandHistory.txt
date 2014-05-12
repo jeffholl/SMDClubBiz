@@ -1,3 +1,15 @@
 Running Command History
 
->	rails generate scaffold club clubName:string clubDescription:string clubWebsite:string regoNumber:string
+J>  rails new clubbiz
+J>  echo "gem 'devise" > Gemfile
+J>  bundle install
+J>  bundle update
+J>  rails generate devise:install
+J// Follow setup steps presented 1-2
+
+J>	rails generate scaffold club clubName:string clubDescription:string clubWebsite:string regoNumber:string
+J>	rake db:migrate
+
+J>	rails generate devise User first_name:string last_name:string
+J>	rake db:migrate
+J> 	rails generate devise:views

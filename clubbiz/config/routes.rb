@@ -1,5 +1,6 @@
 Clubbiz::Application.routes.draw do
   
+  devise_for :users
   resources :clubs
 
   #root route to direct inbound traffic on clean domain named
