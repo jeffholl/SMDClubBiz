@@ -1,0 +1,3 @@
+Running Command History
+
+>	rails generate scaffold club clubName:string clubDescription:string clubWebsite:string regoNumber:string

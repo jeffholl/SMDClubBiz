@@ -1,5 +1,7 @@
 Clubbiz::Application.routes.draw do
   
+  resources :clubs
+
   #root route to direct inbound traffic on clean domain named
   root to: "home#index"
   
