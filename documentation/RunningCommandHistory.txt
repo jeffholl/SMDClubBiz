@@ -18,3 +18,6 @@ J>	rails generate scaffold event event_name:string event_description:string star
 J>	rake db:migrate
 
 J>	rails generate migration fix_column_names
+
+J>	rails generate migration add_events_to_club
+J>	rake db:migrate

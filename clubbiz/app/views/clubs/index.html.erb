@@ -3,10 +3,10 @@
 <table>
   <thead>
     <tr>
-      <th>Clunname</th>
-      <th>Clubdescription</th>
-      <th>Clubwebsite</th>
-      <th>Regonumber</th>
+      <th>club_name</th>
+      <th>club_descrption</th>
+      <th>club_website</th>
+      <th>rego_number</th>
       <th></th>
       <th></th>
       <th></th>
@@ -16,10 +16,10 @@
   <tbody>
     <% @clubs.each do |club| %>
       <tr>
-        <td><%= club.clunName %></td>
-        <td><%= club.clubDescription %></td>
-        <td><%= club.clubWebsite %></td>
-        <td><%= club.regoNumber %></td>
+        <td><%= club.club_name %></td>
+        <td><%= club.club_descrption %></td>
+        <td><%= club.club_website %></td>
+        <td><%= club.rego_number %></td>
         <td><%= link_to 'Show', club %></td>
         <td><%= link_to 'Edit', edit_club_path(club) %></td>
         <td><%= link_to 'Destroy', club, method: :delete, data: { confirm: 'Are you sure?' } %></td>
