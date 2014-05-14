@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140513053358) do
+ActiveRecord::Schema.define(version: 20140514120221) do
+
+  create_table "club_comments", force: true do |t|
+    t.string   "comment_type"
+    t.string   "comment_title"
+    t.string   "comment_body"
+    t.string   "comment_url"
+    t.integer  "user_id"
+    t.integer  "club_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "clubs", force: true do |t|
     t.integer  "club_id",          null: false
@@ -19,6 +30,17 @@ ActiveRecord::Schema.define(version: 20140513053358) do
     t.string   "club_description"
     t.string   "club_website"
     t.string   "rego_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "event_comments", force: true do |t|
+    t.string   "comment_type"
+    t.string   "comment_title"
+    t.string   "comment_body"
+    t.string   "comment_url"
+    t.integer  "user_id"
+    t.integer  "club_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -33,6 +55,47 @@ ActiveRecord::Schema.define(version: 20140513053358) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "club_id"
+  end
+
+  create_table "memberships", force: true do |t|
+    t.integer  "club_id"
+    t.integer  "user_id"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "moderators", force: true do |t|
+    t.integer  "club_id"
+    t.integer  "user_id"
+    t.string   "permission"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "shared_events", force: true do |t|
+    t.integer  "club_id"
+    t.integer  "event_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "ticket_allocations", force: true do |t|
+    t.integer  "ticket_id"
+    t.integer  "user_id"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tickets", force: true do |t|
+    t.string   "ticket_type"
+    t.string   "ticket_cost"
+    t.datetime "start_sale_datetime"
+    t.datetime "end_sale_datetime"
+    t.integer  "quantity"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
