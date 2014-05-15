@@ -25,5 +25,39 @@
   <%= @event.external_url %>
 </p>
 
+<p>
+  
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ticket_type</th>
+        <th>base_cost</th>
+        <th>start_sale_datetime</th>
+        <th>end_sale_datetime</th>
+        <th>quantity</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% if @event.tickets.empty? %>
+        <tr>
+          <td align="center" colspan="5">There are no tickets for this event</td>
+        </tr>
+      <% else %>
+        <% @event.tickets.each do |ticket| %>
+          <tr>
+            <td><%= ticket.ticket_type %></td>
+            <td><%= ticket.base_cost %></td>
+            <td><%= ticket.start_sale_datetime %></td>
+            <td><%= ticket.end_sale_datetime %></td>
+            <td><%= ticket.quantity %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+
+</p>
+
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
