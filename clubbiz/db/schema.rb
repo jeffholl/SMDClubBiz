@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140515080342) do
+ActiveRecord::Schema.define(version: 20140515093614) do
 
   create_table "club_comments", force: true do |t|
     t.string   "comment_type"
@@ -61,14 +61,7 @@ ActiveRecord::Schema.define(version: 20140515080342) do
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "moderators", force: true do |t|
-    t.integer  "club_id"
-    t.integer  "user_id"
-    t.string   "permission"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string   "role"
   end
 
   create_table "shared_events", force: true do |t|
@@ -76,6 +69,7 @@ ActiveRecord::Schema.define(version: 20140515080342) do
     t.integer  "event_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "role"
   end
 
   create_table "ticket_allocations", force: true do |t|

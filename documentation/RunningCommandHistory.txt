@@ -31,3 +31,6 @@ J>	rails generate controller EventComments show new create edit update destroy
 
 J>	rails generate migration remove_old_id_cols
 J>	rake db:migrate
+
+J>	rails generate migration remove_double_many_to_many_assoc
+J>	rake db:migrate
