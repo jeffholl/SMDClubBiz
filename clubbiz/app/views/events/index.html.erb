@@ -1,4 +1,4 @@
-<h1>Listing events</h1>
+<h1>Listing all events</h1>
 
 <table class="table table-striped">
   <thead>
@@ -14,8 +14,9 @@
 
   <tbody>
     <% @events.each do |event| %>
+      <% club = Club.find(event.shared_events.where(role: "owner").first.club_id) %>
       <tr>
-        <td><% event.clubs.each do |club| %><%= club.club_name %><% end %></td>
+        <td><%= link_to club.club_name, club %></td>
         <td><%= link_to event.event_name, event %></td>
         <td><%= event.event_description %></td>
         <td><%= event.start_datetime %></td>
@@ -25,4 +26,3 @@
     <% end %>
   </tbody>
 </table>
-
