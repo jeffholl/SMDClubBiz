@@ -1,35 +1,35 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Hosting Event:</strong>
+  <strong>Hosting event_name:</strong>
   <%= @ticket.event.event_name %>
 </p>
 
 <p>
-  <strong>ticket name:</strong>
+  <strong>ticket_type:</strong>
   <%= @ticket.ticket_type %>
 </p>
 
 <p>
-  <strong>Base Cost:</strong>
+  <strong>ticket_cost:</strong>
   <%= @ticket.ticket_cost %>
 </p>
 
 <p>
-  <strong>Start Sale Datetime:</strong>
+  <strong>start_sale_satetime:</strong>
   <%= @ticket.start_sale_datetime %>
 </p>
 
 <p>
-  <strong>End Sale Datetime:</strong>
+  <strong>end_sale_datetime:</strong>
   <%= @ticket.end_sale_datetime %>
 </p>
 
 <p>
-  <strong>Quantity</strong>
+  <strong>quantity</strong>
   <%= @ticket.quantity %>
 </p>
 
-<%= link_to 'Edit Ticket', tickets_edit_path(:id => @ticket.id) %> |
-<%= link_to 'Delete Ticket', tickets_destroy_path(:id => @ticket.id) %> |
+<%= link_to '(M) Edit Ticket', tickets_edit_path(:id => @ticket.id) %> |
+<%= link_to '(M) Delete Ticket', tickets_destroy_path(:id => @ticket.id) %> |
 <%= link_to 'Back To Event', event_path(@ticket.event) %>

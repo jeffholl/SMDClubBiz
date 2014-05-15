@@ -36,9 +36,8 @@
     <thead>
       <tr>
         <th>ticket_type</th>
-        <th>base_cost</th>
-        <th>start_sale_datetime</th>
-        <th>end_sale_datetime</th>
+        <th>ticket_cost</th>
+        <th>end_sale_date</th>
         <th>quantity</th>
         <th></th>
       </tr>
@@ -54,10 +53,9 @@
           <tr>
             <td><%= link_to ticket.ticket_type, tickets_show_path(:id => ticket.id) %></td>
             <td><%= ticket.ticket_cost %></td>
-            <td><%= ticket.start_sale_datetime %></td>
             <td><%= ticket.end_sale_datetime %></td>
             <td><%= ticket.quantity %></td>
-            <td>Purchase Tickets</td>
+            <td>(Mem) Purchase Tickets</td>
           </tr>
         <% end %>
       <% end %>
@@ -70,6 +68,6 @@
 </p>
 
 <% club = Club.find(@event.shared_events.where(role: "owner").first.club_id) %>
-<%= link_to 'Edit Event', edit_event_path(@event, :club_id => club.id) %> |
-<%= link_to 'Destroy Event', @event, method: :delete, data: { confirm: 'Are you sure?' } %> |
+<%= link_to '(M) Edit Event', edit_event_path(@event, :club_id => club.id) %> |
+<%= link_to '(M) Destroy Event', @event, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Back To Club', club %>
