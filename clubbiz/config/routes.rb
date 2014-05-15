@@ -18,12 +18,7 @@ Clubbiz::Application.routes.draw do
   get "tickets/edit"
   get "tickets/update"
   get "tickets/destroy"
-  get "ticket/show"
-  get "ticket/new"
-  get "ticket/create"
-  get "ticket/edit"
-  get "ticket/update"
-  get "ticket/destroy"
+  post "tickets" => "tickets#create"
   resources :events
 
   devise_for :users

@@ -1,2 +1,35 @@
-<h1>Tickets#show</h1>
-<p>Find me in app/views/tickets/show.html.erb</p>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Hosting Event:</strong>
+  <%= @ticket.event.event_name %>
+</p>
+
+<p>
+  <strong>ticket name:</strong>
+  <%= @ticket.ticket_type %>
+</p>
+
+<p>
+  <strong>Base Cost:</strong>
+  <%= @ticket.ticket_cost %>
+</p>
+
+<p>
+  <strong>Start Sale Datetime:</strong>
+  <%= @ticket.start_sale_datetime %>
+</p>
+
+<p>
+  <strong>End Sale Datetime:</strong>
+  <%= @ticket.end_sale_datetime %>
+</p>
+
+<p>
+  <strong>Quantity</strong>
+  <%= @ticket.quantity %>
+</p>
+
+<%= link_to 'Edit', tickets_edit_path(:id => @ticket.id) %> |
+<%= link_to 'Delete', tickets_destroy_path(:id => @ticket.id) %> |
+<%= link_to 'Back', event_path(@ticket.event) %>
