@@ -24,3 +24,7 @@ J>	rake db:migrate
 
 J>	rails generate migration update_db_with_most_tables
 J>	rake db:migrate
+
+J>	rails generate controller Tickets show new create edit update destroy
+J>	rails generate controller ClubComments show new create edit update destroy
+J>	rails generate controller EventComments show new create edit update destroy
