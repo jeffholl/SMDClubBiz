@@ -1,6 +1,6 @@
 <h1>Listing events</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Host Club</th>
@@ -18,7 +18,7 @@
   <tbody>
     <% @events.each do |event| %>
       <tr>
-        <td><%= event.club.club_name %></td>
+        <td><% event.clubs.each do |club| %><%= club.club_name %><% end %></td>
         <td><%= event.event_name %></td>
         <td><%= event.event_description %></td>
         <td><%= event.start_datetime %></td>
