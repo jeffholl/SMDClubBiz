@@ -20,5 +20,43 @@
   <%= @club.rego_number %>
 </p>
 
+<p>
+	
+	<table>
+	  <thead>
+	    <tr>
+	      <th>event_name</th>
+	      <th>event_description</th>
+	      <th>start_datetime</th>
+	      <th>end_datetime</th>
+	      <th></th>
+	      <th></th>
+	      <th></th>
+	    </tr>
+	  </thead>
+
+	  <tbody>
+	    <% if @club.events.empty? %>
+		    <tr>
+	    		<td align="center" colspan="7">There are no events for this clubs</td>
+	    	</tr>
+	    <% else %>
+	    	<% @club.events.each do |event| %>
+		      <tr>
+		        <td><%= event.event_name %></td>
+		        <td><%= event.event_description %></td>
+		        <td><%= event.start_datetime %></td>
+		        <td><%= event.end_datetime %></td>
+		        <td><%= link_to 'Show', event %></td>
+		        <td><%= link_to 'Edit', edit_event_path(event) %></td>
+		        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		      </tr>
+	    	<% end %>
+    	<% end %>
+	  </tbody>
+	</table>
+
+</p>
+
 <%= link_to 'Edit', edit_club_path(@club) %> |
 <%= link_to 'Back', clubs_path %>
