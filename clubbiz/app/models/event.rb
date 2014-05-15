@@ -9,4 +9,6 @@ class Event < ActiveRecord::Base
 
 	has_many :tickets
 	
+	accepts_nested_attributes_for :shared_events, allow_destroy: true
+
 end
