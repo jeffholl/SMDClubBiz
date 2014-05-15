@@ -1,5 +1,10 @@
 <p id="notice"><%= notice %></p>
-<%= @event %>
+
+<p>
+  <strong>Hosting Club:</strong>
+  <% @event.clubs.each do |club| %><%= club.club_name %><% end %>
+</p>
+
 <p>
   <strong>Event name:</strong>
   <%= @event.event_name %>
