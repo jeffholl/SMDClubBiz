@@ -48,15 +48,19 @@
 		        <td><%= event.start_datetime %></td>
 		        <td><%= event.end_datetime %></td>
 		        <td><%= link_to 'Show', event %></td>
-		        <td><%= link_to 'Edit', edit_event_path(event) %></td>
+		        <td><%= link_to 'Edit', edit_event_path(event, :club_id =>@club.id) %></td>
 		        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 		      </tr>
 	    	<% end %>
     	<% end %>
+			<tr>
+	    		<td align="center" colspan="7"><span class='glyphicon glyphicon-plus'></span><%= link_to " Add new event", new_event_path(:club_id => @club.id) %> </td>
+	    	</tr>
 	  </tbody>
 	</table>
 
 </p>
 
 <%= link_to 'Edit', edit_club_path(@club) %> |
+<%= link_to 'Destroy', @club, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Back', clubs_path %>

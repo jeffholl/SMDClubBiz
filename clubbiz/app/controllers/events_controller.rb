@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_club, only: [:new, :edit]
 
   # GET /events
   # GET /events.json
@@ -72,4 +73,10 @@ class EventsController < ApplicationController
     def event_params
       params.require(:event).permit(:event_name, :event_description, :start_datetime, :end_datetime, :external_url, :club_id, shared_events_attributes: [:id, :club_id, :role])
     end
+    
+    # Use callbacks to share common setup or constraints between actions.
+    def set_club
+      @club = Club.find(params[:club_id])
+    end
+
 end

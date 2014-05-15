@@ -7,22 +7,16 @@
       <th>club_description</th>
       <th>club_website</th>
       <th>rego_number</th>
-      <th></th>
-      <th></th>
-      <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @clubs.each do |club| %>
       <tr>
-        <td><%= club.club_name %></td>
+        <td><%= link_to club.club_name, club %></td>
         <td><%= club.club_description %></td>
         <td><%= club.club_website %></td>
         <td><%= club.rego_number %></td>
-        <td><%= link_to 'Show', club %></td>
-        <td><%= link_to 'Edit', edit_club_path(club) %></td>
-        <td><%= link_to 'Destroy', club, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
