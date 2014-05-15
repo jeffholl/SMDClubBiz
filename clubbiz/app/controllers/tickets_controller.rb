@@ -55,7 +55,7 @@ class TicketsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ticket_params
-      params.require(:ticket).permit(:ticket_type, :ticket_price, :start_sale_datetime, :end_sale_datetime, :quantity, :event_id)
+      params.require(:ticket).permit(:ticket_type, :ticket_cost, :start_sale_datetime, :end_sale_datetime, :quantity, :event_id)
     end
     
     # Use callbacks to share common setup or constraints between actions.

@@ -40,6 +40,7 @@
         <th>start_sale_datetime</th>
         <th>end_sale_datetime</th>
         <th>quantity</th>
+        <th></th>
       </tr>
     </thead>
 
@@ -56,9 +57,13 @@
             <td><%= ticket.start_sale_datetime %></td>
             <td><%= ticket.end_sale_datetime %></td>
             <td><%= ticket.quantity %></td>
+            <td>Purchase Tickets</td>
           </tr>
         <% end %>
       <% end %>
+        <tr>
+          <td colspan="6" align="center"><%= link_to "Add New Ticket", tickets_new_path(:event_id => @event.id) %></td>
+        </tr>
     </tbody>
   </table>
 
