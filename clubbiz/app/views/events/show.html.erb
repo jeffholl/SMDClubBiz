@@ -51,7 +51,7 @@
       <% else %>
         <% @event.tickets.each do |ticket| %>
           <tr>
-            <td><%= ticket.ticket_type %></td>
+            <td><%= link_to ticket.ticket_type, tickets_show_path(:id => ticket.id) %></td>
             <td><%= ticket.ticket_cost %></td>
             <td><%= ticket.start_sale_datetime %></td>
             <td><%= ticket.end_sale_datetime %></td>
@@ -64,4 +64,7 @@
 
 </p>
 
-<%= link_to 'Back', events_path %>
+<% club = Club.find(@event.shared_events.where(role: "owner").first.club_id) %>
+<%= link_to 'Edit Event', edit_event_path(@event, :club_id => club.id) %> |
+<%= link_to 'Destroy Event', @event, method: :delete, data: { confirm: 'Are you sure?' } %> |
+<%= link_to 'Back To Club', club %>

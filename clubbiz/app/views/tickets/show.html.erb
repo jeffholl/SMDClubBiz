@@ -30,6 +30,6 @@
   <%= @ticket.quantity %>
 </p>
 
-<%= link_to 'Edit', tickets_edit_path(:id => @ticket.id) %> |
-<%= link_to 'Delete', tickets_destroy_path(:id => @ticket.id) %> |
-<%= link_to 'Back', event_path(@ticket.event) %>
+<%= link_to 'Edit Ticket', tickets_edit_path(:id => @ticket.id) %> |
+<%= link_to 'Delete Ticket', tickets_destroy_path(:id => @ticket.id) %> |
+<%= link_to 'Back To Event', event_path(@ticket.event) %>

@@ -19,6 +19,7 @@ Clubbiz::Application.routes.draw do
   get "tickets/update"
   get "tickets/destroy"
   post "tickets" => "tickets#create"
+
   resources :events
 
   devise_for :users
