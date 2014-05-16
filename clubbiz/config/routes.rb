@@ -1,17 +1,4 @@
 Clubbiz::Application.routes.draw do
-  
-  get "event_comments/show"
-  get "event_comments/new"
-  get "event_comments/create"
-  get "event_comments/edit"
-  get "event_comments/update"
-  get "event_comments/destroy"
-  get "club_comments/show"
-  get "club_comments/new"
-  get "club_comments/create"
-  get "club_comments/edit"
-  get "club_comments/update"
-  get "club_comments/destroy"
 
   resources :tickets
 
