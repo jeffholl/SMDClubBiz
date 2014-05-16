@@ -12,7 +12,7 @@
   <tbody>
     <% @ticket_allocations.each do |ticket_allocation| %>
       <tr>
-        <td><%= ticket_allocation.ticket.ticket_name %></td>
+        <td><%= ticket_allocation.ticket.ticket_type %></td>
         <td><%= ticket_allocation.user.first_name %></td>
         <td><%= ticket_allocation.quantity %></td>
       </tr>

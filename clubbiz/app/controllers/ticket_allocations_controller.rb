@@ -1,7 +1,7 @@
 class TicketAllocationsController < ApplicationController
-  before_action :set_ticket_association, only: [:show, :edit, :update, :destroy]
-  before_action :set_ticket, only: [:new, :edit]
-  before_action :set_user, only: [:new, :edit]
+  before_action :set_ticket_allocation, only: [:show, :edit, :update, :destroy]
+# before_action :set_ticket, only: [:new, :edit]
+# before_action :set_user, only: [:new, :edit]
 
   def index
     @ticket_allocations = TicketAllocation.all
@@ -22,7 +22,7 @@ class TicketAllocationsController < ApplicationController
     
     respond_to do |format|
       if @ticket_allocation.save
-        format.html { redirect_to @ticket_allocation, notice: 'Ticket Allocation was successfully created.' }
+        format.html { redirect_to ticket_allocations_path, notice: 'Ticket Allocation was successfully created.' }
         format.json { render action: 'show', status: :created, location: @ticket_allocation }
       else
         format.html { render action: 'new' }
@@ -53,7 +53,7 @@ class TicketAllocationsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_ticket_assoication
+    def set_ticket_allocation
       @ticket_allocation = TicketAllocation.find(params[:id])
     end
 

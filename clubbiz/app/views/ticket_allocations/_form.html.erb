@@ -1,10 +1,10 @@
-<%= form_for(@event) do |f| %>
-  <% if @event.errors.any? %>
+<%= form_for(@ticket_allocation) do |f| %>
+  <% if @ticket_allocation.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+      <h2><%= pluralize(@ticket_allocation.errors.count, "error") %> prohibited this ticket allocation from being saved:</h2>
 
       <ul>
-      <% @event.errors.full_messages.each do |msg| %>
+      <% @ticket_allocation.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -12,34 +12,20 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :event_name %><br>
-    <%= f.text_field :event_name %>
+    <%= f.label :user_id %><br>
+    <%= f.collection_select(:user_id, User.all, :id, :first_name, prompt: true) %>
   </div>
   <div class="field">
-    <%= f.label :event_description %><br>
-    <%= f.text_field :event_description %>
+    <%= f.label :ticket_id %><br>
+    <%= f.collection_select(:ticket_id, Ticket.all, :id, :ticket_type, prompt: true) %>
   </div>
   <div class="field">
-    <%= f.label :start_datetime %><br>
-    <%= f.datetime_select :start_datetime %>
+    <%= f.label :status %><br>
+    <%= f.text_field :status %>
   </div>
   <div class="field">
-    <%= f.label :end_datetime %><br>
-    <%= f.datetime_select :end_datetime %>
-  </div>
-  <div class="field">
-    <%= f.label :external_url %><br>
-    <%= f.text_field :external_url %>
-  </div>
-  <div class="field">
-    <%= f.hidden_field :club_id, :value => @club.id %><br>
-  </div>
-  <div class="field">
-    <%= f.fields_for :shared_events do |c| %>
-      <%= c.label :role %><br>
-      <%= c.text_field :role %><br>
-      <%= c.hidden_field :club_id, :value => @club.id %><br>
-    <% end %>
+    <%= f.label :quantity %><br>
+    <%= f.text_field :quantity %>
   </div>
   <div class="actions">
     <%= f.submit %>
