@@ -37,3 +37,8 @@ J>	rake db:migrate
 
 J>	rails generate migration add_event_id_to_tickets
 J>	rake db:migrate
+
+J>	rails generate scafford_controller TicketAllocations
+
+J>	rails generate migration AddQtyToTicketAllocation
+J>	rake db:migrate

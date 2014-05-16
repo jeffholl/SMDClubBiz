@@ -15,8 +15,8 @@ class TicketsController < ApplicationController
     
     respond_to do |format|
       if @ticket.save
-        format.html { redirect_to tickets_show_path(:id => @ticket.id), notice: 'Ticket was successfully created.' }
- #       format.json { render action: 'show', status: :created, location: @ticket }
+        format.html { redirect_to @ticket, notice: 'Ticket was successfully created.' }
+#       format.json { render action: 'show', status: :created, location: @ticket }
       else
         format.html { render action: 'new' }
 #        format.json { render json: @ticket.errors, status: :unprocessable_entity }
@@ -25,6 +25,7 @@ class TicketsController < ApplicationController
   end
 
   def edit
+    @event = Event.find(@ticket.event_id)
   end
 
   def update

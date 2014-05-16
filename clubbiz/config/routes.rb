@@ -12,13 +12,10 @@ Clubbiz::Application.routes.draw do
   get "club_comments/edit"
   get "club_comments/update"
   get "club_comments/destroy"
-  get "tickets/show"
-  get "tickets/new"
-  get "tickets/create"
-  get "tickets/edit"
-  get "tickets/update"
-  get "tickets/destroy"
-  post "tickets" => "tickets#create"
+
+  resources :tickets
+
+  resources :ticket_allocations
 
   resources :events
 

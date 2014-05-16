@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140515105513) do
+ActiveRecord::Schema.define(version: 20140516064927) do
 
   create_table "club_comments", force: true do |t|
     t.string   "comment_type"
@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 20140515105513) do
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "quantity"
   end
 
   create_table "tickets", force: true do |t|

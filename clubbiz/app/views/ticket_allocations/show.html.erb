@@ -51,7 +51,7 @@
       <% else %>
         <% @event.tickets.each do |ticket| %>
           <tr>
-            <td><%= link_to ticket.ticket_type, ticket_path(ticket) %></td>
+            <td><%= link_to ticket.ticket_type, tickets_show_path(:id => ticket.id) %></td>
             <td><%= ticket.ticket_cost %></td>
             <td><%= ticket.end_sale_datetime %></td>
             <td><%= ticket.quantity %></td>
@@ -60,7 +60,7 @@
         <% end %>
       <% end %>
         <tr>
-          <td colspan="6" align="center"><%= link_to "Add New Ticket", new_ticket_path(:event_id => @event.id) %></td>
+          <td colspan="6" align="center"><%= link_to "Add New Ticket", tickets_new_path(:event_id => @event.id) %></td>
         </tr>
     </tbody>
   </table>
