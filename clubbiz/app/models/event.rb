@@ -7,7 +7,7 @@ class Event < ActiveRecord::Base
 
 	has_many :event_comments
 
-	has_many :tickets
+	has_many :tickets, dependent: :destroy
 	
 	accepts_nested_attributes_for :shared_events
 
