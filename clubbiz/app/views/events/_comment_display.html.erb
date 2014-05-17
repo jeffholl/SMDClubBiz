@@ -1,0 +1,25 @@
+<table class="table table-striped">
+	<tr>
+		<th>comment_title</th>
+		<th>comment_body</th>
+		<th>posted</th>
+		<th>poster</th>
+	</tr>
+	<% if !@event.event_comments.where(comment_type: "Comment").empty? %>
+		<% @event.event_comments.where(comment_type: "Comment").each do |event_comment| %>
+		<tr>
+			<td><%= event_comment.comment_title %></td>
+			<td><%= event_comment.comment_body %></td>
+			<td><%= distance_of_time_in_words_to_now(event_comment.created_at) %></td>
+			<td><%= event_comment.user.displayname %></td>
+		</tr>	
+		<% end %>
+	<% else %>
+		<tr>
+			<td colspan="4"><center>There are no comments, must be doing somethin' right</center></td>
+		</tr>
+	<% end %>
+		<tr>
+			<td colspan="4"><center><%= link_to "Add new comment", new_event_comment_path(@event) %></center></td>
+		</tr>
+</table>

@@ -48,3 +48,6 @@ J>	rails generate controller Pages home about help terms privacy
 J>	rails generate controller Users show
 
 J>	rails generate controller Memberships create destroy index edit
+
+J>	rails generate migration fix_event_comment_column_name 
+J>	rake db:migrate

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140516064927) do
+ActiveRecord::Schema.define(version: 20140517175354) do
 
   create_table "club_comments", force: true do |t|
     t.string   "comment_type"
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20140516064927) do
     t.string   "comment_body"
     t.string   "comment_url"
     t.integer  "user_id"
-    t.integer  "club_id"
+    t.integer  "event_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

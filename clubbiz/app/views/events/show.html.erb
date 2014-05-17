@@ -67,6 +67,10 @@
 
 </p>
 
+<p>
+  <%= render "comment_display" %>
+</p>
+
 <% club = Club.find(@event.shared_events.where(role: "owner").first.club_id)%>
 <%= link_to '(M) Edit Event', edit_event_path(@event), class: "btn btn-default" %>
 <%= link_to '(M) Destroy Event', @event, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
