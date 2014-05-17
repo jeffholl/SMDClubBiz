@@ -10,21 +10,49 @@
 </p>
 
 <p>
+	<strong>Club Memberships</strong>
+	<table class="table table-striped">
+		<tr>
+			<th>Club Name</th>
+			<th>Status</th>
+			<th>Date Joined</th>
+		</tr>
+		<tr>
+		<% if !@user.memberships.empty? %>
+			<% @user.memberships.each do |ms| %>
+				<td><%= ms.club.club_name %></td>
+				<td><%= ms.status %></td>
+				<td><%= ms.created_at %></td>
+			<% end %>
+		<% else %>
+			<td colspan='3'><center>Get a move on and join some clubs</center></td>
+		<% end %>
+		</tr>
+	</table>
+</p>
+
+<p>
 	<strong>Purcahsed Tickets</strong>
-	<table>
+	<table class="table table-striped">
 		<tr>
 			<th>Event</th>
 			<th>Ticket Type</th>
 			<th>Qty</th>
 			<th>Cost</th>
 		</tr>
-		<% @user.ticket_allocations.each do |ta| %>
-		<tr>
-			<td><%= ta.ticket.event.event_name %></td>
-			<td><%= ta.ticket.ticket_type%></td>
-			<td><%= ta.ticket.quantity %></td>
-			<td><%= ta.ticket.ticket_cost %></td>
-		</tr>
+		<% if !@user.ticket_allocations.empty? %>
+			<% @user.ticket_allocations.each do |ta| %>
+			<tr>
+				<td><%= ta.ticket.event.event_name %></td>
+				<td><%= ta.ticket.ticket_type%></td>
+				<td><%= ta.ticket.quantity %></td>
+				<td><%= ta.ticket.ticket_cost %></td>
+			</tr>
+			<% end %>
+		<% else %>
+			<tr>
+				<td colspan='4'><center>Time to find an event and purchase a ticket</center></td>
+			</tr>
 		<% end %>
 	</table>
 </p>
