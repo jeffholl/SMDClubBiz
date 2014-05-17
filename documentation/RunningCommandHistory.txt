@@ -42,3 +42,5 @@ J>	rails generate scafford_controller TicketAllocations
 
 J>	rails generate migration AddQtyToTicketAllocation
 J>	rake db:migrate
+
+J>	rails generate controller Pages home about help terms privacy
