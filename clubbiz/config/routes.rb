@@ -1,14 +1,13 @@
 Clubbiz::Application.routes.draw do
 
-  get "memberships/create"
-  get "memberships/destroy"
-  get "memberships/index"
-  get "memberships/edit"
   get "pages/home"
   get "pages/about"
   get "pages/help"
   get "pages/terms"
   get "pages/privacy"
+  
+  resources :memberships, only: [:index, :edit, :create, :destroy]
+
   resources :tickets
 
   resources :ticket_allocations
