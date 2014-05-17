@@ -55,7 +55,7 @@
             <td><%= ticket.ticket_cost %></td>
             <td><%= ticket.end_sale_datetime %></td>
             <td><%= ticket.quantity %></td>
-            <td>(Mem) Purchase Tickets</td>
+            <td><%= link_to "(Mem) Purchase Tickets", new_ticket_allocation_path(:ticket_id => ticket.id)%></td>
           </tr>
         <% end %>
       <% end %>

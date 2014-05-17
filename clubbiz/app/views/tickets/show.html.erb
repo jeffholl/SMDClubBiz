@@ -30,6 +30,10 @@
   <%= @ticket.quantity %>
 </p>
 
+<p>
+  <strong><%= link_to "(Mem) Purchase Tickets", new_ticket_allocation_path(:ticket_id => @ticket.id)%></strong>
+</p>
+
 <%= link_to '(M) Edit Ticket', edit_ticket_path(:id => @ticket.id) %> |
 <%= link_to '(M) Delete Ticket', @ticket, method: :delete, data: { confirm: 'Are you sure?' }%> |
 <%= link_to 'Back To Event', event_path(@ticket.event) %>

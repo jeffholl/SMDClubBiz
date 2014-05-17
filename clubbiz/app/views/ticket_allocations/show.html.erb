@@ -15,58 +15,6 @@
   <%= @event.event_description %>
 </p>
 
-<p>
-  <strong>Start datetime:</strong>
-  <%= @event.start_datetime %>
-</p>
-
-<p>
-  <strong>End datetime:</strong>
-  <%= @event.end_datetime %>
-</p>
-
-<p>
-  <strong>External url:</strong>
-  <%= @event.external_url %>
-</p>
-
-<p>
-  
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>ticket_type</th>
-        <th>ticket_cost</th>
-        <th>end_sale_date</th>
-        <th>quantity</th>
-        <th></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% if @event.tickets.empty? %>
-        <tr>
-          <td align="center" colspan="5">There are no tickets for this event</td>
-        </tr>
-      <% else %>
-        <% @event.tickets.each do |ticket| %>
-          <tr>
-            <td><%= link_to ticket.ticket_type, tickets_show_path(:id => ticket.id) %></td>
-            <td><%= ticket.ticket_cost %></td>
-            <td><%= ticket.end_sale_datetime %></td>
-            <td><%= ticket.quantity %></td>
-            <td>(Mem) Purchase Tickets</td>
-          </tr>
-        <% end %>
-      <% end %>
-        <tr>
-          <td colspan="6" align="center"><%= link_to "Add New Ticket", tickets_new_path(:event_id => @event.id) %></td>
-        </tr>
-    </tbody>
-  </table>
-
-</p>
-
 <% club = Club.find(@event.shared_events.where(role: "owner").first.club_id) %>
 <%= link_to '(M) Edit Event', edit_event_path(@event, :club_id => club.id) %> |
 <%= link_to '(M) Destroy Event', @event, method: :delete, data: { confirm: 'Are you sure?' } %> |
