@@ -1,5 +1,9 @@
 Clubbiz::Application.routes.draw do
 
+  get "memberships/create"
+  get "memberships/destroy"
+  get "memberships/index"
+  get "memberships/edit"
   get "pages/home"
   get "pages/about"
   get "pages/help"
