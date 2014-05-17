@@ -15,7 +15,7 @@ Clubbiz::Application.routes.draw do
   resources :clubs
 
   #root route to direct inbound traffic on clean domain named
-  root to: "clubs#index"
+  root to: "pages#home"
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

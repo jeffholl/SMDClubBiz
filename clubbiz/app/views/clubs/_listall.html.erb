@@ -1,0 +1,21 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>club_name</th>
+      <th>club_description</th>
+      <th>club_website</th>
+      <th>rego_number</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @clubs.each do |club| %>
+      <tr>
+        <td><%= link_to club.club_name, club %></td>
+        <td><%= club.club_description %></td>
+        <td><%= club.club_website %></td>
+        <td><%= club.rego_number %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
