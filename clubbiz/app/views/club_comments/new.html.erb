@@ -1,2 +1,6 @@
-<h1>ClubComments#new</h1>
-<p>Find me in app/views/club_comments/new.html.erb</p>
+<h1>Post new ClubComments</h1>
+<% if signed_in? %>
+	<%= render "form" %>
+<% else %>
+	<strong>Please sign in to post a comment</strong>
+<% end %>
