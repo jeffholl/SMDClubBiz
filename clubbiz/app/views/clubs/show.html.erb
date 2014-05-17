@@ -55,6 +55,8 @@
 
 </p>
 
-<%= link_to '(M) Edit Club', edit_club_path(@club) %> |
-<%= link_to '(M) Destroy Club', @club, method: :delete, data: { confirm: 'Are you sure?' } %> |
-<%= link_to 'Back To All Clubs', clubs_path %>
+
+
+<%= link_to '(M) Edit Club', edit_club_path(@club), class: "btn btn-default" %>
+<%= link_to '(M) Destroy Club', @club, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
+<%= link_to 'Back To All Clubs', clubs_path, class: "btn btn-default" %>
