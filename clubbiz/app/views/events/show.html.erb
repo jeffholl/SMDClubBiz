@@ -67,7 +67,7 @@
 
 </p>
 
-<% club = Club.find(@event.shared_events.where(role: "owner").first.club_id), class: "btn btn-default" %>
+<% club = Club.find(@event.shared_events.where(role: "owner").first.club_id)%>
 <%= link_to '(M) Edit Event', edit_event_path(@event, :club_id => club.id), class: "btn btn-default" %>
-<%= link_to '(M) Destroy Event', @event, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to '(M) Destroy Event', @event, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
 <%= link_to 'Back To Club', club, class: "btn btn-default" %>

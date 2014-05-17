@@ -15,19 +15,21 @@
 		<tr>
 			<th>Club Name</th>
 			<th>Status</th>
-			<th>Date Joined</th>
+			<th>Joined</th>
 		</tr>
-		<tr>
 		<% if !@user.memberships.empty? %>
 			<% @user.memberships.each do |ms| %>
+			<tr>
 				<td><%= ms.club.club_name %></td>
 				<td><%= ms.status %></td>
-				<td><%= ms.created_at %></td>
+				<td><%= distance_of_time_in_words(ms.created_at, Time.now, true) + ' ago' %></td>
+			</tr>
 			<% end %>
 		<% else %>
-			<td colspan='3'><center>Get a move on and join some clubs</center></td>
+			<tr>
+				<td colspan='3'><center>Get a move on and join some clubs</center></td>
+			</tr>
 		<% end %>
-		</tr>
 	</table>
 </p>
 

@@ -1,9 +1,14 @@
 class MembershipsController < ApplicationController
   
-	before_action :set_membership, only: [:edit, :create, :update, :destroy]
+	before_action :set_membership, only: [:edit, :update, :destroy]
+  before_action :set_club, only: [:new]
 
   def index
   	@memberships = Membership.all
+  end
+
+  def new
+    @membership = Membership.new
   end
 
   def edit
@@ -51,6 +56,10 @@ private
 	
 	def membership_params
       params.require(:membership).permit(:club_id, :user_id, :status)
+  end
+
+  def set_club
+    @club = Club.find(params[:id])
   end
 
 end

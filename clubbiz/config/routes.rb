@@ -7,7 +7,7 @@ Clubbiz::Application.routes.draw do
   get "pages/privacy"
   
   resources :memberships, only: [:index, :edit, :create, :update, :destroy]
-
+  get "memberships/new/:id" => "memberships#new", as: "new_membership"
   resources :tickets
 
   resources :ticket_allocations
