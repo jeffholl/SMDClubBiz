@@ -1,2 +1,24 @@
 <h1>Memberships#index</h1>
 <p>Find me in app/views/memberships/index.html.erb</p>
+<table class="table table-striped">
+	<tr>
+		<th>Club Name</th>
+		<th>Member Name</th>
+		<th>Status</th>
+		<th></th>
+	</tr>
+	<% if !@memberships.empty? %>
+		<% @memberships.each do |membership| %>
+		<tr>
+			<td><%= membership.club.club_name %></td>
+			<td><%= membership.user.displayname %></td>
+			<td><%= membership.status %></td>
+			<td><%= link_to "Edit Status", edit_membership_path(membership) %></td>
+		</tr>
+		<% end %>
+	<% else %>
+		<tr>
+			<td colspan="3">Get some members</td>
+		</tr>
+	<% end %>
+</table>

@@ -6,7 +6,7 @@ Clubbiz::Application.routes.draw do
   get "pages/terms"
   get "pages/privacy"
   
-  resources :memberships, only: [:index, :edit, :create, :destroy]
+  resources :memberships, only: [:index, :edit, :create, :update, :destroy]
 
   resources :tickets
 
