@@ -1,0 +1,22 @@
+<table class="table table-striped">
+	<tr>
+		<th>comment_title</th>
+		<th>comment_body</th>
+		<th>posted</th>
+		<th>poster</th>
+	</tr>
+	<% if !@club.club_comments.where(comment_type: "Comment").empty? %>
+		<% @club.club_comments.where(comment_type: "Comment").each do |club_comment| %>
+		<tr>
+			<td><%= club_comment.comment_title %></td>
+			<td><%= club_comment.comment_body %></td>
+			<td><%= distance_of_time_in_words_to_now(club_comment.created_at) %></td>
+			<td><%= club_comment.user.displayname %></td>
+		</tr>	
+		<% end %>
+	<% else %>
+		<tr>
+			<td colspan="4"><center>There are no comments, must be doing somethin' right</center></td>
+		</tr>
+	<% end %>
+</table>
