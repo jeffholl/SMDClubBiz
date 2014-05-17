@@ -3,8 +3,9 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>ticket_id</th>
-      <th>user_id</th>
+      <th>event_name</th>
+      <th>ticket_type</th>
+      <th>user_displayname</th>
       <th>quantity</th>
     </tr>
   </thead>
@@ -12,8 +13,9 @@
   <tbody>
     <% @ticket_allocations.each do |ticket_allocation| %>
       <tr>
+        <td><%= ticket_allocation.ticket.event.event_name %></td>
         <td><%= ticket_allocation.ticket.ticket_type %></td>
-        <td><%= ticket_allocation.user.first_name %></td>
+        <td><%= ticket_allocation.user.displayname %></td>
         <td><%= ticket_allocation.quantity %></td>
       </tr>
     <% end %>

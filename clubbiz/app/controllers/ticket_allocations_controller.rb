@@ -1,6 +1,6 @@
 class TicketAllocationsController < ApplicationController
   before_action :set_ticket_allocation, only: [:show, :edit, :update, :destroy]
-# before_action :set_ticket, only: [:new, :edit]
+  before_action :set_ticket, only: [:new]
 # before_action :set_user, only: [:new, :edit]
 
   def index
@@ -15,6 +15,7 @@ class TicketAllocationsController < ApplicationController
   end
 
   def edit
+    @ticket = @ticket_allocation.ticket
   end
 
   def create
@@ -64,12 +65,12 @@ class TicketAllocationsController < ApplicationController
     
     # Use callbacks to share common setup or constraints between actions.
     def set_ticket
-      @club = Ticket.find(params[:ticket_id])
+      @ticket = Ticket.find(params[:ticket_id])
     end
 
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @club = User.find(params[:user_id])
+      @user = User.find(params[:user_id])
     end
 
 end
