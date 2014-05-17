@@ -49,9 +49,11 @@
 		      </tr>
 	    	<% end %>
     	<% end %>
+		<% if signed_in? %>	
 			<tr>
 	    		<td align="center" colspan="7"><span class='glyphicon glyphicon-plus'></span><%= link_to " Add new event", new_event_path(@club) %> </td>
 	    	</tr>
+	    <% end %>
 	  </tbody>
 	</table>
 

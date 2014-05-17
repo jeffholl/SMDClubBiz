@@ -4,4 +4,6 @@
 
 <br>
 
-<%= link_to 'New Club', new_club_path, class: "btn btn-default" %>
+<% if signed_in? %>	
+	<%= link_to 'New Club', new_club_path, class: "btn btn-default" %>
+<% end %>

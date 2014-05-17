@@ -59,9 +59,11 @@
           </tr>
         <% end %>
       <% end %>
+      <% if signed_in? %> 
         <tr>
           <td colspan="6" align="center"><%= link_to "Add New Ticket", new_ticket_path(:event_id => @event.id) %></td>
         </tr>
+      <% end %>
     </tbody>
   </table>
 
