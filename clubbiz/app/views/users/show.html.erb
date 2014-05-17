@@ -1,0 +1,31 @@
+<h1>User Profile Page</h1>
+
+<p>
+	<strong>Name</strong><br>
+	<%= @user.displayname %>
+</p>
+<p>
+	<strong>Email</strong><br>
+	<%= @user.email %>
+</p>
+
+<p>
+	<strong>Purcahsed Tickets</strong>
+	<table>
+		<tr>
+			<th>Event</th>
+			<th>Ticket Type</th>
+			<th>Qty</th>
+			<th>Cost</th>
+		</tr>
+		<% @user.ticket_allocations.each do |ta| %>
+		<tr>
+			<td><%= ta.ticket.event.event_name %></td>
+			<td><%= ta.ticket.ticket_type%></td>
+			<td><%= ta.ticket.quantity %></td>
+			<td><%= ta.ticket.ticket_cost %></td>
+		</tr>
+		<% end %>
+	</table>
+</p>
+

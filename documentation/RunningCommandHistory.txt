@@ -44,3 +44,5 @@ J>	rails generate migration AddQtyToTicketAllocation
 J>	rake db:migrate
 
 J>	rails generate controller Pages home about help terms privacy
+
+J>	rails generate controller Users show

@@ -12,6 +12,7 @@ Clubbiz::Application.routes.draw do
   resources :events
 
   devise_for :users
+  get "users/:id" => 'users#show', as: 'user'
   resources :clubs
 
   #root route to direct inbound traffic on clean domain named
