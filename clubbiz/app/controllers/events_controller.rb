@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-  before_action :set_club, only: [:new, :edit]
+  before_action :set_club, only: [:new]
 
   # GET /events
   # GET /events.json
@@ -21,6 +21,7 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
+    @club = Club.find(@event.shared_events.where(role: "owner").first.club_id)
   end
 
   # POST /events
@@ -76,7 +77,7 @@ class EventsController < ApplicationController
     
     # Use callbacks to share common setup or constraints between actions.
     def set_club
-      @club = Club.find(params[:club_id])
+      @club = Club.find(params[:id])
     end
 
 end

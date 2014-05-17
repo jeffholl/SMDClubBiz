@@ -15,7 +15,8 @@ Clubbiz::Application.routes.draw do
 
   resources :ticket_allocations
 
-  resources :events
+  resources :events, except: [:new]
+  get "events/new/:id" => "events#new", as: "new_event"
 
   devise_for :users
   get "users/:id" => 'users#show', as: 'user'
