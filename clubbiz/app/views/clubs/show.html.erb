@@ -1,70 +1,177 @@
-<p id="notice"><%= notice %></p>
-<% if signed_in? %>
-	<%= link_to "Join Club", new_membership_path(@club), class: "btn btn-success" %>
-<% end %>
-<p>
-  <strong>club_name:</strong>
-  <%= @club.club_name %>
-</p>
-
-<p>
-  <strong>club_description:</strong>
-  <%= @club.club_description %>
-</p>
-
-<p>
-  <strong>club_website:</strong>
-  <%= @club.club_website %>
-</p>
-
-<p>
-  <strong>rego_number:</strong>
-  <%= @club.rego_number %>
-</p>
-
-<p>
-	
-	<table class="table table-striped">
-	  <thead>
-	    <tr>
-	      <th>event_name</th>
-	      <th>event_description</th>
-	      <th>start_datetime</th>
-	      <th>end_datetime</th>
-	    </tr>
-	  </thead>
-
-	  <tbody>
-	    <% if @club.events.empty? %>
-		    <tr>
-	    		<td align="center" colspan="7">There are no events for this clubs</td>
-	    	</tr>
-	    <% else %>
-	    	<% @club.events.each do |event| %>
-		      <tr>
-		        <td><%= link_to event.event_name, event %></td>
-		        <td><%= event.event_description %></td>
-		        <td><%= event.start_datetime %></td>
-		        <td><%= event.end_datetime %></td>
-		      </tr>
-	    	<% end %>
-    	<% end %>
-		<% if signed_in? %>	
-			<tr>
-	    		<td align="center" colspan="7"><span class='glyphicon glyphicon-plus'></span><%= link_to " Add new event", new_event_path(@club) %> </td>
-	    	</tr>
-	    <% end %>
-	  </tbody>
-	</table>
-
-</p>
-
-<p>
-	<%= render "club_comment_display" %>
-</p>
+<div class="row" id="main-content">
+  <div class="col-md-6 pull-right">
+    <div class="input-group pull-right col-md-8 pull-left">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></button>
+      </span>
+      <input type="text" class="form-control">
+    </div>
+  </div>
 
 
 
-<%= link_to '(M) Edit Club', edit_club_path(@club), class: "btn btn-default" %>
-<%= link_to '(M) Destroy Club', @club, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
-<%= link_to 'Back To All Clubs', clubs_path, class: "btn btn-default" %>
+  <div class="col-sm-6 col-md-6">
+
+    <div class="row">
+      <div class="col-md-10">
+        <div class="row">
+          <img src="http://placehold.it/100x100" class = "pull-left" width="65px"><h2><%= @club.club_name %></h2>
+          <ul class="nav nav-tabs pull-right">
+            <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
+            <li><a href="#gallery" data-toggle="tab">Gallery</a></li>
+            <li><a href="#discussions" data-toggle="tab">Discussions</a></li>
+          </ul>
+        </div>  
+        <div class="tab-content row">
+          <div class="tab-pane fade in active" id="home">
+            <div class="col-md-6">
+              <p>
+                <%= @club.club_description %>
+              </p> 
+            </div>
+            <div class="col-md-6">
+              <img src="http://placehold.it/170x170" class = "pull-right">
+            </div>
+            <div class ="col-md-8">
+              <h3>Announcements</h3>
+              
+
+              <%= render partial: "clubs/club_comment_display", object: @club %>
+
+            </div>
+
+            <div class ="col-md-4 text-right">
+              <h3>Moderator Settings</h3>
+              <p><a href="#" class="btn btn-primary" role="button">Click Here</a></p>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="gallery">Images from our club.
+            <div class="row">
+              <div class="col-xs-6 col-md-4">
+                <a href="#" class="">
+                 <img src="http://placehold.it/150x150" class = "pull-right"  />
+               </a>
+             </div>
+             <div class="col-xs-6 col-md-4">
+              <a href="#" class="">
+                <img src="http://placehold.it/150x150" class = "pull-right"/>
+              </a>
+            </div>
+            <div class="col-xs-6 col-md-4">
+              <a href="#" class="">
+                <img src="http://placehold.it/150x150" class = "pull-right" />
+              </a>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-6 col-md-4">
+              <a href="#" class="">
+               <img src="http://placehold.it/150x150" class = "pull-right"  />
+             </a>
+           </div>
+           <div class="col-xs-6 col-md-4">
+            <a href="#" class="">
+              <img src="http://placehold.it/150x150" class = "pull-right" />
+            </a>
+          </div>
+          <div class="col-xs-6 col-md-4">
+            <a href="#" class="">
+              <img src="http://placehold.it/150x150" class = "pull-right" />
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="tab-pane fade" id="discussions">
+        <div class="media">
+          
+          <%= render partial: "clubs/club_comment_display", object: @club %>
+
+          <div>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Title">
+              <span class="input-group-addon">Title</span>
+            </div>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Comment">
+              <span class="input-group-addon"><a href="">Submit Comment</a></span>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-10 ">
+    <hr>
+    <div class="">
+      <h3>Similar Clubs</h3>
+      <div>
+        <div class="col-sm-6 col-md-4">
+          <div class="thumbnail">
+            <img src="http://placehold.it/75x75" alt="...">
+            <div class="caption">
+              <h4><center><a href="">Healthy Elbows Clubs</a></center></h4>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="thumbnail">
+            <img src="http://placehold.it/75x75" alt="...">
+            <div class="caption">
+              <h4><center><a href="">Feet First Club</a></center></h4>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="thumbnail">
+            <img src="http://placehold.it/75x75" alt="...">
+            <div class="caption">
+              <h4><center><a href="">nose Knows Club</a></center></h4>
+            </div>
+          </div>
+        </div>   
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+</div>
+
+<div class="col-sm-6 col-md-4">
+
+  <div class="row well">
+    <div id="featured_events">
+      <div class="">
+        <img class="pull-right" src="http://placehold.it/250x150"/>
+        <p>
+          <strong>Next Event</strong><br>
+          <small>7:00am South Lawn<br>28/7/12<br>Cold Hands Club<br></small><br>This event will get you going with hell-o-a-lot of handshaking opertunities. So get those handshaking gloves out
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <h2>Events</h2>
+    <% if @club.events.empty? %>
+      <div>No Events</div>
+    <% else %>
+      <%= render partial: "events/listall_cb", object: @events %>
+    <% end %>
+    <div class="pull-left"><a>add new event</a></div>
+  </div>
+
+</div>
+
+</div>

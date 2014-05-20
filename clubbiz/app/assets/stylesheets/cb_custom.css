@@ -1,7 +1,7 @@
 // Custom stylesheet for ClubBiz elements
 
 body {
-        background: url(img/wallpaper1.png) no-repeat;
+        background: url(<%= image_path 'wallpaper1.png' %>) no-repeat;
         background-size: cover;
       }
       /* make sidebar nav vertical */ 
@@ -87,4 +87,10 @@ body {
       }
       .cb-news-list-element small{
         color: #aaa;
+      }
+      .cb-comment-list-element{
+        border-bottom: 1px solid #999;
+        border-right: 1px solid #999;
+        padding:0 5px 5px 0;
+        margin-bottom: 15px;
       }
