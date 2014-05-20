@@ -1,43 +1,266 @@
-<!DOCTYPE html>	
-<html>	
-<head>	
- <title>ClubBiz</title>	
- <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>	
- <%= javascript_include_tag "application", "data-turbolinks-track" => true %>	
- <%= csrf_meta_tags %>	
-</head>	
-<body>	
-	<div class="navbar navbar-inverse" role="navigation">	
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav-elements">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<%= link_to "ClubBiz", root_path, :class => "navbar-brand" %>
-			</div>
-			<div class="collapse navbar-collapse" id="main-nav-elements">
-				<ul class="nav navbar-nav">
-					<li><%= link_to "All Clubs", clubs_path %></li>
-					<li><%= link_to "All Events", events_path %></li>
-				</ul>
-				<ul class="nav navbar-nav navbar-right">	 	 	 	 	 	
-					<% if user_signed_in? %>	
-						<li><%= link_to current_user.displayname,  	 	 	
-						user_path(current_user) %></li>	
-						<li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>	
-					<% else %>	
-						<li><%= link_to "Register", new_user_registration_path %></li>	
-						<li><%= link_to "Log in", new_user_session_path %></li>	
-					<% end %>	
-				</ul>
-			</div>
-		</div>
-	</div>	
-	<div class="container-fluid">	
-		<%= yield %>
-	</div>	
-</body>	
-</html>	
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ClubBiz</title>	
+	<%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>	
+	<%= javascript_include_tag "application", "data-turbolinks-track" => true %>	
+	<%= csrf_meta_tags %>
+
+    <style type="text/css">
+      body {
+        background: url(img/wallpaper1.png) no-repeat;
+        background-size: cover;
+      }
+      /* make sidebar nav vertical */ 
+      @media (min-width: 768px) {
+        .sidebar-nav .navbar .navbar-collapse {
+          padding: 0;
+          max-height: none;
+        }
+        .sidebar-nav .navbar ul {
+          float: none;
+          display: block;
+        }
+        .sidebar-nav .navbar li {
+          float: none;
+          display: block;
+        }
+        .sidebar-nav .navbar li a {
+          padding-top: 12px;
+          padding-bottom: 12px;
+        }
+
+        #main-content{
+          padding-top: 20px;
+        }
+      }
+
+      html,
+      body {
+        height: 100%;
+        /* The html and body elements cannot have any padding or margin. */
+      }
+
+      /* Wrapper for page content to push down footer */
+      #wrap {
+        min-height: 100%;
+        height: auto !important;
+        height: 100%;
+        /* Negative indent footer by it's height */
+        margin: 0 auto -30px;
+      }
+
+      /* Set the fixed height of the footer here */
+      #push,
+      #footer {
+        height: 30px;
+      }
+      #footer {
+        background-color: #333;
+        color: #666;
+      }
+      #footer .cb-footer-row{
+        padding-top: 5px;
+      }
+
+      /* Lastly, apply responsive CSS fixes as necessary */
+      @media (max-width: 767px) {
+        #footer {
+          margin-left: -20px;
+          margin-right: -20px;
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+      }
+      .cb-upcoming-event-media{
+        border-bottom: 1px solid #ccc;
+        border-right: 1px solid #ccc;
+        padding:0 5px 5px 0;
+        overflow: visible;
+      }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+  </head>
+
+  <body>
+    <!-- Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header" style="background:#ccc">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Sign In</h4></div>
+          <div class="modal-body">
+            
+            <form role="form">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-success btn-block">Sign in</button>
+                <a class="btn btn-default btn-block" href="">Forgot Password?</a>
+              </div>
+            </form>
+          </div>          
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header" style="background:#ccc">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Register</h4></div>
+          <div class="modal-body">
+            
+            <form role="form">
+              <div class="form-group">
+                <label for="exampleInputEmail1">First Name</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Surname</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Confirm Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-6">
+                    <button type="submit" class="btn btn-default btn-block">Already have an Account?</button>
+                  </div>
+                  <div class="col-md-6">
+                    <button type="submit" class="btn btn-success btn-block">Sign Up</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>          
+        </div>
+      </div>
+    </div>
+  
+    <div id="wrap">
+
+      <nav class="navbar navbar-inverse" role="navigation" style="margin-bottom: 0;">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">ClubBiz</a>
+          </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="main-navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="" data-toggle="modal" data-target="#loginModal">Sign in</a></li>
+              <li><a href="" data-toggle="modal" data-target="#registerModal">Register</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <div class="container-fluid">
+        <div class='row'>
+          
+          <div class="col-sm-3 col-lg-2">
+            <div class="sidebar-nav">
+              <div class="navbar navbar-default" role="navigation">
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <span class="visible-xs navbar-brand">Navigation</span>
+                </div>
+                <div class="navbar-collapse collapse sidebar-navbar-collapse">
+                  <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">Sign In</a></li>
+                    <li><a href="#">Browse Clubs</a></li>
+                    <li><a href="#">Sign Up</a></li>
+                    <li><a href="#">Register your Club</a></li>
+                    <li><a href="#">Free Public Events</a></li>
+                    <li><a href="#">About us</a></li>
+                  </ul>
+                </div><!--/.nav-collapse -->
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-9 col-lg-10">
+           
+            <div class="row" id="main-content">
+              <div class="col-md-5 pull-right">
+                <div class="input-group pull-right">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></button>
+                  </span>
+                  <input type="text" class="form-control">
+                </div>
+              </div>
+                
+              <div class="col-md-7">
+                  <h2 style="margin-top:0">Page Name</h2>
+              </div>
+                
+              <div class="col-md-12"></div>
+
+              <div class="col-md-12">
+              	<%= yield %>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="push"></div>
+
+    </div>
+    
+    <div id="footer">
+      <div class="container">
+        <div class="row cb-footer-row hidden-xs">
+          <div class="col-sm-4"><small>Privacy | Terms</small></div>
+          <div class="col-sm-4"><small><center>Powered by Opetex</center></small></div>
+          <div class="col-sm-4 text-right"><small>Support | Contact</small></div>
+        </div>
+        <div class="row cb-footer-row visible-xs">
+          <small><center>Powered by Opetex</center></small>
+        </div>
+      </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+  </body>
+</html>
