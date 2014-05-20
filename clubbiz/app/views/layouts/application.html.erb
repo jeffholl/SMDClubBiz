@@ -147,8 +147,8 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">ClubBiz</a>
+            </button>            
+            <%= link_to "ClubBiz", root_path, class: "navbar-brand" %>
           </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
@@ -205,27 +205,9 @@
 
           <div class="col-sm-9 col-lg-10">
            
-            <div class="row" id="main-content">
-              <div class="col-md-5 pull-right">
-                <div class="input-group pull-right">
-                  <span class="input-group-btn">
-                    <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></button>
-                  </span>
-                  <input type="text" class="form-control">
-                </div>
-              </div>
-                
-              <div class="col-md-7">
-                  <h2 style="margin-top:0">Page Name</h2>
-              </div>
-                
-              <div class="col-md-12"></div>
-
-              <div class="col-md-12">
-              	<%= yield %>
-              </div>
-
-            </div>
+          	<%= yield %>
+            
+            
           </div>
         </div>
       </div>

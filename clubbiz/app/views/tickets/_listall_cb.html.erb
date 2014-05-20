@@ -1,0 +1,23 @@
+<% if !@user.ticket_allocations.empty? %>
+	<% @user.ticket_allocations.each do |ta| %>
+		<div class="col-md-12 cb-ticket-list-element">
+			<div class="col-md-4">
+				<strong><%= ta.ticket.event.event_name %></strong><br>
+				<%= ta.ticket.event.start_datetime %><br>
+				<em>ADD LOC TO EVENT DB</em>
+			</div>
+			<div class="col-md-6">
+				<br>
+				<%= ta.ticket.ticket_type%><br>
+				<strong>Qty:</strong> <%= ta.ticket.quantity %>
+			</div>
+			<div class="col-md-2 text-right">
+				<b class="caret"></b>
+			</div>
+		</div>
+	<% end %>
+<% else %>
+	<div class="col-md-12 cb-ticket-list-element">
+		<center>Time to find an event and purchase a ticket or two</center>
+	</div>
+<% end %>

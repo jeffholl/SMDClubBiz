@@ -1,15 +1,115 @@
-<div class="row">
-	<div class="col-md-12">
-		<h1>Welcome to ClubBiz</h1>
-	</div>
-</div>
-<div class="row">	
-	<div class="col-sm-12 col-md-6 col-lg-6">
-		<h3>Check out the clubs</h3>
-		<%= render partial: "clubs/listall", object: @clubs %>
-	</div>
-	<div class="col-sm-12 col-md-6 col-lg-6">
-		<h3>Or check out the events</h3>
-		<%= render partial: "events/listall", object: @events %>
-	</div>
+<div class="row" id="main-content">
+  <div class="col-md-5 pull-right">
+    <div class="input-group pull-right">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></button>
+      </span>
+      <input type="text" class="form-control" placeholder="Quick Search">
+    </div>
+  </div>
+
+  <div class="col-md-7">
+    <h2 style="margin-top:0">Welcome Back</h2> 
+  </div>
+
+  <div class="col-md-12"></div>
+
+  <div class="col-md-5 text-left pull-right"> 
+
+    <div id="featured_events_carousel" class="carousel slide well" data-ride="carousel">
+
+      <div class="carousel-inner">
+
+        <div class="item active">
+          <img class="pull-right" src="http://placehold.it/200x150"/>
+          <p>
+            <strong>Featured Event</strong><br>
+            <small>7:00am South Lawn<br>28/7/12<br>Cold Hands Club<br></small><br>This event will get you going with hell-o-a-lot of handshaking opertunities. So get those handshaking gloves out
+          </p>
+        </div>
+
+        <div class="item">
+          <img class="pull-right" src="http://placehold.it/200x150" />
+          <p>
+            <strong>Featured Event</strong><br>
+            <small>7:00am South Lawn<br>28/7/12<br>Cold Hands Club<br></small><br>This event will get you going with hell-o-a-lot of handshaking opertunities. So get those handshaking gloves out
+          </p>
+        </div>
+
+        <div class="item">
+          <img class="pull-right" src="http://placehold.it/200x150" />
+          <p>
+            <strong>Featured Event</strong><br>
+            <small>7:00am South Lawn<br>28/7/12<br>Cold Hands Club<br></small><br>This event will get you going with hell-o-a-lot of handshaking opertunities. So get those handshaking gloves out
+          </p>
+        </div>
+
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="col-md-7">
+
+    <h2>
+      Upcoming Events
+      <div class="dropdown small pull-right">
+        <a data-toggle="dropdown" href="#" style="color: #000">Filter <b class="caret"></b></a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+          <li><a href="#">Date</a></li>
+          <li><a href="#">Price</a></li>
+          <li><a href="#">Free Stuff</a></li>
+        </ul>
+      </div>
+    </h2>
+
+    <%= render partial: "events/listall_cb", object: @events %>
+
+    <div class="row text-center">
+      <br><a href="" class="btn btn-success">Find More Events</a>
+    </div>
+
+  </div>
+
+
+  <div class="col-md-5">
+    
+    <% if signed_in? %>
+      <h3><em>My Tickets</em></h3>
+    
+      <%= render partial: "tickets/listall_cb", object: @user %>
+    <% end %>
+
+
+
+
+    <h3><em>My Club News</em></h3>
+
+    <div class="media cb-news-list-element">
+      <a class="pull-left" href="#">
+        <img class="media-object" src="http://placehold.it/65x65">
+      </a>
+      <div class="media-body">
+        <strong>Ground breaking news, everybody@!*&^</strong><br>
+        People have been found shaking hands out side of the designated zones. The Cold hands club is HORRIFIED, <a href="">see more</a><br>
+        <small>- Posted: about a minute ago, by <a href="">Cold Hands</a></small>
+      </div>
+    </div>
+
+    <div class="media cb-news-list-element">
+      <a class="pull-left" href="#">
+        <img class="media-object" src="http://placehold.it/65x65">
+      </a>
+      <div class="media-body">
+        <strong>Ground breaking news, everybody@!*&^</strong><br>
+        People have been found shaking hands out side of the designated zones. The Cold hands club is HORRIFIED, <a href="">see more</a><br>
+        <small>- Posted: about a minute ago, by <a href="">Cold Hands</a></small>
+      </div>
+    </div>
+
+  </div>
 </div>

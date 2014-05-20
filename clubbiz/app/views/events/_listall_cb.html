@@ -1,0 +1,20 @@
+<% @events.each do |event| %>
+<% club = Club.find(event.shared_events.where(role: "owner").first.club_id) %>
+  <div class="media cb-event-list-element">
+    <a class="pull-left" href="#">
+      <img class="media-object" src="http://placehold.it/80x80">
+    </a>
+    <div class="media-body">
+      <strong><%= link_to event.event_name, event_path(event) %></strong>
+      <div class="dropdown pull-right">
+        <a data-toggle="dropdown" href="#" style="color: #000"><b class="caret"></b> </a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+          <li><a href="">View</a></li>
+          <li><a href="">Tickets</a></li>
+        </ul>
+      </div>
+      <br>
+      <small><%= event.start_datetime %><br><em>MUST ADD LOC TO EVENT DB</em><br><%= event.event_description %></small>
+    </div>
+  </div>
+<% end %>
