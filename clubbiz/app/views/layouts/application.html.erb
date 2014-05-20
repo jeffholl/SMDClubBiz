@@ -89,32 +89,7 @@
 
   <body>
     <!-- Modal -->
-    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-          <div class="modal-header" style="background:#ccc">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Sign In</h4></div>
-          <div class="modal-body">
-            
-            <form role="form">
-              <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-              </div>
-              <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-              </div>
-              <div class="form-group">
-                <button type="submit" class="btn btn-success btn-block">Sign in</button>
-                <a class="btn btn-default btn-block" href="">Forgot Password?</a>
-              </div>
-            </form>
-          </div>          
-        </div>
-      </div>
-    </div>
+    <%= render "users/signin_modal" %>
 
     <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -179,8 +154,22 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="main-navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="" data-toggle="modal" data-target="#loginModal">Sign in</a></li>
-              <li><a href="" data-toggle="modal" data-target="#registerModal">Register</a></li>
+            	<% if signed_in? %>
+								<li><a href="">Rank: Proud Agorophobic</a></li>
+		            <li class="dropdown">
+		              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.displayname %> <b class="caret"></b></a>
+		              <ul class="dropdown-menu">
+		                <li><%= link_to "Profile", current_user %></li>
+		                <li><a href="#">Tickets</a></li>
+		                <li><a href="#">Settings</a></li>
+		                <li class="divider"></li>
+		                <li><%= link_to "LogOut", destroy_user_session_path, method: :delete %></li>
+		              </ul>
+		            </li>
+            	<% else %>
+	              <li><a href="" data-toggle="modal" data-target="#loginModal">Sign in</a></li>
+	              <li><a href="" data-toggle="modal" data-target="#registerModal">Register</a></li>
+            	<% end %>
             </ul>
           </div>
         </div>
@@ -203,13 +192,11 @@
                 </div>
                 <div class="navbar-collapse collapse sidebar-navbar-collapse">
                   <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">Sign In</a></li>
-                    <li><a href="#">Browse Clubs</a></li>
-                    <li><a href="#">Sign Up</a></li>
-                    <li><a href="#">Register your Club</a></li>
-                    <li><a href="#">Free Public Events</a></li>
-                    <li><a href="#">About us</a></li>
+                    <% if signed_in? %>
+                    	<%= render "users/sidenav_signed_in" %>
+                    <% else %>
+                    	<%= render "users/sidenav_signed_out" %>
+                    <% end %>
                   </ul>
                 </div><!--/.nav-collapse -->
               </div>
