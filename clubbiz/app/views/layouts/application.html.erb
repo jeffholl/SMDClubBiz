@@ -91,50 +91,7 @@
     <!-- Modal -->
     <%= render "users/signin_modal" %>
 
-    <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header" style="background:#ccc">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Register</h4></div>
-          <div class="modal-body">
-            
-            <form role="form">
-              <div class="form-group">
-                <label for="exampleInputEmail1">First Name</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-              </div>
-              <div class="form-group">
-                <label for="exampleInputEmail1">Surname</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-              </div>
-              <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-              </div>
-              <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-              </div>
-              <div class="form-group">
-                <label for="exampleInputPassword1">Confirm Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-              </div>
-              <div class="form-group">
-                <div class="row">
-                  <div class="col-md-6">
-                    <button type="submit" class="btn btn-default btn-block">Already have an Account?</button>
-                  </div>
-                  <div class="col-md-6">
-                    <button type="submit" class="btn btn-success btn-block">Sign Up</button>
-                  </div>
-                </div>
-              </div>
-            </form>
-          </div>          
-        </div>
-      </div>
-    </div>
+    <%= render "users/register_modal" %>
   
     <div id="wrap">
 
