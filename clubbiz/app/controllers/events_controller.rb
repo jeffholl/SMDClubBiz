@@ -11,6 +11,8 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    @club = Club.find(@event.shared_events.where(role: "owner").first.club_id)
+    @club_events = @club.events
   end
 
   # GET /events/new

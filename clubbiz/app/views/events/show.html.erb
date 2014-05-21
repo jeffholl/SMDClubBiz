@@ -15,7 +15,10 @@
     <div class="row">
       <div class="col-md-10">
         <div class="row">
-          <img src="http://placehold.it/100x100" class = "pull-left" width="65px"><h2><%= @club.club_name %></h2>
+          <img src="http://placehold.it/100x100" class = "pull-left" width="65px">
+            <h2>
+              <%= link_to @club.club_name, club_path(@club) %> 
+            </h2>
           <ul class="nav nav-tabs pull-right">
             <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
             <li><a href="#gallery" data-toggle="tab">Gallery</a></li>
@@ -24,26 +27,32 @@
         </div>  
         <div class="tab-content row">
           <div class="tab-pane fade in active" id="home">
-            <div class="col-md-6">
-              <p>
-                <%= @club.club_description %>
-              </p> 
+            <div class="col-md-8">
+              <h2><%= @event.event_name %></h2>
+              <small>
+                <%= @event.start_datetime %><br>
+                <em>Ad LOC to DB</em><br>
+                <%= @event.event_description %>
+              </small>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
               <img src="http://placehold.it/170x170" class = "pull-right">
             </div>
-            <div class ="col-md-8">
-              <h3>Announcements</h3>
-              
 
-              <%= render partial: "clubs/club_comment_display", object: @club %>
-
+            <div class ="col-md-12">
+              <h3>Attend</h3>
+              <p>You are currently not attending.</p>
+              <div class ="col-md-4 text-right">
+                <h3>I'm coming!</h3>
+                <p><a href="#" class="btn btn-primary" role="button">Attend!</a></p>
+              </div>
+              <div class ="col-md-4 text-right">
+                <h3>Not my thing</h3>
+                <p><a href="#" class="btn btn-primary" role="button">No thanks</a></p>
+              </div>
             </div>
 
-            <div class ="col-md-4 text-right">
-              <h3>Moderator Settings</h3>
-              <p><a href="#" class="btn btn-primary" role="button">Click Here</a></p>
-            </div>
+
           </div>
 
           <div class="tab-pane fade" id="gallery">Images from our club.
@@ -87,9 +96,22 @@
 
       <div class="tab-pane fade" id="discussions">
         <div class="media">
-          
-          <%= render partial: "clubs/club_comment_display", object: @club %>
-
+          <a class="pull-left" href="#">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+          </a>
+          <div class="media-body">
+            <h4 class="media-heading">Clammy hand</h4>
+            Every time I attend events from this club my hands fall off. <br>
+            <small>Posted by Nigel, 17/3/2014 at 3:00am</small>
+          </div>
+          <a class="pull-left" href="#">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+          </a>
+          <div class="media-body">
+            <h4 class="media-heading">Thumbs up!</h4>
+            My hands have never been colder!<br>
+            <small>Posted by Nigel, 17/3/2014 at 2:59am</small>
+          </div>
           <div>
             <div class="input-group">
               <input type="text" class="form-control" placeholder="Title">
@@ -144,24 +166,25 @@
   </div>
 </div>
 
-
-
 </div>
 
 <div class="col-sm-6 col-md-4">
 
-  <%= render partial: "events/featured_event", object: @fevent, as: :event %>
+  <div class="row well">
+    <div id="featured_events">
+      <div class="">
+        <img class="pull-right" src="http://placehold.it/250x150"/>
+        <p>
+          <strong>Next Event</strong><br>
+          <small>7:00am South Lawn<br>28/7/12<br>Cold Hands Club<br></small><br>This event will get you going with hell-o-a-lot of handshaking opertunities. So get those handshaking gloves out
+        </p>
+      </div>
+    </div>
+  </div>
+
 
   <div class="row">
     <h2>Events</h2>
-    <% if @club.events.empty? %>
-      <div>No Events</div>
-    <% else %>
-      <%= render partial: "events/listall_cb", object: @events, as: :events %>
-    <% end %>
-    <div class="pull-left"><a>add new event</a></div>
+    <%= render partial: "events/listall_cb", object: @club_events, as: :events %>
   </div>
-
-</div>
-
 </div>

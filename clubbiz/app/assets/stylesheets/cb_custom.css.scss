@@ -1,7 +1,8 @@
 // Custom stylesheet for ClubBiz elements
 
 body {
-        background: url(<%= image_path 'wallpaper1.png' %>) no-repeat;
+        background: image-url('wallpaper1.png');
+        background-repeat: no-repeat;
         background-size: cover;
       }
       /* make sidebar nav vertical */ 
