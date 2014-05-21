@@ -11,7 +11,7 @@ class ClubsController < ApplicationController
   # GET /clubs/1.json
   def show
     @events = @club.events
-    @fevent = @club.events.first
+    @fevent = Event.all.first
   end
 
   # GET /clubs/new
