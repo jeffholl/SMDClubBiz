@@ -82,14 +82,10 @@
       <h3><em>My Tickets</em></h3>
     
       <%= render partial: "tickets/listall_cb", object: @user %>
+    
+      <h3><em>My Club News</em></h3>
+
+      <%= render partial: "club_comments/listall_cb", object: @my_news, as: :comments %>
     <% end %>
-
-
-
-
-    <h3><em>My Club News</em></h3>
-
-    <%= render partial: "club_comments/listall_cb", object: @my_news, as: :comments %>
-
   </div>
 </div>
