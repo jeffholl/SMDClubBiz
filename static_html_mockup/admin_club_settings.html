@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ClubBiz</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/justified-nav.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <style type="text/css">
+      body {
+        background: url(img/wallpaper1.png) no-repeat;
+        background-size: cover;
+      }
+      /* make sidebar nav vertical */ 
+      @media (min-width: 768px) {
+        .sidebar-nav .navbar .navbar-collapse {
+          padding: 0;
+          max-height: none;
+        }
+        .sidebar-nav .navbar ul {
+          float: none;
+          display: block;
+        }
+        .sidebar-nav .navbar li {
+          float: none;
+          display: block;
+        }
+        .sidebar-nav .navbar li a {
+          padding-top: 12px;
+          padding-bottom: 12px;
+        }
+
+        #main-content{
+          padding-top: 20px;
+        }
+      }
+
+      html,
+      body {
+        height: 100%;
+        /* The html and body elements cannot have any padding or margin. */
+      }
+
+      /* Wrapper for page content to push down footer */
+      #wrap {
+        min-height: 100%;
+        height: auto !important;
+        height: 100%;
+        /* Negative indent footer by it's height */
+        margin: 0 auto -30px;
+      }
+
+      /* Set the fixed height of the footer here */
+      #push,
+      #footer {
+        height: 30px;
+      }
+      #footer {
+        background-color: #333;
+        color: #666;
+      }
+      #footer .cb-footer-row{
+        padding-top: 5px;
+      }
+
+      /* Lastly, apply responsive CSS fixes as necessary */
+      @media (max-width: 767px) {
+        #footer {
+          margin-left: -20px;
+          margin-right: -20px;
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+      }
+      .cb-upcoming-event-media{
+        border-bottom: 1px solid #ccc;
+        border-right: 1px solid #ccc;
+        padding:0 5px 5px 0;
+        overflow: visible;
+      }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+	    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<!-- Pie Chart Script-->
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Rank', 'Number of Members'],
+          ['Professional Shaker',     5],
+          ['Polaroid',     10],
+          ['Shakira',  20],
+          ['Noob', 200],
+        ]);
+
+        var options = {
+          title: 'Member Rank Breakdown', 
+		  backgroundColor: 'none'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, options);
+      }
+    </script>
+	<!-- Line Chart Script -->
+	<script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Event', 'Tickets', 'Attendees'],
+          ['1',  100,      40],
+          ['2',  80,      40],
+          ['3',  60,       30],
+          ['4',  40,      10]
+        ]);
+
+        var options = {
+          title: 'Event Success',
+		  backgroundColor: 'none'
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+
+    <script type="text/javascript">
+      $('.featured_events_carousel').carousel({
+        interval: 2000
+      })
+    </script>
+
+  </head>
+
+  <body>
+    <!-- Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header" style="background:#ccc">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Sign In</h4></div>
+          <div class="modal-body">
+            
+            <form role="form">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-success btn-block">Sign in</button>
+                <a class="btn btn-default btn-block" href="">Forgot Password?</a>
+              </div>
+            </form>
+          </div>          
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header" style="background:#ccc">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Register</h4></div>
+          <div class="modal-body">
+            
+            <form role="form">
+              <div class="form-group">
+                <label for="exampleInputEmail1">First Name</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Surname</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Confirm Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-6">
+                    <button type="submit" class="btn btn-default btn-block">Already have an Account?</button>
+                  </div>
+                  <div class="col-md-6">
+                    <button type="submit" class="btn btn-success btn-block">Sign Up</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>          
+        </div>
+      </div>
+    </div>
+  
+    <div id="wrap">
+
+      <nav class="navbar navbar-inverse" role="navigation" style="margin-bottom: 0;">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">ClubBiz</a>
+          </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="main-navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="" data-toggle="modal" data-target="#loginModal">Sign in</a></li>
+              <li><a href="" data-toggle="modal" data-target="#registerModal">Register</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <div class="container-fluid">
+        <div class='row'>
+          
+          <div class="col-sm-3 col-lg-2">
+            <div class="sidebar-nav">
+              <div class="navbar navbar-default" role="navigation">
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <span class="visible-xs navbar-brand">Navigation</span>
+                </div>
+                <div class="navbar-collapse collapse sidebar-navbar-collapse">
+                  <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">Sign In</a></li>
+                    <li><a href="#">Browse Clubs</a></li>
+                    <li><a href="#">Sign Up</a></li>
+                    <li><a href="#">Register your Club</a></li>
+                    <li><a href="#">Free Public Events</a></li>
+                    <li><a href="#">About us</a></li>
+                  </ul>
+                </div><!--/.nav-collapse -->
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-9 col-lg-10">
+           
+            <div class="row" id="main-content">
+              <div class="col-md-5 pull-right">
+                <div class="input-group pull-right">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></button>
+                  </span>
+                  <input type="text" class="form-control">
+                </div>
+              </div>
+                
+              <div class="col-md-7">
+                  <h2 style="margin-top:0">Page Name</h2>
+              </div>
+                
+              <div class="col-md-12"></div>
+
+			<!-- Admin-specific stuff -->
+			
+			    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style="
+    margin-left: 0px;
+">
+          <h1 class="page-header">Dashboard</h1>
+		  
+		  <div class="masthead">
+        <ul class="nav nav-justified">
+          <li ><a href="#">Events</a></li>
+          <li ><a href="#">Shared Events</a></li>
+          <li class="active"><a href="#">Club Settings</a></li>
+        </ul>
+      </div>
+          <h2 class="sub-header" style="margin-top: 60px;">Club Information</h2>
+		  <h4><u><a href="#">Edit Club Information</a></u></h4>
+		  <h4>Name: </h4>
+		  <p>Cold Hands Society</p>
+		  <h4>Website: </h4>
+		  <p>www.coldhands.org</p>
+		  <h4>Reg Number: </h4>
+		  <p>324873</p>
+		  <h4>Username: </h4>
+		  <p>chands</p>
+		  <h4>Description: </h4>
+		  <p>This club fracking rocks yo! You got cold hands? We'll heat that shit right on up bitch! Yeah!</p>
+		  
+		  <h2 class="sub-header" style="margin-top: 60px;">Office Holders</h2>
+		  <h4><u><a href="#">Edit Office Holders</a></u></h4>
+		  <h4>President: </h4>
+		  <p>Johnny Frost</p>
+		  <h4>Email: </h4>
+		  <p>jfro@unimelb.edu.au</p>
+		  <h4>Vice President: </h4>
+		  <p>Robert Van Winkle</p>
+		  <h4>Email: </h4>
+		  <p>icebaby@unimelb.edu.au</p>
+		  
+		  <h2 class="sub-header" style="margin-top: 60px;">Club Tags</h2>
+		  <h4><u><a href="#">Edit Club Tags</a></u></h4>
+		  <div class="jumbotron" style="background-color: #eee; border-radius: 6px;">
+            <p>Cool, Mittens, Cozy, Fire, Shaking, Fireplace, Germs, Vanilla, Awesome</p>
+          </div>
+		  
+		  <h2 class="sub-header" style="margin-top: 60px;">Club Moderators</h2>
+		  <h4><u><a href="#">Edit Club Moderators</a></u></h4>
+		  		<div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Name</th>
+				  <th>Email</th>
+                  <th>Role</th>
+				  <th>Authorized</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Minion One</td>
+				  <td>minion1@unimelb.edu.au</td>
+                  <td>Shakira</td>
+				  <td>Yes</td>
+                </tr>
+				                <tr>
+                  <td>Minion Two</td>
+				  <td>minion2@unimelb.edu.au</td>
+                  <td>Noob</td>
+				  <td>No</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+		  
+		  <h2 class="sub-header" style="margin-top: 60px;">Club Images</h2>
+		  <h4><u><a href="#">Edit Club Images</a></u></h4>
+		  <img style="height: 200px; width: 250px;" src="http://images.politico.com/global/blogs/110813_vanilla_ice_465_ap.jpg">
+		  <img style="height: 200px; width: 250px;" src="http://thumbs.dreamstime.com/x/log-fire-warm-hands-23245428.jpg">
+		  <img style="height: 200px; width: 250px;" src="http://www.livefortheoutdoors.com/upload/530606/images/warm%20hands.jpg">
+
+      </div>
+	  
+    </div>
+			
+			<!-- Admin-specific stuff -->
+			  
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="push"></div>
+
+    </div>
+    
+    <div id="footer">
+      <div class="container">
+        <div class="row cb-footer-row hidden-xs">
+          <div class="col-sm-4"><small>Privacy | Terms</small></div>
+          <div class="col-sm-4"><small><center>Powered by Opetex</center></small></div>
+          <div class="col-sm-4 text-right"><small>Support | Contact</small></div>
+        </div>
+        <div class="row cb-footer-row visible-xs">
+          <small><center>Powered by Opetex</center></small>
+        </div>
+      </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+  </body>
+</html>

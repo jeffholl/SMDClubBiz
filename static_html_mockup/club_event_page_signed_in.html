@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ClubBiz</title>
+
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+
+      <style type="text/css">
+      body {
+        background: url(img/wallpaper1.png) no-repeat;
+        background-size: cover;
+      }
+      /* make sidebar nav vertical */ 
+      @media (min-width: 768px) {
+        .sidebar-nav .navbar .navbar-collapse {
+          padding: 0;
+          max-height: none;
+        }
+        .sidebar-nav .navbar ul {
+          float: none;
+          display: block;
+        }
+        .sidebar-nav .navbar li {
+          float: none;
+          display: block;
+        }
+        .sidebar-nav .navbar li a {
+          padding-top: 12px;
+          padding-bottom: 12px;
+        }
+
+        #main-content{
+          padding-top: 20px;
+        }
+      }
+
+      html,
+      body {
+        height: 100%;
+        /* The html and body elements cannot have any padding or margin. */
+      }
+
+      /* Wrapper for page content to push down footer */
+      #wrap {
+        min-height: 100%;
+        height: auto !important;
+        height: 100%;
+        /* Negative indent footer by it's height */
+        margin: 0 auto -30px;
+      }
+
+      /* Set the fixed height of the footer here */
+      #push,
+      #footer {
+        height: 30px;
+      }
+      #footer {
+        background-color: #333;
+        color: #666;
+      }
+      #footer .cb-footer-row{
+        padding-top: 5px;
+      }
+
+      .cb-event-list-element{
+        border-bottom: 1px solid #ccc;
+        border-right: 1px solid #ccc;
+        padding:0 5px 5px 0;
+        overflow: visible;
+      }
+      .cb-ticket-list-element{
+        border-bottom: 1px solid #666;
+        border-right: 1px solid #666;
+        padding:0 5px 5px 0;
+        background: #eee;
+        margin-bottom: 15px;
+      }
+      .cb-news-list-element{
+        border-bottom: 1px solid #666;
+        border-right: 1px solid #666;
+        padding:0 5px 5px 0;
+        background: #eee;
+        margin-bottom: 15px;
+      }
+
+
+      /* Lastly, apply responsive CSS fixes as necessary */
+      @media (max-width: 767px) {
+        #footer {
+          margin-left: -20px;
+          margin-right: -20px;
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+      }
+      .cb-upcoming-event-media{
+        border-bottom: 1px solid #ccc;
+        border-right: 1px solid #ccc;
+        padding:0 5px 5px 0;
+        overflow: visible;
+      }
+      </style>
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+
+      <script type="text/javascript">
+      $('.featured_events_carousel').carousel({
+        interval: 2000
+      })
+      </script>
+
+    </head>
+
+    <body>
+      <!-- Modal -->
+      <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header" style="background:#ccc">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 class="modal-title">Sign In</h4></div>
+              <div class="modal-body">
+
+                <form role="form">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                  </div>
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-success btn-block">Sign in</button>
+                    <a class="btn btn-default btn-block" href="">Forgot Password?</a>
+                  </div>
+                </form>
+              </div>          
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header" style="background:#ccc">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Register</h4></div>
+                <div class="modal-body">
+
+                  <form role="form">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">First Name</label>
+                      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Surname</label>
+                      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Email address</label>
+                      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Password</label>
+                      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Confirm Password</label>
+                      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <button type="submit" class="btn btn-default btn-block">Already have an Account?</button>
+                        </div>
+                        <div class="col-md-6">
+                          <button type="submit" class="btn btn-success btn-block">Sign Up</button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>          
+              </div>
+            </div>
+          </div>
+
+          <div id="wrap">
+
+            <nav class="navbar navbar-inverse" role="navigation" style="margin-bottom: 0;">
+              <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="#">ClubBiz</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="main-navbar-collapse">
+                  <ul class="nav navbar-nav navbar-right">
+                    <li><a href="" data-toggle="modal" data-target="#loginModal">Sign in</a></li>
+                    <li><a href="" data-toggle="modal" data-target="#registerModal">Register</a></li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
+
+            <div class="container-fluid">
+              <div class='row'>
+
+                <div class="col-sm-3 col-lg-2">
+                  <div class="sidebar-nav">
+                    <div class="navbar navbar-default" role="navigation">
+                      <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+                          <span class="sr-only">Toggle navigation</span>
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                        </button>
+                        <span class="visible-xs navbar-brand">Navigation</span>
+                      </div>
+                      <div class="navbar-collapse collapse sidebar-navbar-collapse">
+                        <ul class="nav navbar-nav">
+                          <li class="active"><a href="#">Home</a></li>
+                          <li><a href="#">Sign In</a></li>
+                          <li><a href="#">Browse Clubs</a></li>
+                          <li><a href="#">Sign Up</a></li>
+                          <li><a href="#">Register your Club</a></li>
+                          <li><a href="#">Free Public Events</a></li>
+                          <li><a href="#">About us</a></li>
+                        </ul>
+                      </div><!--/.nav-collapse -->
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-9 col-lg-10">
+
+                  <div class="row" id="main-content">
+                    <div class="col-md-6 pull-right">
+                      <div class="input-group pull-right col-md-8 pull-left">
+                        <span class="input-group-btn">
+                          <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></button>
+                        </span>
+                        <input type="text" class="form-control">
+                      </div>
+                    </div>
+
+
+
+                    <div class="col-sm-6 col-md-6">
+
+                      <div class="row">
+                        <div class="col-md-10">
+                          <div class="row">
+                            <img src="http://placehold.it/100x100" class = "pull-left" width="65px"><h2>Cold Hands Society </h2>
+                            <ul class="nav nav-tabs pull-right">
+                              <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
+                              <li><a href="#gallery" data-toggle="tab">Gallery</a></li>
+                              <li><a href="#discussions" data-toggle="tab">Discussions</a></li>
+                            </ul>
+                          </div>  
+                          <div class="tab-content row">
+                            <div class="tab-pane fade in active" id="home">
+                              <div class="col-md-8">
+                                <h2>Mega BBQ</h2>
+                                <small>7:00am, Sunday 28th May <br>South Lawn<br>
+                                  The Colds hands society will be holding a BBQ on South Lawn next week. Free food and drinks, plenty of hands.
+                                  If you don't come to this event, hands will warm with shame.
+                                </small>
+                              </div>
+                              <div class="col-md-4">
+                                <img src="http://placehold.it/170x170" class = "pull-right">
+                              </div>
+
+                              <div class ="col-md-12">
+                                <h3>Attend</h3>
+                                <p>You are currently not attending.</p>
+                                <div class ="col-md-4 text-right">
+                                  <h3>I'm coming!</h3>
+                                  <p><a href="#" class="btn btn-primary" role="button">Attend!</a></p>
+                                </div>
+                                <div class ="col-md-4 text-right">
+                                  <h3>Not my thing</h3>
+                                  <p><a href="#" class="btn btn-primary" role="button">No thanks</a></p>
+                                </div>
+                              </div>
+
+
+                            </div>
+
+                            <div class="tab-pane fade" id="gallery">Images from our club.
+                              <div class="row">
+                                <div class="col-xs-6 col-md-4">
+                                  <a href="#" class="">
+                                   <img src="http://placehold.it/150x150" class = "pull-right"  />
+                                 </a>
+                               </div>
+                               <div class="col-xs-6 col-md-4">
+                                <a href="#" class="">
+                                  <img src="http://placehold.it/150x150" class = "pull-right"/>
+                                </a>
+                              </div>
+                              <div class="col-xs-6 col-md-4">
+                                <a href="#" class="">
+                                  <img src="http://placehold.it/150x150" class = "pull-right" />
+                                </a>
+                              </div>
+                            </div>
+
+                            <div class="row">
+                              <div class="col-xs-6 col-md-4">
+                                <a href="#" class="">
+                                 <img src="http://placehold.it/150x150" class = "pull-right"  />
+                               </a>
+                             </div>
+                             <div class="col-xs-6 col-md-4">
+                              <a href="#" class="">
+                                <img src="http://placehold.it/150x150" class = "pull-right" />
+                              </a>
+                            </div>
+                            <div class="col-xs-6 col-md-4">
+                              <a href="#" class="">
+                                <img src="http://placehold.it/150x150" class = "pull-right" />
+                              </a>
+                            </div>
+                          </div>
+
+                        </div>
+
+                        <div class="tab-pane fade" id="discussions">
+                          <div class="media">
+                            <a class="pull-left" href="#">
+                              <span class="glyphicon glyphicon-chevron-right"></span>
+                            </a>
+                            <div class="media-body">
+                              <h4 class="media-heading">Clammy hand</h4>
+                              Every time I attend events from this club my hands fall off. <br>
+                              <small>Posted by Nigel, 17/3/2014 at 3:00am</small>
+                            </div>
+                            <a class="pull-left" href="#">
+                              <span class="glyphicon glyphicon-chevron-right"></span>
+                            </a>
+                            <div class="media-body">
+                              <h4 class="media-heading">Thumbs up!</h4>
+                              My hands have never been colder!<br>
+                              <small>Posted by Nigel, 17/3/2014 at 2:59am</small>
+                            </div>
+                            <div>
+                              <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Title">
+                                <span class="input-group-addon">Title</span>
+                              </div>
+                              <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Comment">
+                                <span class="input-group-addon"><a href="">Submit Comment</a></span>
+                              </div>
+
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-10 ">
+                      <hr>
+                      <div class="">
+                        <h3>Similar Clubs</h3>
+                        <div>
+                          <div class="col-sm-6 col-md-4">
+                            <div class="thumbnail">
+                              <img src="http://placehold.it/75x75" alt="...">
+                              <div class="caption">
+                                <h4><center><a href="">Healthy Elbows Clubs</a></center></h4>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-sm-6 col-md-4">
+                            <div class="thumbnail">
+                              <img src="http://placehold.it/75x75" alt="...">
+                              <div class="caption">
+                                <h4><center><a href="">Feet First Club</a></center></h4>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-sm-6 col-md-4">
+                            <div class="thumbnail">
+                              <img src="http://placehold.it/75x75" alt="...">
+                              <div class="caption">
+                                <h4><center><a href="">nose Knows Club</a></center></h4>
+                              </div>
+                            </div>
+                          </div>   
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="col-sm-6 col-md-4">
+
+                  <div class="row well">
+                    <div id="featured_events">
+                      <div class="">
+                        <img class="pull-right" src="http://placehold.it/250x150"/>
+                        <p>
+                          <strong>Next Event</strong><br>
+                          <small>7:00am South Lawn<br>28/7/12<br>Cold Hands Club<br></small><br>This event will get you going with hell-o-a-lot of handshaking opertunities. So get those handshaking gloves out
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="row">
+                    <h2>Events</h2>
+                    <div class="media cb-event-list-element">
+                      <a class="pull-left" href="#"><img class="media-object" src="http://placehold.it/80x80"></a>
+                      <div class="media-body">
+                        <strong>Mega BBQ</strong><br>
+                        <small>7:00am, Sunday 28th May <br>South Lawn<br>Free food and handshakes meet nice ppl</small>
+                      </div>
+                    </div>
+                    <div class="media cb-event-list-element">
+                      <a class="pull-left" href="#"><img class="media-object" src="http://placehold.it/80x80"></a>
+                      <div class="media-body">
+                        <strong>Mega BBQ</strong><br>
+                        <small>7:00am, Sunday 28th May <br>South Lawn<br>Free food and handshakes meet nice ppl</small>
+                      </div>
+                    </div>
+                    <div class="media cb-event-list-element">
+                      <a class="pull-left" href="#"><img class="media-object" src="http://placehold.it/80x80"></a>
+                      <div class="media-body">
+                        <strong>Mega BBQ</strong><br>
+                        <small>7:00am, Sunday 28th May <br>South Lawn<br>Free food and handshakes meet nice ppl</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="push"></div>
+
+      </div>
+
+      <div id="footer">
+        <div class="container">
+          <div class="row cb-footer-row hidden-xs">
+            <div class="col-sm-4"><small>Privacy | Terms</small></div>
+            <div class="col-sm-4"><small><center>Powered by Opetex</center></small></div>
+            <div class="col-sm-4 text-right"><small>Support | Contact</small></div>
+          </div>
+          <div class="row cb-footer-row visible-xs">
+            <small><center>Powered by Opetex</center></small>
+          </div>
+        </div>
+      </div>
+      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
+      <!-- Include all compiled plugins (below), or include individual files as needed -->
+    </body>
+    </html>

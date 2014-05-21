@@ -1,0 +1,19 @@
+<% if !comments.empty? %>
+	<% comments.each do |comment| %>
+		<div class="media cb-news-list-element">
+		  <a class="pull-left" href="#">
+		    <img class="media-object" src="http://placehold.it/65x65">
+		  </a>
+		  <div class="media-body">
+		    <strong><%= comment.comment_title %></strong><br>
+		    <%= comment.comment_body %> <a href="">see more</a><br>
+		    <small>
+		    	- Posted: <%= comment.created_at %> ago, by 
+					<%= link_to comment.club.club_name, comment.club %>
+		    </small>
+		  </div>
+		</div>
+	<% end %>
+<% else %>
+	<div class="text-center"><strong>No news to report</strong></div>
+<% end %>

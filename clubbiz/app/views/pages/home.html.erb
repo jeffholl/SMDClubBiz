@@ -70,7 +70,7 @@
     <%= render partial: "events/listall_cb", object: @events, as: :events %>
 
     <div class="row text-center">
-      <br><a href="" class="btn btn-success">Find More Events</a>
+      <br><%= link_to "Find more events", events_path, class: "btn btn-default" %>
     </div>
 
   </div>
@@ -89,27 +89,7 @@
 
     <h3><em>My Club News</em></h3>
 
-    <div class="media cb-news-list-element">
-      <a class="pull-left" href="#">
-        <img class="media-object" src="http://placehold.it/65x65">
-      </a>
-      <div class="media-body">
-        <strong>Ground breaking news, everybody@!*&^</strong><br>
-        People have been found shaking hands out side of the designated zones. The Cold hands club is HORRIFIED, <a href="">see more</a><br>
-        <small>- Posted: about a minute ago, by <a href="">Cold Hands</a></small>
-      </div>
-    </div>
-
-    <div class="media cb-news-list-element">
-      <a class="pull-left" href="#">
-        <img class="media-object" src="http://placehold.it/65x65">
-      </a>
-      <div class="media-body">
-        <strong>Ground breaking news, everybody@!*&^</strong><br>
-        People have been found shaking hands out side of the designated zones. The Cold hands club is HORRIFIED, <a href="">see more</a><br>
-        <small>- Posted: about a minute ago, by <a href="">Cold Hands</a></small>
-      </div>
-    </div>
+    <%= render partial: "club_comments/listall_cb", object: @my_news, as: :comments %>
 
   </div>
 </div>

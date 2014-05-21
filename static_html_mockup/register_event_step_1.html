@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ClubBiz</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <style type="text/css">
+      body {
+        background: url(img/wallpaper1.png) no-repeat;
+        background-size: cover;
+      }
+      /* make sidebar nav vertical */ 
+      @media (min-width: 768px) {
+        .sidebar-nav .navbar .navbar-collapse {
+          padding: 0;
+          max-height: none;
+        }
+        .sidebar-nav .navbar ul {
+          float: none;
+          display: block;
+        }
+        .sidebar-nav .navbar li {
+          float: none;
+          display: block;
+        }
+        .sidebar-nav .navbar li a {
+          padding-top: 12px;
+          padding-bottom: 12px;
+        }
+
+        #main-content{
+          padding-top: 20px;
+        }
+      }
+
+      html,
+      body {
+        height: 100%;
+        /* The html and body elements cannot have any padding or margin. */
+      }
+
+      /* Wrapper for page content to push down footer */
+      #wrap {
+        min-height: 100%;
+        height: auto !important;
+        height: 100%;
+        /* Negative indent footer by it's height */
+        margin: 0 auto -30px;
+      }
+
+      /* Set the fixed height of the footer here */
+      #push,
+      #footer {
+        height: 30px;
+      }
+      #footer {
+        background-color: #333;
+        color: #666;
+      }
+      #footer .cb-footer-row{
+        padding-top: 5px;
+      }
+
+      /* Lastly, apply responsive CSS fixes as necessary */
+      @media (max-width: 767px) {
+        #footer {
+          margin-left: -20px;
+          margin-right: -20px;
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+      }
+      .cb-upcoming-event-media{
+        border-bottom: 1px solid #ccc;
+        border-right: 1px solid #ccc;
+        padding:0 5px 5px 0;
+        overflow: visible;
+      }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+   
+    <link rel="stylesheet" type="text/css" href="css/DateTimePicker.css" />
+    <script type="text/javascript" src="js/DateTimePicker.js"></script>
+    
+   <!--[if lt IE 9]>
+    <link rel="stylesheet" type="text/css" href="DateTimePicker-ltie9.css" />
+    <script type="text/javascript" src="DateTimePicker-ltie9.js"></script>
+   <![endif]-->
+
+  <script type="text/javascript">
+     $(document).ready(function()
+       {   
+         $("#dtBox").DateTimePicker();
+       });
+  </script>
+
+  </head>
+
+  <body>
+      
+    <div id="wrap">
+
+      <nav class="navbar navbar-inverse" role="navigation" style="margin-bottom: 0;">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">ClubBiz</a>
+          </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="main-navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              
+              <li><a href="">Rank: Proud Agorophobic</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mr User <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Profile</a></li>
+                  <li><a href="#">Tickets</a></li>
+                  <li><a href="#">Settings</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Logout</a></li>
+                </ul>
+              </li>
+          
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <div class="container-fluid">
+        <div class='row'>
+          
+          <div class="col-sm-3 col-lg-2">
+            <div class="sidebar-nav">
+              <div class="navbar navbar-default" role="navigation">
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <span class="visible-xs navbar-brand">Navigation</span>
+                </div>
+                <div class="navbar-collapse collapse sidebar-navbar-collapse">
+                  <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">Sign In</a></li>
+                    <li><a href="#">Browse Clubs</a></li>
+                    <li><a href="#">Sign Up</a></li>
+                    <li><a href="#">Register your Club</a></li>
+                    <li><a href="#">Free Public Events</a></li>
+                    <li><a href="#">About us</a></li>
+                  </ul>
+                </div><!--/.nav-collapse -->
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-9 col-lg-10">
+           
+            <div class="row" id="main-content">
+              <div class="col-md-5 pull-right">
+                <div class="input-group pull-right">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></button>
+                  </span>
+                  <input type="text" class="form-control">
+                </div>
+              </div>
+                
+              <div class="col-md-7">
+                  <h2 style="margin-top:0">Register your Event</h2>                   
+              </div>
+                
+              <div class="col-md-12"></div>
+
+              <div class="col-md-7">
+                <form role="form">
+                  <div class="form-group">
+                    <label for="1">DateTime</label>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Event Name</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Event Name">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Event Description</label>
+                    <textarea class="form-control" rows="3" placeholder="Description"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Event Venue \ Location</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Venue Address, Location on Campus">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Start Time</label>
+                    <input type="text" class="form-control" data-field="datetime" placeholder="Click to select">
+                    <div id="dtBox"></div>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">End Time</label>
+                    <input type="text" class="form-control" data-field="datetime" placeholder="Click to select">
+                  </div>
+                  <strong>Step 1 - Club Details</strong>
+                  <a href="register_event_step_2.html" class="btn btn-success pull-right">Next</a>
+                </form>
+              </div>
+              <div class="col-md-5">
+                <h4>Why ClubBiz?</h4>
+                <p>
+                  Signing up for ClubBiz allows for your club to manage its events and tickets with ease. Take the worry out of promoting your event and informing your members of your latest event, and just get on with it.
+                </p>
+                <p>
+                  With all of your current members, and hundreds of potential new members already using our site, you'd be stupid not to continue. Fill in your details and click 'Next'.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="push"></div>
+
+    </div>
+    
+    <div id="footer">
+      <div class="container">
+        <div class="row cb-footer-row hidden-xs">
+          <div class="col-sm-4"><small>Privacy | Terms</small></div>
+          <div class="col-sm-4"><small><center>Powered by Opetex</center></small></div>
+          <div class="col-sm-4 text-right"><small>Support | Contact</small></div>
+        </div>
+        <div class="row cb-footer-row visible-xs">
+          <small><center>Powered by Opetex</center></small>
+        </div>
+      </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+  </body>
+</html>

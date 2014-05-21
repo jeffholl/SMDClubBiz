@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ClubBiz</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <style type="text/css">
+      body {
+        background: url(img/wallpaper1.png) no-repeat;
+        background-size: cover;
+      }
+      /* make sidebar nav vertical */ 
+      @media (min-width: 768px) {
+        .sidebar-nav .navbar .navbar-collapse {
+          padding: 0;
+          max-height: none;
+        }
+        .sidebar-nav .navbar ul {
+          float: none;
+          display: block;
+        }
+        .sidebar-nav .navbar li {
+          float: none;
+          display: block;
+        }
+        .sidebar-nav .navbar li a {
+          padding-top: 12px;
+          padding-bottom: 12px;
+        }
+
+        #main-content{
+          padding-top: 20px;
+        }
+      }
+
+      html,
+      body {
+        height: 100%;
+        /* The html and body elements cannot have any padding or margin. */
+      }
+
+      /* Wrapper for page content to push down footer */
+      #wrap {
+        min-height: 100%;
+        height: auto !important;
+        height: 100%;
+        /* Negative indent footer by it's height */
+        margin: 0 auto -30px;
+      }
+
+      /* Set the fixed height of the footer here */
+      #push,
+      #footer {
+        height: 30px;
+      }
+      #footer {
+        background-color: #333;
+        color: #666;
+      }
+      #footer .cb-footer-row{
+        padding-top: 5px;
+      }
+
+      /* Lastly, apply responsive CSS fixes as necessary */
+      @media (max-width: 767px) {
+        #footer {
+          margin-left: -20px;
+          margin-right: -20px;
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+      }
+      .cb-upcoming-event-media{
+        border-bottom: 1px solid #ccc;
+        border-right: 1px solid #ccc;
+        padding:0 5px 5px 0;
+        overflow: visible;
+      }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+  </head>
+
+  <body>
+      
+    <div id="wrap">
+
+      <nav class="navbar navbar-inverse" role="navigation" style="margin-bottom: 0;">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">ClubBiz</a>
+          </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="main-navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              
+              <li><a href="">Rank: Proud Agorophobic</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mr User <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Profile</a></li>
+                  <li><a href="#">Tickets</a></li>
+                  <li><a href="#">Settings</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Logout</a></li>
+                </ul>
+              </li>
+          
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <div class="container-fluid">
+        <div class='row'>
+          
+          <div class="col-sm-3 col-lg-2">
+            <div class="sidebar-nav">
+              <div class="navbar navbar-default" role="navigation">
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <span class="visible-xs navbar-brand">Navigation</span>
+                </div>
+                <div class="navbar-collapse collapse sidebar-navbar-collapse">
+                  <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">Sign In</a></li>
+                    <li><a href="#">Browse Clubs</a></li>
+                    <li><a href="#">Sign Up</a></li>
+                    <li><a href="#">Register your Club</a></li>
+                    <li><a href="#">Free Public Events</a></li>
+                    <li><a href="#">About us</a></li>
+                  </ul>
+                </div><!--/.nav-collapse -->
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-9 col-lg-10">
+           
+            <div class="row" id="main-content">
+              <div class="col-md-5 pull-right">
+                <div class="input-group pull-right">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></button>
+                  </span>
+                  <input type="text" class="form-control">
+                </div>
+              </div>
+                
+              <div class="col-md-7">
+                  <h2 style="margin-top:0">Review Registration</h2>                   
+              </div>
+                
+              <div class="col-md-12"></div>
+
+              <div class="col-md-7"> 
+
+                <table class="table">
+                  <tr>
+                    <td><strong>Club Name</strong></td>
+                    <td>Cold Hands</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Club Description</strong></td>
+                    <td>Ssdflsjdfij skdjf sjdl sdfjlskjdf sdjfs fs dsdj ljsjkj ...</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Club Website</strong></td>
+                    <td>http://www.something.com</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Rego Number</strong></td>
+                    <td>238490234</td>
+                  </tr>
+                  <tr>
+                    <td><strong>President</strong></td>
+                    <td>John Handstrong<br>jhs@stu.uni.edu.au</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Vice President</strong></td>
+                    <td>Fran Palmer<br>fpalm@stu.uni.edu.au</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Treasurer</strong></td>
+                    <td>Stu Fingers<br>sfin@stu.uni.edu.au</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Committee</strong></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Moderators</strong></td>
+                    <td>Albert Fistbump<br>afb@stu.uni.edu.au</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">
+                      <div class="col-sm-4">
+                        <div class="thumbnail">
+                          Club Image
+                          <img src="http://placehold.it/150x150" alt="...">
+                        </div>
+                      </div> 
+                      <div class="col-sm-4">
+                        <div class="thumbnail">
+                          Club Icon
+                          <img src="http://placehold.it/150x150" alt="...">
+                        </div>
+                      </div> 
+                      <div class="col-sm-4">
+                        <div class="thumbnail">
+                          Club Featured
+                          <img src="http://placehold.it/150x150" alt="...">
+                        </div>
+                      </div>
+                    </td>
+                  </tr>                  
+                </table>             
+
+                <strong>Step 5 - Review and Submit</strong>
+                <button class="btn btn-success pull-right">Submit Application</button>
+              </div>
+              <div class="col-md-5">
+                <h4>This is the end!</h4>
+                <p>
+                  We have come to the end of the road, my new friend. Though you may be saddened now, know that this was one of the happiest days of my life. Go forth and concour the world with you club and I shall see you again, next time you register a new club.
+                </p>
+                <p>
+                  Ensure all details are correct and click 'Submit' to post your application to the Clubs and Societies overloards.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="push"></div>
+
+    </div>
+    
+    <div id="footer">
+      <div class="container">
+        <div class="row cb-footer-row hidden-xs">
+          <div class="col-sm-4"><small>Privacy | Terms</small></div>
+          <div class="col-sm-4"><small><center>Powered by Opetex</center></small></div>
+          <div class="col-sm-4 text-right"><small>Support | Contact</small></div>
+        </div>
+        <div class="row cb-footer-row visible-xs">
+          <small><center>Powered by Opetex</center></small>
+        </div>
+      </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+  </body>
+</html>
