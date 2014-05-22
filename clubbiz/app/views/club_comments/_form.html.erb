@@ -11,25 +11,22 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :comment_type %><br>
-    <%= f.text_field :comment_type %>
-  </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :comment_title %><br>
-    <%= f.text_field :comment_title %>
+    <%= f.text_field :comment_title, class: "form-control" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :comment_body %><br>
     <%= f.text_field :comment_body %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :comment_url %><br>
     <%= f.text_field :comment_url %>
   </div>
+  <%= f.hidden_field :comment_type, :value => "Comment" %>
   <%= f.hidden_field :user_id, :value => current_user.id %>
   <%= f.hidden_field :club_id, :value => @club.id %>
-  <div class="actions">
+  <div class="form-group">
     <%= f.submit %>
   </div>
 <% end %>
