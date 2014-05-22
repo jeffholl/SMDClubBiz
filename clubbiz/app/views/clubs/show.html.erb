@@ -86,23 +86,14 @@
       </div>
 
       <div class="tab-pane fade" id="discussions">
-        <div class="media">
+        <div id="cb-club-comment-wrapper">
+                    
+          <%= render @club_comments %>
           
-          <%= render partial: "clubs/club_comment_display", object: @club %>
-
-          <div>
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Title">
-              <span class="input-group-addon">Title</span>
-            </div>
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Comment">
-              <span class="input-group-addon"><a href="">Submit Comment</a></span>
-            </div>
-
-
-          </div>
         </div>
+        <% if signed_in? %>
+          <%= render partial: "club_comments/form", object: {:new_comment => @new_comment, :current_user => current_user, :club => @club} %>
+        <% end %>
       </div>
     </div>
   </div>

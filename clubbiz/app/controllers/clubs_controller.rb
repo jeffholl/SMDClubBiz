@@ -11,7 +11,9 @@ class ClubsController < ApplicationController
   # GET /clubs/1.json
   def show
     @events = @club.events
-    @fevent = Event.all.first
+    @fevent = Event.all.first #altered to make work when club has no events error
+    @club_comments = @club.club_comments
+    @new_comment = ClubComment.new
   end
 
   # GET /clubs/new

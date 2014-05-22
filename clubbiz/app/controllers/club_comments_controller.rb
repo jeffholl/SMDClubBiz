@@ -4,7 +4,7 @@ class ClubCommentsController < ApplicationController
   before_action :set_club, only: [:new]
 
   def new
-    @club_comment = ClubComment.new
+    @new_comment = ClubComment.new
   end
 
   def edit
@@ -16,7 +16,8 @@ class ClubCommentsController < ApplicationController
     respond_to do |format|
       if @club_comment.save
         format.html { redirect_to club_path(@club_comment.club_id), notice: 'Club comment was successfully created.' }
-#        format.json { render action: club_path(@club_comment.club_id), status: :created, location: @club_comment }
+        format.js {}
+        format.json { render action: @club_comment, status: :created, location: @club_comment }
       else
         format.html { render action: 'new' }
 #        format.json { render json: @club_comment.errors, status: :unprocessable_entity }
