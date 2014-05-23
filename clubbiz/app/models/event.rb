@@ -15,4 +15,18 @@ class Event < ActiveRecord::Base
 		where("event_name like ?", "%#{query}%")
 	end
 
+	def host_club
+		Club.find(self.shared_events.where(role: "owner").first.club_id)
+	end
+
+	# handling .R.. permissions
+	def can_be_viewed_by(user)
+		
+	end
+
+	# handing C.UD permissions
+	def can_be_created_by(user)
+
+	end
+
 end

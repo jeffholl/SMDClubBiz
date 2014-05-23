@@ -1,7 +1,7 @@
 Clubbiz::Application.routes.draw do
 
   get "pages/home"
-  get "pages/about"
+  get "about" => "pages#about", as: "about"
   get "pages/help"
   get "pages/terms"
   get "pages/privacy"

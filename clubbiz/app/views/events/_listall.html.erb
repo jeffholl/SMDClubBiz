@@ -12,9 +12,8 @@
 
   <tbody>
     <% @events.each do |event| %>
-      <% club = Club.find(event.shared_events.where(role: "owner").first.club_id) %>
       <tr>
-        <td><%= link_to club.club_name, club %></td>
+        <td><%= link_to event.host_club.club_name, event.host_club %></td>
         <td><%= link_to event.event_name, event %></td>
         <td><%= event.event_description %></td>
         <td><%= event.start_datetime %></td>

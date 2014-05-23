@@ -1,7 +1,7 @@
 	<li><%= link_to "Home", root_path %></li>
-	<li><a href="#">Notifications</a></li>
-	<li><a href="#">My Clubs</a></li>
-	<li><a href="#">Search Clubs</a></li>
-	<li><a href="#">Register your Club</a></li>
+	<li><%= link_to "Notifications", current_user %></li>
+	<li><%= link_to "My Clubs", current_user %></li>
+	<li><%= link_to "Search Clubs", search_path %></a></li>
+	<li><%= link_to "Register your Club", new_club_path %></li>
 	<li><%= link_to "My Settings", user_path(current_user) %></li>
-	<li><%= link_to "About Us", pages_about_path %></li>
+	<li><%= link_to "About Us", about_path %></li>

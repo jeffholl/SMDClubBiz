@@ -1,4 +1,4 @@
-<% club = Club.find(event.shared_events.where(role: "owner").first.club_id) %>
+<% club = event.host_club %>
 <div class="media cb-event-list-element">
   <a class="pull-left" href="#">
     <img class="media-object" src="http://placehold.it/80x80">
