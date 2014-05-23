@@ -1,47 +1,94 @@
-<%= form_for(@event) do |f| %>
-  <% if @event.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+<div class="row" id="main-content">
+  
+  <div class="col-md-7">
+      <h2 style="margin-top:0">Register your Event</h2>
+  </div>
+    
+  <div class="col-md-12"></div>
+  
+    
+    <div class="col-md-7">
+      <%= form_for(@event) do |f| %>
+        <h4>Host Club: <%= @club.club_name %></h4>
+        <div class="form-group">
+          <%= f.label :event_name %>
+          <%= f.text_field :event_name, class: "form-control", placeholder:"Event Name" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :event_description %>
+          <%= f.text_field :event_description, class: "form-control", placeholder: "Description" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :venue %>
+          <%= f.text_field :venue, class: "form-control", placeholder:"Venue Address, Location on Campus" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :start_datetime %>
+          <%= f.datetime_select :start_datetime, class: "form-control", placeholder:"Click to select" %>
+          <div id="dtBox"></div>
+        </div>
+        <div class="form-group">
+          <%= f.label :end_datetime %>
+          <%= f.datetime_select :end_datetime, class:"form-control", placeholder:"Click to select" %>
+        </div>
+        
+        <h4>Event Tickets</h4>
+        <div class="row">
+          <%= f.fields_for :tickets do |t| %>
+            <% render partial: "tickets/form", object: t, as: :f %>
+          <% end %>
+        </div>
 
-      <ul>
-      <% @event.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+        <h4>Event Settings</h4>
+        <table class="table">
+          <tr>
+            <td>Event Opacity</td>
+            <td>
+              <div class="radio-inline">
+                <label>
+                  <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                  Public
+                </label>
+              </div><div class="radio-inline">
+                <label>
+                  <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                  Private
+                </label>
+              </div>
+          </td>
+          </tr>
+          <tr>
+            <td>Ticketing</td>
+            <td>
+              <div class="radio-inline">
+                <label>
+                  <input type="radio" name="optionsRadios1" id="optionsRadios3" value="option1" checked>
+                  Free
+                </label>
+              </div><div class="radio-inline">
+                <label>
+                  <input type="radio" name="optionsRadios1" id="optionsRadios4" value="option2">
+                  Ticketed
+                </label>
+              </div>
+            </td>
+          </tr>
+        </table>
+      <div class="form-group">
+        <%= f.submit "Create Event" %>
+      </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
+    </div>   
 
-  <div class="field">
-    <%= f.label :event_name %><br>
-    <%= f.text_field :event_name %>
+
+  <div class="col-md-5">
+    <h4>So, how does this whole event thing work?</h4>
+    <p>
+      Signing up for ClubBiz allows for your club to manage its events and tickets with ease. Take the worry out of promoting your event and informing your members of your latest event, and just get on with it.
+    </p>
+    <p>
+      With all of your current members, and hundreds of potential new members already using our site, you'd be stupid not to continue. Fill in your details and click 'Next'.
+    </p>
   </div>
-  <div class="field">
-    <%= f.label :event_description %><br>
-    <%= f.text_field :event_description %>
-  </div>
-  <div class="field">
-    <%= f.label :start_datetime %><br>
-    <%= f.datetime_select :start_datetime %>
-  </div>
-  <div class="field">
-    <%= f.label :end_datetime %><br>
-    <%= f.datetime_select :end_datetime %>
-  </div>
-  <div class="field">
-    <%= f.label :external_url %><br>
-    <%= f.text_field :external_url %>
-  </div>
-  <div class="field">
-    <%= f.hidden_field :club_id, :value => @club.id %><br>
-  </div>
-  <div class="field">
-    <%= f.fields_for :shared_events do |c| %>
-      <%= c.label :role %><br>
-      <%= c.text_field :role %><br>
-      <%= c.hidden_field :club_id, :value => @club.id %><br>
-    <% end %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+
+ </div>

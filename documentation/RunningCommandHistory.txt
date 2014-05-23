@@ -54,3 +54,6 @@ J>	rake db:migrate
 
 J>	rails generate migration add_status_to_club
 J>	rake db:migrate
+
+J>	rails generate migration add_venue_to_event
+J>	rake db:migrate
