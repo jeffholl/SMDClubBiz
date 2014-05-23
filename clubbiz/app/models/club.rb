@@ -10,4 +10,8 @@ class Club < ActiveRecord::Base
 	has_many :memberships, dependent: :destroy
 	has_many :users, :through => :memberships
 
+	def self.search(query)
+		where("club_name like ?", "%#{query}%")
+	end
+
 end

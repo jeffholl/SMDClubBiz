@@ -19,4 +19,14 @@ class PagesController < ApplicationController
 
   def privacy
   end
+
+  def search
+    if params[:q] && params[:q] != ""
+      @clubs = Club.search(params[:q]).order("created_at DESC")
+      @events = Event.search(params[:q]).order("created_at DESC")
+    else
+      @clubs = Club.all.order("created_at DESC").limit(3)
+      @events = Event.all.order("created_at DESC").limit(3)
+    end
+  end
 end

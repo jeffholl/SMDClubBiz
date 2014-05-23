@@ -6,6 +6,8 @@ Clubbiz::Application.routes.draw do
   get "pages/terms"
   get "pages/privacy"
   
+  get "search" => "pages#search", as: "search"
+
   resources :event_comments, only: [:edit, :create, :update, :destroy]
   get "event_comments/new/:id" => "event_comments#new", as: "new_event_comment"
 

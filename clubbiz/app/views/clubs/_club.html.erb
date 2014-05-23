@@ -1,0 +1,17 @@
+<div class="media cb-event-list-element">
+  <a class="pull-left" href="#">
+    <img class="media-object" src="http://placehold.it/80x80">
+  </a>
+  <div class="media-body">
+    <strong><%= link_to club.club_name, club_path(club) %></strong>
+    <div class="dropdown pull-right">
+      <a data-toggle="dropdown" href="#" style="color: #000"><b class="caret"></b> </a>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+        <li><a href="">View</a></li>
+        <li><a href="">Tickets</a></li>
+      </ul>
+    </div>
+    <br>
+    <small><%= club.created_at %><br><em>MUST ADD LOC TO EVENT DB</em><br><%= club.updated_at %></small>
+  </div>
+</div>

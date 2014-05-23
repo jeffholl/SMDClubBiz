@@ -11,4 +11,8 @@ class Event < ActiveRecord::Base
 	
 	accepts_nested_attributes_for :shared_events
 
+	def self.search(query)
+		where("event_name like ?", "%#{query}%")
+	end
+
 end
