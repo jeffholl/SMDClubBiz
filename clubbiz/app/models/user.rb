@@ -10,6 +10,14 @@ class User < ActiveRecord::Base
 		"#{first_name} #{last_name}"
 	end
 
+	def is_member?(club)
+		club.active_memberships.map(&:user_id).include? self.id
+	end
+
+	def is_pending?(club)
+		club.pending_memberships.map(&:user_id).include? self.id
+	end
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
