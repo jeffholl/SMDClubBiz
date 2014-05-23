@@ -1,11 +1,8 @@
 <div class="row" id="main-content">
 	
-	<div class="col-md-10">
+	<div class="col-md-8">
 		<h2>Search</h2>
-		<%= form_tag(search_path, :method => 'get', id: 'search_form') do %>
-			<%= text_field_tag :q, params[:q], placeholder: "Seach Clubs and Events" %>
-			<%= submit_tag "Search", :name => nil %>
-		<% end %>
+		<%= render "shared/search_all" %>
 	</div>
 	<div class="col-md-5">
 		<h3><em>Clubs</em></h3>
