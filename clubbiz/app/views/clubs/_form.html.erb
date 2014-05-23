@@ -75,6 +75,7 @@
         <%= f.label :rego_number %>
         <%= f.text_field :rego_number, class: "form-control", placeholder: "Password" %>
       </div>
+      <%= f.hidden_field :status, :value => "prereg" %>
       <strong>Step 1 - Club Details</strong>
       <%= f.submit %>
     <% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140517175354) do
+ActiveRecord::Schema.define(version: 20140523102118) do
 
   create_table "club_comments", force: true do |t|
     t.string   "comment_type"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20140517175354) do
     t.string   "rego_number"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "status"
   end
 
   create_table "event_comments", force: true do |t|
