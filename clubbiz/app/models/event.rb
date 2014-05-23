@@ -21,12 +21,12 @@ class Event < ActiveRecord::Base
 
 	# handling .R.. permissions
 	def can_be_viewed_by(user)
-		
+
 	end
 
 	# handing C.UD permissions
 	def can_be_created_by(user)
-
+		self.host_club.get_modertors == user.id
 	end
 
 end

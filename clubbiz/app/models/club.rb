@@ -16,4 +16,12 @@ class Club < ActiveRecord::Base
 		where("club_name like ?", "%#{query}%")
 	end
 
+	def get_moderators
+		self.memberships.where(role: "moderator")
+	end
+
+	def can_be_modified_by?(user)
+		self.get_moderators.map(&:user_id).include? user.id
+	end
+
 end
