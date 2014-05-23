@@ -20,10 +20,11 @@ class MembershipsController < ApplicationController
     respond_to do |format|
       if @membership.save
         format.html { redirect_to @membership.club, notice: 'membership was successfully created.' }
-#        format.json { render action: 'show', status: :created, location: @membership }
+        format.js {}
+        format.json { render action: @membership, status: :created, location: @membership }
       else
         format.html { redirect_to @membership.club }
-#        format.json { render json: @membership.errors, status: :unprocessable_entity }
+        format.json { render json: @membership.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -32,7 +33,7 @@ class MembershipsController < ApplicationController
     respond_to do |format|
       if @membership.update(membership_params)
         format.html { redirect_to memberships_path, notice: 'membership was successfully updated.' }
-        format.json { head :no_content }
+        format.json { render action: @membership, status: :created, location: @membership }
       else
         format.html { render action: 'edit' }
         format.json { render json: @membership.errors, status: :unprocessable_entity }
@@ -55,7 +56,7 @@ private
   end
 	
 	def membership_params
-      params.require(:membership).permit(:club_id, :user_id, :status)
+      params.require(:membership).permit(:club_id, :user_id, :status, :role)
   end
 
   def set_club

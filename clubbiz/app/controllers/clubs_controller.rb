@@ -19,6 +19,7 @@ class ClubsController < ApplicationController
   # GET /clubs/new
   def new
     @club = Club.new
+    @membership = Membership.new
   end
 
   # GET /clubs/1/edit
@@ -33,6 +34,7 @@ class ClubsController < ApplicationController
     respond_to do |format|
       if @club.save
         format.html { redirect_to @club, notice: 'Club was successfully created.' }
+        format.js {}
         format.json { render action: 'show', status: :created, location: @club }
       else
         format.html { render action: 'new' }

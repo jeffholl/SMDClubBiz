@@ -1,0 +1,11 @@
+<%= form_for(@membership, remote: true) do |f| %>
+	<div class="form-group">
+		<%= f.text_field :user_id, class: "form-control", placeholder: "User ID" %>
+	</div>
+	<div class="form-group">
+		<%= f.select(:role, [["President", "President"],["Moderator", "Moderator"]],{}, {class: "form-control"}) %>
+	</div>
+		<%= f.text_field :club_id, class: "cb-clubid" %>
+		<%= f.hidden_field :status, :value => "pending" %>
+		<%= f.submit "Create Role" %>
+<% end %>

@@ -1,0 +1,247 @@
+<%= form_for(@club) do |f| %>
+  <% if @club.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@club.errors.count, "error") %> prohibited this club from being saved:</h2>
+
+      <ul>
+      <% @club.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    
+  </div>
+  <div class="field">
+    
+  </div>
+  <div class="field">
+    
+  </div>
+  <div class="field">
+    
+  </div>
+  <div class="actions">
+    
+  </div>
+<% end %>
+
+<div class="row" id="main-content">
+  <div class="col-md-5 pull-right">
+    <div class="input-group pull-right">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></button>
+      </span>
+      <input type="text" class="form-control">
+    </div>
+  </div>
+
+  <div class="col-md-7">
+    <h2 style="margin-top:0">Register your Club</h2>                   
+  </div>
+
+  <div class="col-md-12"></div>
+
+  <div class="col-md-7">
+          
+      <% if @club.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@club.errors.count, "error") %> prohibited this club from being saved:</h2>
+
+          <ul>
+          <% @club.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+      
+      
+      <div class="panel-group" id="club-rego-form-accordion">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">       
+              <a data-toggle="collapse" data-parent="#club-rego-form-accordion" href="#collapseOne">   
+                Step 1 - Club Information
+              </a>
+            </h4>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse in">
+            <div id="cb-clubinfo-form-cont" class="panel-body">
+              <%= form_for(@club, remote: true) do |f| %>
+                <div class="form-group">
+                  <%= f.label :club_name %>
+                  <%= f.text_field :club_name, class: "form-control", placeholder: "Enter email" %>
+                </div>
+                <div class="form-group">
+                  <%= f.label :club_description %>
+                  <%= f.text_field :club_description, class: "form-control", rows: "3", placeholder: "Description" %>
+                </div>
+                <div class="form-group">
+                  <%= f.label :club_website %>
+                  <%= f.text_field :club_website, class: "form-control", placeholder: "Password" %>
+                </div>
+                <div class="form-group">
+                  <%= f.label :rego_number %>
+                  <%= f.text_field :rego_number, class: "form-control", placeholder: "Password" %>
+                </div>
+                <%= f.hidden_field :status, :value => "prereg" %>
+                <%= f.submit "Create Club" %>
+              <% end %>
+              <a data-toggle="collapse" data-parent="#club-rego-form-accordion" class="btn btn-success pull-right" href="#collapseTwo">Next</a>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#club-rego-form-accordion" href="#collapseTwo">
+                Step 2 - Committee Members
+              </a>
+            </h4>
+          </div>
+          <div id="collapseTwo" class="panel-collapse collapse">
+            <div class="panel-body">
+              <h4>Committee Members and Moderators</h4>
+              
+              <ul id="cb-moderators-form-cont"><li>1</li></ul>
+
+              <%= render "moderator_form" %>
+                              
+              <a data-toggle="collapse" data-parent="#club-rego-form-accordion" class="btn btn-default" href="#collapseOne">Back</a>
+              <a data-toggle="collapse" data-parent="#club-rego-form-accordion" class="btn btn-success pull-right" href="#collapseThree">Next</a>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#club-rego-form-accordion" href="#collapseThree">
+                Step 3 - Club Images
+              </a>
+            </h4>
+          </div>
+          <div id="collapseThree" class="panel-collapse collapse">
+            <div class="panel-body">
+              <div class="col-sm-4">
+                <div class="thumbnail">
+                  Club Image
+                  <img src="http://placehold.it/150x150" alt="...">
+                  <div class="caption">
+                    <a href="#" class="btn btn-default btn-block" role="button">Upload</a>
+                  </div>
+                </div>
+              </div> 
+              <div class="col-sm-4">
+                <div class="thumbnail">
+                  Club Icon
+                  <img src="http://placehold.it/150x150" alt="...">
+                  <div class="caption">
+                    <a href="#" class="btn btn-default btn-block" role="button">Upload</a>
+                  </div>
+                </div>
+              </div> 
+              <div class="col-sm-4">
+                <div class="thumbnail">
+                  Club Featured
+                  <img src="http://placehold.it/150x150" alt="...">
+                  <div class="caption">
+                    <a href="#" class="btn btn-default btn-block" role="button">Upload</a>
+                  </div>
+                </div>
+              </div>
+              <a data-toggle="collapse" data-parent="#club-rego-form-accordion" class="btn btn-default" href="#collapseTwo">Back</a>
+              <a data-toggle="collapse" data-parent="#club-rego-form-accordion" class="btn btn-success pull-right" href="#collapseFour">Next</a>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#club-rego-form-accordion" href="#collapseFour">
+                Step 4 - Review and Submission
+              </a>
+            </h4>
+          </div>
+          <div id="collapseFour" class="panel-collapse collapse">
+            <div class="panel-body">
+              <table class="table">
+                <tr>
+                  <td><strong>Club Name</strong></td>
+                  <td>Cold Hands</td>
+                </tr>
+                <tr>
+                  <td><strong>Club Description</strong></td>
+                  <td>Ssdflsjdfij skdjf sjdl sdfjlskjdf sdjfs fs dsdj ljsjkj ...</td>
+                </tr>
+                <tr>
+                  <td><strong>Club Website</strong></td>
+                  <td>http://www.something.com</td>
+                </tr>
+                <tr>
+                  <td><strong>Rego Number</strong></td>
+                  <td>238490234</td>
+                </tr>
+                <tr>
+                  <td><strong>President</strong></td>
+                  <td>John Handstrong<br>jhs@stu.uni.edu.au</td>
+                </tr>
+                <tr>
+                  <td><strong>Vice President</strong></td>
+                  <td>Fran Palmer<br>fpalm@stu.uni.edu.au</td>
+                </tr>
+                <tr>
+                  <td><strong>Treasurer</strong></td>
+                  <td>Stu Fingers<br>sfin@stu.uni.edu.au</td>
+                </tr>
+                <tr>
+                  <td><strong>Committee</strong></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td><strong>Moderators</strong></td>
+                  <td>Albert Fistbump<br>afb@stu.uni.edu.au</td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    <div class="col-sm-4">
+                      <div class="thumbnail">
+                        Club Image
+                        <img src="http://placehold.it/150x150" alt="...">
+                      </div>
+                    </div> 
+                    <div class="col-sm-4">
+                      <div class="thumbnail">
+                        Club Icon
+                        <img src="http://placehold.it/150x150" alt="...">
+                      </div>
+                    </div> 
+                    <div class="col-sm-4">
+                      <div class="thumbnail">
+                        Club Featured
+                        <img src="http://placehold.it/150x150" alt="...">
+                      </div>
+                    </div>
+                  </td>
+                </tr>                  
+              </table>
+              <a data-toggle="collapse" data-parent="#club-rego-form-accordion" class="btn btn-default" href="#collapseThree">Back</a>
+              <div id="cb-submit-btn-cont"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  </div>
+  <div class="col-md-5">
+    <h4>Why ClubBiz?</h4>
+    <p>
+      Signing up for ClubBiz allows for your club to manage its events and tickets with ease. Take the worry out of promoting your event and informing your members of your latest event, and just get on with it.
+    </p>
+    <p>
+      With all of your current members, and hundreds of potential new members already using our site, you'd be stupid not to continue. Fill in your details and click 'Next'.
+    </p>
+  </div>
+</div>

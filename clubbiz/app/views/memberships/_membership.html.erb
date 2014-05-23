@@ -1,0 +1,12 @@
+<div class="col-md-5">
+	<strong><%= membership.user.displayname %></strong><br>
+	<%= membership.user.email %>
+</div>
+<div class="col-md-5">
+	<strong><%= membership.role %></strong><br>
+	<%= membership.club.club_name %>
+</div>
+<div class="col-md-2">
+	<%= link_to "Remove", membership_path(membership), method: :delete %>
+</div>
+<hr>

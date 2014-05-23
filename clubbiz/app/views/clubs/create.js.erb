@@ -1,0 +1,3 @@
+$("#cb-clubinfo-form-cont").html("<%= escape_javascript(render partial: 'clubs/new_club_rego_display', object: @club, as: :club) %>");
+$("#cb-submit-btn-cont").html("<%= escape_javascript(render partial: 'club_rego_submit_btn', object: @club, as: :club) %>");
+$(".cb-clubid").attr("value","<%= @club.id %>");
