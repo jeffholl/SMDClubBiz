@@ -58,7 +58,7 @@
               
             </div>
             <% if signed_in? %>
-              <%= render partial: "event_comments/form", object: {:new_comment => @new_comment, :current_user => current_user, :event => @event} %>
+              <%= render partial: "event_comments/form", object: {:event_comment => @event_comment, :current_user => current_user, :event => @event} %>
             <% end %>
           </div>
 

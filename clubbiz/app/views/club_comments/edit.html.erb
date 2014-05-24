@@ -1,0 +1,16 @@
+<div class="row" id="main-content">
+
+  <div class="col-md-5">
+    <h2 style="margin-top:0">Edit your <%= @club_comment.comment_type %></h2> 
+  </div>
+
+  <div class="clearfix"></div>
+	
+	<h4>Targeted Club: <%= @club_comment.club.club_name %></h4>
+
+	<div class="col-md-5">	
+		<%= render "edit_form" %>	
+	</div>
+
+	<%= link_to "Delete Comment", @club_comment, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
+</div>

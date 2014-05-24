@@ -8,6 +8,7 @@ class ClubCommentsController < ApplicationController
   end
 
   def edit
+    @club = @club_comment.club
   end
 
   def create
@@ -27,7 +28,7 @@ class ClubCommentsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @club_comment.update(club_params)
+      if @club_comment.update(club_comment_params)
         format.html { redirect_to club_path(@club_comment.club_id), notice: 'club_comment was successfully updated.' }
 #        format.json { head :no_content }
       else

@@ -8,7 +8,8 @@
 	<small>
 		Posted by <%= club_comment.user.displayname %>, <%= distance_of_time_in_words_to_now(club_comment.created_at) + " ago" %>
 		<% if signed_in? && club_comment.user_id == current_user.id %>
-			<%= link_to "remove", club_comment , method: :delete, data: { confirm: 'Are you sure?' } %>
+			<%= link_to "remove", club_comment , method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-xs" %>
+			<%= link_to "edit", edit_club_comment_path(club_comment), class: "btn btn-default btn-xs" %>
 		<% end %>
 	</small>
 </div>

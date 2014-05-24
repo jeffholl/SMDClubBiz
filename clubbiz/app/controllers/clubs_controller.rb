@@ -13,7 +13,7 @@ class ClubsController < ApplicationController
     @events = @club.events
     @fevent = Event.all.first #altered to make work when club has no events error
     @club_comments = @club.club_comments
-    @new_comment = ClubComment.new
+    @club_comment = ClubComment.new
     @membership = Membership.new
   end
 

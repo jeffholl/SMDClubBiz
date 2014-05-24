@@ -8,6 +8,7 @@ class EventCommentsController < ApplicationController
   end
 
   def edit
+    @event = @event_comment.event
   end
 
   def create
@@ -27,8 +28,8 @@ class EventCommentsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @event_comment.update(event_params)
-        format.html { redirect_to event_path(@event_comment.event_id), notice: 'Event comment was successfully updated.' }
+      if @event_comment.update(event_comment_params)
+        format.html { redirect_to @event_comment.event, notice: 'Event comment was successfully updated.' }
 #        format.json { head :no_content }
       else
         format.html { render action: 'edit' }
