@@ -11,6 +11,11 @@ class ClubAdminsController < ApplicationController
   end
 
   def settings
+  	@membership = Membership.new
+  end
+
+  def eventdisplay
+  	@event = Event.find(params[:event_id])
   end
 
   private

@@ -1,0 +1,48 @@
+<h4><em>Event Informatio</em></h4>
+<table class="table table-striped">
+	<tr>
+		<td><strong>Event</strong></td>
+		<td><%= event.event_name %></td>
+	</tr>
+	<tr>
+		<td><strong>Host Club</strong><str</td>
+		<td><%= event.host_club.club_name %></td>
+	</tr>
+	<tr>
+		<td><strong>venue</strong><str</td>
+		<td><%= event.venue %></td>
+	</tr>
+	<tr>
+		<td><strong>Start Time</strong><str</td>
+		<td><%= event.start_datetime %><strong></strong></td>
+	</tr>
+	<tr>
+		<td><strong>End Time</strong><str</td>
+		<td><%= event.end_datetime %></td>
+	</tr>
+	<tr>
+		<td><strong>Status</strong><str</td>
+		<td><%= event.status %></td>
+	</tr>
+</table>
+<h4><em>Ticket</em></h4>
+<table class="table table-striped">
+	<tr>
+		<th>Ticket Type</th>
+		<th>Price</th>
+		<th>Start Sale</th>
+		<th>End Sale</th>
+		<th>Remaining</th>
+		<th>Actions</th>
+	</tr>
+	<% event.tickets.each do |ticket| %>
+	<tr>
+		<td><%= ticket.ticket_type %></td>
+		<td><%= ticket.ticket_cost %></td>
+		<td><%= ticket.start_sale_datetime %></td>
+		<td><%= ticket.end_sale_datetime %></td>
+		<td><%= ticket.no_reserved %> / <%= ticket.quantity %></td>
+		<td></td>
+	</tr>
+	<% end %>
+</table>

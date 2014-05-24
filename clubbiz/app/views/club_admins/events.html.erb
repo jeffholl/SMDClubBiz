@@ -16,11 +16,30 @@
 	<div class="col-md-12">
 		<div class="col-md-6">
 			<h4><em>Event Deatils</em></h4>
+			<script type="text/javascript">
+				$(document).ready(function() {
+				    $('#event_select').change(function() {
+				      $.ajax({
+				        url: "<%= clubadmin_eventdisplay_path %>",
+				        data: {
+				          event_id : $('#event_select').val()
+				        },
+				        dataType: "script"
+				      });
+				    });
+				  });
+			</script>
 
+			<%= collection_select(nil, :event_id,  @club.events,  :id, :event_name, {:prompt   => "Select an Event"}, {:id => 'event_select', class: "form-control"}) %>
+			<div class="col-md-12" id="cb-eventdisplay-container">Select above</div>
 		</div>
 		<dic class="col-md-6">
 			<h4><em>Shared Event Requests</em></h4>
-			<%= render partial: "club_admins/shared_event_request", collection: @shared_event_requests, as: :shared_event_request %>
+			<% if !@shared_event_requests.empty? %>
+				<%= render partial: "club_admins/shared_event_request", collection: @shared_event_requests, as: :shared_event_request %>
+			<% else %>
+				<center><strong>You have now shared event requests</strong></center>
+			<% end %>
 		</div>
 	</div>
 </div>

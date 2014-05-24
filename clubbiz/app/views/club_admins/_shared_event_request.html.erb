@@ -8,6 +8,9 @@
 			<%= f.hidden_field :role, :value => "shared" %>
 			<%= f.submit "Accept" %>
 		<% end %>
-		<a href="" class="btn btn-default">Reject</a>
+		<%= form_for shared_event_request do |f| %>
+			<%= f.hidden_field :role, :value => "rejected" %>
+			<%= f.submit "Decline" %>
+		<% end %>
 	</div>
 </div>
