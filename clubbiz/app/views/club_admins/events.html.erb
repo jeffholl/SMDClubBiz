@@ -14,7 +14,7 @@
 	</div>
 
 	<div class="col-md-12">
-		<div class="col-md-6">
+		<div class="col-md-8">
 			<h4><em>Event Deatils</em></h4>
 			<script type="text/javascript">
 				$(document).ready(function() {
@@ -31,9 +31,11 @@
 			</script>
 
 			<%= collection_select(nil, :event_id,  @club.events,  :id, :event_name, {:prompt   => "Select an Event"}, {:id => 'event_select', class: "form-control"}) %>
-			<div class="col-md-12" id="cb-eventdisplay-container">Select above</div>
+			<div class="col-md-12" id="cb-eventdisplay-container">
+				<div class="alert alert-info">Select an event from the dropdown above to see event and ticket summary</div>
+			</div>
 		</div>
-		<dic class="col-md-6">
+		<dic class="col-md-4">
 			<h4><em>Shared Event Requests</em></h4>
 			<% if !@shared_event_requests.empty? %>
 				<%= render partial: "club_admins/shared_event_request", collection: @shared_event_requests, as: :shared_event_request %>

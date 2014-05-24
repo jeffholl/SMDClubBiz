@@ -1,4 +1,8 @@
-<h4><em>Event Informatio</em></h4>
+<h4>
+	<em>Event Information</em>
+	<%= link_to "Edit", edit_event_path(event) ,class: "btn btn-default btn-xs pull-right" %>
+	<%= link_to "View", event_path(event) ,class: "btn btn-default btn-xs pull-right" %>
+</h4>
 <table class="table table-striped">
 	<tr>
 		<td><strong>Event</strong></td>
@@ -32,8 +36,8 @@
 		<th>Price</th>
 		<th>Start Sale</th>
 		<th>End Sale</th>
+		<th>Sale Status</th>
 		<th>Remaining</th>
-		<th>Actions</th>
 	</tr>
 	<% event.tickets.each do |ticket| %>
 	<tr>
@@ -41,8 +45,8 @@
 		<td><%= ticket.ticket_cost %></td>
 		<td><%= ticket.start_sale_datetime %></td>
 		<td><%= ticket.end_sale_datetime %></td>
+		<td><%= ticket.get_sale_status %></td>
 		<td><%= ticket.no_reserved %> / <%= ticket.quantity %></td>
-		<td></td>
 	</tr>
 	<% end %>
 </table>
