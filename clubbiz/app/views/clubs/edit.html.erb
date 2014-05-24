@@ -1,6 +1,10 @@
-<h1>Editing club</h1>
+<div class="row" id="main-content">
 
-<%= render 'clubinfo_form' %>
+  <div class="col-md-7">
+    <h2 style="margin-top:0">Edit your Club</h2>                   
+  </div>
 
-<%= link_to 'Show', @club, class: "btn btn-default" %>
-<%= link_to 'Back', clubs_path, class: "btn btn-default" %>
+  <div class="col-md-12"></div>
+  <%= render "edit_form" %>
+
+</div>
