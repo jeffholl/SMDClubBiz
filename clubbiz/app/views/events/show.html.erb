@@ -41,10 +41,10 @@
 
             <% if signed_in? && @event.can_be_modified_by?(current_user) && @event.status == "pending" %>
               <div class="col-md-12 alert alert-warning text-center">
-                Your event is currently hidden, 
+                Your event is currently inactive, 
                 <%= form_for @event do |f| %>
                   <%= f.hidden_field :status, :value => "active" %>
-                  <%= f.submit "Go Live" %>
+                  <%= f.submit "Go Live", {:class => "btn btn-warning btn-xs", data: { confirm: 'Are you sure?' }} %>
                 <% end %>
               </div>
             <% end %>
@@ -74,7 +74,6 @@
             <% if @event.tickets.current_sale.empty? %>
               <center>This event has not tickets on sale yet,<br>please check back soon</center>
             <% else %>
-              <em>RENDER TICKETS</em><br>
               <%= render @event.tickets.current_sale %>
             <% end %>
             <% if signed_in? && @event.can_be_modified_by?(current_user) %>
@@ -103,12 +102,26 @@
                 <%= f.submit "add ticket" %>
               <% end %>
             <% end %>
-          <% else %>                
-            <h3>Attend</h3>
-            <p>
-              <a href="#" class="btn btn-primary pull-right" role="button">I'm Going!</a>
-              This event is free to attend, just press the button to add a reminder and party your little hearts out
-            </p>
+          <% else %>  
+            <% if @event.tickets.empty? && (signed_in? && @event.can_be_modified_by?(current_user)) %>
+              <h3>Add your free ticket</h3>
+              <div class="alert alert-info">Please click the link below to create your free ticket. A free ticket allows members to register their interest with your event.<br>If you do not want a members to be able to join your event, ignore this</div>
+              <%= form_for @new_ticket do |f| %>
+                <%= f.hidden_field :ticket_type, :value => "Free" %> 
+                <%= f.hidden_field :ticket_cost, :value => "0" %> 
+                <%= f.hidden_field :quantity, :value => 10000 %> 
+                <%= f.hidden_field :start_sale_datetime, :value => Time.now %> 
+                <%= f.hidden_field :end_sale_datetime, :value => @event.start_datetime %>
+                <%= f.hidden_field :event_id, :value => @event.id %>
+                <%= f.submit "Create a FREE ticket", :class => "btn btn-primary" %> 
+              <% end %>
+            <% else %>              
+              <h3>Attend</h3>
+              <p>
+                <%= link_to "I'm Going!", new_ticket_allocation_path(@event.tickets.first) , class:"btn btn-primary pull-right" %> 
+                This event is free to attend, just press the button to add a reminder and party your little hearts out
+              </p>
+            <% end %>
           <% end %>
         </div>
         <hr>
