@@ -39,12 +39,12 @@
             <td>
               <div class="radio-inline">
                 <label>
-                  <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                  <input type="radio" name="event[access]" id="event_access_0" value="public" checked>
                   Public
                 </label>
               </div><div class="radio-inline">
                 <label>
-                  <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                  <input type="radio" name="event[access]" id="event_access_1" value="private">
                   Private
                 </label>
               </div>
@@ -55,24 +55,25 @@
             <td>
               <div class="radio-inline">
                 <label>
-                  <input type="radio" name="optionsRadios1" id="optionsRadios3" value="option1" checked>
+                  <input type="radio" name="event[ticketed]" id="event_ticketed_0" value="false" checked>
                   Free
                 </label>
               </div><div class="radio-inline">
                 <label>
-                  <input type="radio" name="optionsRadios1" id="optionsRadios4" value="option2">
+                  <input type="radio" name="event[ticketed]" id="event_ticketed_1" value="true">
                   Ticketed
                 </label>
               </div>
             </td>
           </tr>
         </table>
-        
+
         <%= f.fields_for :shared_events do |se| %>
           <%= se.hidden_field :club_id, :value => @club.id %>
           <%= se.hidden_field :role, :value => "owner" %>
         <% end %>
-
+        <%= f.hidden_field :featured, :value => false %>
+        <%= f.hidden_field :status, :value => "pending" %>
       <div class="form-group">
         <%= f.submit "Create Event" %>
       </div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140523203048) do
+ActiveRecord::Schema.define(version: 20140524061606) do
 
   create_table "club_comments", force: true do |t|
     t.string   "comment_type"
@@ -53,8 +53,11 @@ ActiveRecord::Schema.define(version: 20140523203048) do
     t.string   "external_url"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "club_id"
     t.string   "venue"
+    t.string   "access"
+    t.boolean  "featured"
+    t.boolean  "ticketed"
+    t.string   "status"
   end
 
   create_table "memberships", force: true do |t|

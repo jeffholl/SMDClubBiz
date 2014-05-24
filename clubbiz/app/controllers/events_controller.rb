@@ -73,7 +73,7 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:event_name, :event_description, :start_datetime, :end_datetime, :external_url, :venue, shared_events_attributes: [:id, :club_id, :role])
+      params.require(:event).permit(:event_name, :event_description, :start_datetime, :end_datetime, :external_url, :venue, :access, :featured, :ticketed, :status, shared_events_attributes: [:id, :club_id, :role])
     end
     
     # Use callbacks to share common setup or constraints between actions.
