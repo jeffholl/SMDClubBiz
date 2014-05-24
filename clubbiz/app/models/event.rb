@@ -19,14 +19,18 @@ class Event < ActiveRecord::Base
 		Club.find(self.shared_events.where(role: "owner").first.club_id)
 	end
 
+	def associate_clubs
+		self.shared_events.where(role: "shared")
+	end
+
 	# handling .R.. permissions
-	def can_be_viewed_by(user)
-		self.host_club.active_members.map(&:user_id).includes? user.id
+	def can_be_viewed_by?(user)
+		self.host_club.active_members.map(&:user_id).include? user.id
 	end
 
 	# handing C.UD permissions
-	def can_be_created_by(user)
-		self.host_club.modertors.map(&:user_id).includes? user.id
+	def can_be_modified_by?(user)
+		self.host_club.moderators.map(&:user_id).include? user.id
 	end
 
 end

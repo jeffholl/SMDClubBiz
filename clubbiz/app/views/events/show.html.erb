@@ -31,20 +31,29 @@
               </small>
             </div>
             <div class="col-md-4">
-              <img src="http://placehold.it/170x170" class = "pull-right">
+              <img src="http://placehold.it/170x170" width="100%">
             </div>
 
+            <% if signed_in? && @event.can_be_modified_by?(current_user) && @event.status == "pending" %>
+              <div class="col-md-12 alert alert-warning text-center">
+                Your event is currently hidden, 
+                <a href="#" class="btn btn-warning btn-xs">Go Live</a>
+              </div>
+            <% end %>
             <div class ="col-md-12">
-              <h3>Attend</h3>
-              <p>You are currently not attending.</p>
-              <div class ="col-md-4 text-right">
-                <h3>I'm coming!</h3>
-                <p><a href="#" class="btn btn-primary" role="button">Attend!</a></p>
-              </div>
-              <div class ="col-md-4 text-right">
-                <h3>Not my thing</h3>
-                <p><a href="#" class="btn btn-primary" role="button">No thanks</a></p>
-              </div>
+              <% if @event.ticketed %>
+                <h4>Tickets</h4>
+                <em>RENDER TICKETS</em><br>
+                <% if signed_in? && @event.can_be_modified_by?(current_user) %>
+                  <em>RENDER ADD TICKET</em>
+                <% end %>
+              <% else %>                
+                <h3>Attend</h3>
+                <p>
+                  <a href="#" class="btn btn-primary pull-right" role="button">I'm Going!</a>
+                  This event is free to attend, just press the button to add a reminder and party your little hearts out
+                </p>
+              <% end %>
             </div>
 
 
@@ -90,36 +99,7 @@
       </div>
 
       <div class="tab-pane fade" id="discussions">
-        <div class="media">
-          <a class="pull-left" href="#">
-            <span class="glyphicon glyphicon-chevron-right"></span>
-          </a>
-          <div class="media-body">
-            <h4 class="media-heading">Clammy hand</h4>
-            Every time I attend events from this club my hands fall off. <br>
-            <small>Posted by Nigel, 17/3/2014 at 3:00am</small>
-          </div>
-          <a class="pull-left" href="#">
-            <span class="glyphicon glyphicon-chevron-right"></span>
-          </a>
-          <div class="media-body">
-            <h4 class="media-heading">Thumbs up!</h4>
-            My hands have never been colder!<br>
-            <small>Posted by Nigel, 17/3/2014 at 2:59am</small>
-          </div>
-          <div>
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Title">
-              <span class="input-group-addon">Title</span>
-            </div>
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Comment">
-              <span class="input-group-addon"><a href="">Submit Comment</a></span>
-            </div>
-
-
-          </div>
-        </div>
+        <em>TO BE ADDED</em>
       </div>
     </div>
   </div>
@@ -129,33 +109,39 @@
   <div class="col-md-10 ">
     <hr>
     <div class="">
-      <h3>Similar Clubs</h3>
-      <div>
-        <div class="col-sm-6 col-md-4">
-          <div class="thumbnail">
-            <img src="http://placehold.it/75x75" alt="...">
-            <div class="caption">
-              <h4><center><a href="">Healthy Elbows Clubs</a></center></h4>
+      <% if signed_in? && @event.can_be_modified_by?(current_user) %>
+        <h3>Manage Shared Clubs</h3>
+      <% end %>
+      <% if !@event.associate_clubs.empty? %>
+        <div>
+          <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+              <img src="http://placehold.it/75x75" alt="...">
+              <div class="caption">
+                <h4><center><a href="">Healthy Elbows Clubs</a></center></h4>
+              </div>
             </div>
           </div>
+          <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+              <img src="http://placehold.it/75x75" alt="...">
+              <div class="caption">
+                <h4><center><a href="">Feet First Club</a></center></h4>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+              <img src="http://placehold.it/75x75" alt="...">
+              <div class="caption">
+                <h4><center><a href="">nose Knows Club</a></center></h4>
+              </div>
+            </div>
+          </div>   
         </div>
-        <div class="col-sm-6 col-md-4">
-          <div class="thumbnail">
-            <img src="http://placehold.it/75x75" alt="...">
-            <div class="caption">
-              <h4><center><a href="">Feet First Club</a></center></h4>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-          <div class="thumbnail">
-            <img src="http://placehold.it/75x75" alt="...">
-            <div class="caption">
-              <h4><center><a href="">nose Knows Club</a></center></h4>
-            </div>
-          </div>
-        </div>   
-      </div>
+      <% elsif signed_in? && @event.can_be_modified_by?(current_user) %>
+        <div class="text-center"><strong>Add a new associate club</strong></div>
+      <% end %>
     </div>
 
   </div>
