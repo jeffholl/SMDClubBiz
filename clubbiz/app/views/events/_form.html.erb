@@ -1,94 +1,85 @@
-<div class="row" id="main-content">
-  
-  <div class="col-md-7">
-      <h2 style="margin-top:0">Register your Event</h2>
-  </div>
     
-  <div class="col-md-12"></div>
-  
+<div class="col-md-7">
+  <%= form_for(@event) do |f| %>
+    <h4>Host Club: <%= @club.club_name %></h4>
+    <div class="form-group">
+      <%= f.label :event_name %>
+      <%= f.text_field :event_name, class: "form-control", placeholder:"Event Name" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :event_description %>
+      <%= f.text_field :event_description, class: "form-control", placeholder: "Description" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :venue %>
+      <%= f.text_field :venue, class: "form-control", placeholder:"Venue Address, Location on Campus" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :start_datetime %>
+      <%= f.datetime_select :start_datetime, class: "form-control", placeholder:"Click to select" %>
+      <div id="dtBox"></div>
+    </div>
+    <div class="form-group">
+      <%= f.label :end_datetime %>
+      <%= f.datetime_select :end_datetime, class:"form-control", placeholder:"Click to select" %>
+    </div>
     
-    <div class="col-md-7">
-      <%= form_for(@event) do |f| %>
-        <h4>Host Club: <%= @club.club_name %></h4>
-        <div class="form-group">
-          <%= f.label :event_name %>
-          <%= f.text_field :event_name, class: "form-control", placeholder:"Event Name" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :event_description %>
-          <%= f.text_field :event_description, class: "form-control", placeholder: "Description" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :venue %>
-          <%= f.text_field :venue, class: "form-control", placeholder:"Venue Address, Location on Campus" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :start_datetime %>
-          <%= f.datetime_select :start_datetime, class: "form-control", placeholder:"Click to select" %>
-          <div id="dtBox"></div>
-        </div>
-        <div class="form-group">
-          <%= f.label :end_datetime %>
-          <%= f.datetime_select :end_datetime, class:"form-control", placeholder:"Click to select" %>
-        </div>
-        
-        <h4>Event Settings</h4>
-        <table class="table">
-          <tr>
-            <td>Event Opacity</td>
-            <td>
-              <div class="radio-inline">
-                <label>
-                  <input type="radio" name="event[access]" id="event_access_0" value="public" checked>
-                  Public
-                </label>
-              </div><div class="radio-inline">
-                <label>
-                  <input type="radio" name="event[access]" id="event_access_1" value="private">
-                  Private
-                </label>
-              </div>
-          </td>
-          </tr>
-          <tr>
-            <td>Ticketing</td>
-            <td>
-              <div class="radio-inline">
-                <label>
-                  <input type="radio" name="event[ticketed]" id="event_ticketed_0" value="false" checked>
-                  Free
-                </label>
-              </div><div class="radio-inline">
-                <label>
-                  <input type="radio" name="event[ticketed]" id="event_ticketed_1" value="true">
-                  Ticketed
-                </label>
-              </div>
-            </td>
-          </tr>
-        </table>
+    <h4>Event Settings</h4>
+    <table class="table">
+      <tr>
+        <td>Event Opacity</td>
+        <td>
+          <div class="radio-inline">
+            <label>
+              <input type="radio" name="event[access]" id="event_access_0" value="public" checked>
+              Public
+            </label>
+          </div><div class="radio-inline">
+            <label>
+              <input type="radio" name="event[access]" id="event_access_1" value="private">
+              Private
+            </label>
+          </div>
+      </td>
+      </tr>
+      <tr>
+        <td>Ticketing</td>
+        <td>
+          <div class="radio-inline">
+            <label>
+              <input type="radio" name="event[ticketed]" id="event_ticketed_0" value="false" checked>
+              Free
+            </label>
+          </div><div class="radio-inline">
+            <label>
+              <input type="radio" name="event[ticketed]" id="event_ticketed_1" value="true">
+              Ticketed
+            </label>
+          </div>
+        </td>
+      </tr>
+    </table>
 
-        <%= f.fields_for :shared_events do |se| %>
-          <%= se.hidden_field :club_id, :value => @club.id %>
-          <%= se.hidden_field :role, :value => "owner" %>
-        <% end %>
-        <%= f.hidden_field :featured, :value => false %>
-        <%= f.hidden_field :status, :value => "pending" %>
-      <div class="form-group">
-        <%= f.submit "Create Event" %>
-      </div>
-      <% end %>
-    </div>   
-
-
-  <div class="col-md-5">
-    <h4>So, how does this whole event thing work?</h4>
-    <p>
-      Signing up for ClubBiz allows for your club to manage its events and tickets with ease. Take the worry out of promoting your event and informing your members of your latest event, and just get on with it.
-    </p>
-    <p>
-      With all of your current members, and hundreds of potential new members already using our site, you'd be stupid not to continue. Fill in your details and click 'Next'.
-    </p>
+    <%= f.fields_for :shared_events do |se| %>
+      <%= se.hidden_field :club_id, :value => @club.id %>
+      <%= se.hidden_field :role, :value => "owner" %>
+    <% end %>
+    <%= f.hidden_field :featured, :value => false %>
+    <%= f.hidden_field :status, :value => "pending" %>
+  <div class="form-group">
+    <%= f.submit %>
   </div>
+  <% end %>
+</div>   
 
- </div>
+
+<div class="col-md-5">
+  <h4>So, how does this whole event thing work?</h4>
+  <p>
+    Signing up for ClubBiz allows for your club to manage its events and tickets with ease. Take the worry out of promoting your event and informing your members of your latest event, and just get on with it.
+  </p>
+  <p>
+    With all of your current members, and hundreds of potential new members already using our site, you'd be stupid not to continue. Fill in your details and click 'Next'.
+  </p>
+</div>
+
