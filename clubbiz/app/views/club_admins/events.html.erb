@@ -14,6 +14,13 @@
 	</div>
 
 	<div class="col-md-12">
-		This is where the stuff goes
+		<div class="col-md-6">
+			<h4><em>Event Deatils</em></h4>
+
+		</div>
+		<dic class="col-md-6">
+			<h4><em>Shared Event Requests</em></h4>
+			<%= render partial: "club_admins/shared_event_request", collection: @shared_event_requests, as: :shared_event_request %>
+		</div>
 	</div>
 </div>

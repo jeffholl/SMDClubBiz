@@ -16,8 +16,8 @@
         <td><%= link_to event.host_club.club_name, event.host_club %></td>
         <td><%= link_to event.event_name, event %></td>
         <td><%= event.shared_events.where(:club_id => @club.id).first.role %></td>
-        <td><%= event.start_datetime %></td>
-        <td><%= event.status %></td>
+        <td><%= event.start_datetime.strftime('%H:%M, %a %b %d %Y') %></td>
+        <td><% if event.start_datetime < Time.now %>finished<% else %><%= event.status %><% end %></td>
         <td>
           <% if event.host_club == @club %>
             <% if event.start_datetime < Time.now %>

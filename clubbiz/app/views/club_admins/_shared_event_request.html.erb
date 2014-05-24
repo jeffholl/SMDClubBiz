@@ -1,0 +1,13 @@
+<div class="col-md-12 cb-ticket-list-element">	
+	<div class="col-md-6">
+		<strong>Host Club: </strong><%= shared_event_request.event.host_club.club_name %><br>
+		<strong>Event Name: </strong><%= shared_event_request.event.event_name %>
+	</div>
+	<div class="col-md-6">
+		<%= form_for shared_event_request do |f| %>
+			<%= f.hidden_field :role, :value => "shared" %>
+			<%= f.submit "Accept" %>
+		<% end %>
+		<a href="" class="btn btn-default">Reject</a>
+	</div>
+</div>

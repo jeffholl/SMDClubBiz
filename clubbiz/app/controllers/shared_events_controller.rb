@@ -22,7 +22,7 @@ class SharedEventsController < ApplicationController
   def update
     respond_to do |format|
       if @shared_event.update(shared_event_params)
-        format.html { redirect_to @shared_event.event, notice: 'shared_event was successfully updated.' }
+        format.html { redirect_to clubadmin_events_path(@shared_event.club_id), notice: 'shared_event was successfully updated.' }
 #        format.json { head :no_content }
       else
         format.html { render action: 'edit' }
