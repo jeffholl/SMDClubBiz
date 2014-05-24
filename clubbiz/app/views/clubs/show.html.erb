@@ -28,12 +28,14 @@
               <img src="http://placehold.it/170x170" class = "pull-right">
             </div>
             <div class ="col-md-8">
-              <h3>Announcements</h3>
+              <h3>Announcements</h3>             
               
-
               <%= render @club.get_club_news.limit(3) %>
 
             </div>
+            <% if signed_in? && @club.can_be_modified_by?(current_user) %>
+              <%= render partial: "club_comments/news_form", object: {:new_comment => @new_news, :current_user => current_user, :club => @club} %>
+            <% end %>
             <% if signed_in? %>
               <% if @club.can_be_modified_by?(current_user) %>
                 DO IT
