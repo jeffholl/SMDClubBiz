@@ -64,11 +64,11 @@
         <div class ="col-md-12">
           <% if @event.ticketed %>
             <h4>Tickets</h4>
-            <% if @event.tickets.empty? %>
+            <% if @event.tickets.current_sale.empty? %>
               <center>This event has not tickets on sale yet,<br>please check back soon</center>
             <% else %>
               <em>RENDER TICKETS</em><br>
-              <%= render @event.tickets %>
+              <%= render @event.tickets.current_sale %>
             <% end %>
             <% if signed_in? && @event.can_be_modified_by?(current_user) %>
               <%= form_for @new_ticket do |f| %>

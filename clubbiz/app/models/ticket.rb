@@ -13,4 +13,8 @@ class Ticket < ActiveRecord::Base
 		self.no_reserved < self.quantity
 	end
 
+	def self.current_sale
+		now = Time.now
+		where(' DATE(?) BETWEEN start_sale_datetime AND end_sale_datetime', now )
+	end
 end
