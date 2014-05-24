@@ -161,9 +161,11 @@
     <% if @club.events.empty? %>
       <div>No Events</div>
     <% else %>
-      <%= render partial: "events/listall_cb", object: @club.events, as: :events %>
+      <%= render partial: "events/listall_cb", object: @club.events.limit(3), as: :events %>
     <% end %>
-    <div class="pull-left"><a>add new event</a></div>
+    <% if signed_in? && @club.can_be_modified_by?(current_user) %>
+      <%= link_to "Add New Event", new_event_path(@club), class: "btn btn-default btn-block" %>
+    <% end %>
   </div>
 
 </div>
