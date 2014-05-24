@@ -27,6 +27,14 @@ class Event < ActiveRecord::Base
 		self.shared_events.where(role: "shared")
 	end
 
+	def viewable_associate_clubs(user)
+		if self.can_be_modified_by?(user)
+			self.shared_events.where(role: "owner")
+		else
+			self.associate_clubs
+		end
+	end
+
 	# handling .R.. permissions
 	def can_be_viewed_by?(user)
 		self.host_club.active_members.map(&:user_id).include? user.id

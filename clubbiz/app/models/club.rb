@@ -28,6 +28,10 @@ class Club < ActiveRecord::Base
 		self.memberships.where(role: "moderator")
 	end
 
+	def is_member?(user)
+		self.active_memberships.map(&:user_id).inlcude? user.id
+	end
+
 	def can_be_modified_by?(user)
 		self.moderators.map(&:user_id).include? user.id
 	end

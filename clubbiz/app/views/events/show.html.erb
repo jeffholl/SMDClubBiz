@@ -113,12 +113,12 @@
         </div>
         <hr>
         <div class="">
-          <% if signed_in? && @event.can_be_modified_by?(current_user) %>
-            <h3>Manage Shared Clubs</h3>
-          <% end %>
           <% if !@event.associate_clubs.empty? %>
-            <em>RENDER SHARED CLUBS 'ERE</em>
-          <% elsif signed_in? && @event.can_be_modified_by?(current_user) %>
+            <hr>
+            <h4>Assoicated Clubs</h4>
+            <%= render @event.associate_clubs %>
+          <% end %>
+          <% if signed_in? && @event.can_be_modified_by?(current_user) %>
             <%= render partial: "shared_events/form" %>
           <% end %>
         </div>
