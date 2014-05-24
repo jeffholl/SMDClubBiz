@@ -1,6 +1,7 @@
-<% if !events.empty? %>
-  <% events.each do |event| %>
+
+<% events.each do |event| %>
   <% club = event.host_club %>
+  <% if event.access == "public" || (signed_in? && club.is_member?(current_user) ) %>
     <div class="media cb-event-list-element">
       <a class="pull-left" href="#">
         <img class="media-object" src="http://placehold.it/80x80">
@@ -19,6 +20,4 @@
       </div>
     </div>
   <% end %>
-<% else %>
-  <div class="text-center"><strong>No Events</strong></div>  
 <% end %>

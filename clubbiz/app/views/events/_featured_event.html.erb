@@ -1,17 +1,18 @@
-<% if event.nil? %>
-	<div class="row well">
-		<div id="featured_events">
-		  <div class="">
-		    <img class="pull-right" src="http://placehold.it/250x150"/>
-		    <p>
-		      <strong>Next Event</strong><br>
-		      <small><%= event.start_datetime %> <em>Add LOC to DB</em><br><em>Split datetime</em><br><%= event.event_name %><br></small><br><%= event.event_description %>
-		    </p>
-		  </div>
-		</div>
+<div class="row well">
+	<div id="featured_events">
+	  <div class="">
+	    <img class="pull-right" src="http://placehold.it/250x150"/>
+	    <p>
+	      <strong>Next Event</strong><br>
+	      <small>
+	      	<strong>Club: </strong><%= event.host_club.club_name %><br>
+	      	<strong>Event: </strong><%= event.event_name %><br>
+	      	<%= event.start_datetime %><br>
+	      	<%= event.venue %><br>
+	      </small>
+	      <%= event.event_description %>
+	      <%= link_to "View Event", event_path(event), class: "btn btn-default btn-xs" %>
+	    </p>
+	  </div>
 	</div>
-<% else %>
-	<div class="row well">
-		None
-	</div>
-<% end %>
+</div>

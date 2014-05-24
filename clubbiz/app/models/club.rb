@@ -20,6 +20,10 @@ class Club < ActiveRecord::Base
 		self.memberships.where(status: "active")
 	end
 
+	def get_next_event
+		self.events.first || Event.all.first
+	end
+
 	def pending_memberships
 		self.memberships.where(status: "pending")
 	end
@@ -29,7 +33,7 @@ class Club < ActiveRecord::Base
 	end
 
 	def is_member?(user)
-		self.active_memberships.map(&:user_id).inlcude? user.id
+		self.active_memberships.map(&:user_id).include? user.id
 	end
 
 	def can_be_modified_by?(user)
