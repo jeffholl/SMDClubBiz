@@ -13,6 +13,7 @@ class EventsController < ApplicationController
   def show
     @club = @event.host_club
     @club_events = @club.events.where(status: "active")
+    @new_ticket = Ticket.new
   end
 
   # GET /events/new

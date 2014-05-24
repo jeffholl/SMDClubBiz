@@ -53,7 +53,30 @@
                   <%= render @event.tickets %>
                 <% end %>
                 <% if signed_in? && @event.can_be_modified_by?(current_user) %>
-                <em>RENDER NEW TICKET FORM</em>
+                  <%= form_for @new_ticket do |f| %>
+                    <%= f.hidden_field :event_id, :value => @event.id %>
+                    <div class="form-group col-md-6">
+                      <%= f.label :ticket_type %>
+                      <%= f.text_field :ticket_type, class: "form-control", placeholder: "Ticket type, eg genearl admission" %>
+                    </div>
+                    <div class="form-group col-md-4">
+                      <%= f.label :ticket_cost %>
+                      <%= f.text_field :ticket_cost, class: "form-control", placeholder: "Ticket type, eg genearl admission" %>
+                    </div>
+                    <div class="form-group col-md-2">
+                      <%= f.label :quantity %>
+                      <%= f.text_field :quantity, class: "form-control", placeholder: "Ticket type, eg genearl admission" %>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <%= f.label :start_sale_date %>
+                      <%= f.text_field :start_sale_datetime, class: "form-control", placeholder: "Click to update" %>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <%= f.label :end_sale_date %>
+                      <%= f.text_field :end_sale_datetime, class: "form-control", placeholder: "Click to udpate" %>
+                    </div>
+                    <%= f.submit "add ticket" %>
+                  <% end %>
                 <% end %>
               <% else %>                
                 <h3>Attend</h3>
