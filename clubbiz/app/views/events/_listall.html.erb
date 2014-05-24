@@ -3,22 +3,30 @@
     <tr>
       <th>Host Club</th>
       <th>Event name</th>
-      <th>Event description</th>
+      <th>Role</th>
       <th>Start datetime</th>
-      <th>End datetime</th>
-      <th>External url</th>
+      <th>Status</th>
+      <th>Options</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @events.each do |event| %>
+    <% events.each do |event| %>
       <tr>
         <td><%= link_to event.host_club.club_name, event.host_club %></td>
         <td><%= link_to event.event_name, event %></td>
-        <td><%= event.event_description %></td>
+        <td><%= event.shared_events.where(:club_id => @club.id).first.role %></td>
         <td><%= event.start_datetime %></td>
-        <td><%= event.end_datetime %></td>
-        <td><%= event.external_url %></td>
+        <td><%= event.status %></td>
+        <td>
+          <% if event.host_club == @club %>
+            <% if event.start_datetime < Time.now %>
+              <a href="" class="btn btn-default btn-xs">Report</a>
+            <% else %>
+              <%= link_to "edit", edit_event_path(event), class: "btn btn-default btn-xs" %>
+            <% end %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

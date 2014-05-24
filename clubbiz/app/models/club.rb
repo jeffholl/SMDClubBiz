@@ -28,6 +28,10 @@ class Club < ActiveRecord::Base
 		self.club_comments.where(comment_type: "news")
 	end
 
+	def get_associate_clubs
+		#
+	end
+
 	def pending_memberships
 		self.memberships.where(status: "pending")
 	end

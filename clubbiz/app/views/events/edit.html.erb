@@ -3,4 +3,4 @@
 <%= render 'form' %>
 
 <%= link_to 'Show', @event, class: "btn btn-default" %> |
-<%= link_to 'Back to CLub', club_path(@event.club_id), class: "btn btn-default" %>
+<%= link_to 'Back to CLub', club_path(@event.host_club), class: "btn btn-default" %>

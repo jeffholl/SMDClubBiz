@@ -1,0 +1,24 @@
+<div class="row" id="main-content">
+  <div class="col-md-5 pull-right">
+    <%= render "shared/search_all" %>
+  </div>
+
+  <div class="col-md-5">
+    <h2 style="margin-top:0"><%= @club.club_name %> Moderator Page</h2> 
+  </div>
+
+  <div class="col-md-12">
+		<div class="col-sm-4"><%= link_to "Dashborad", dashboard_path(@club), class: "btn btn-default btn-block" %></div>
+		<div class="col-sm-4"><%= link_to "Shared Events", clubadmin_events_path(@club), class: "btn btn-default btn-block" %></div>
+		<div class="col-sm-4"><%= link_to "Settings", clubadmin_settings_path(@club), class: "btn btn-default btn-block" %></div>		
+	</div>
+
+	<div class="col-md-12">
+		<div class="col-md-7">
+			<%= render partial: "events/listall", object: @club.events, as: :events %>
+		</div>
+		<div class="col-md-5">
+
+		</div>
+	</div>
+</div>
