@@ -7,7 +7,12 @@
 	<div class="col-md-6">
 		<br>
 		<%= ticket.ticket_type%><br>
-		<strong>Qty:</strong> <%= ticket.ticket_cost %>
+		<% if ticket.any_remaining? %>
+		<strong>Remaining</strong> <%= ticket.quantity - ticket.no_reserved %>
+		<%= link_to "Reserve Tickets", new_ticket_allocation_path(ticket), class: "btn btn-default btn-sm" %>
+		<% else %>
+			<strong>Sold Out</strong>
+		<% end %>
 	</div>
 	<div class="col-md-2 text-right">
 		<b class="caret"></b>

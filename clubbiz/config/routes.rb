@@ -1,11 +1,10 @@
 Clubbiz::Application.routes.draw do
 
-  get "pages/home"
-  get "about" => "pages#about", as: "about"
-  get "pages/help"
-  get "pages/terms"
-  get "pages/privacy"
   
+  get "about" => "pages#help", as: "help"
+  get "about" => "pages#terms", as: "terms"
+  get "about" => "pages#privacy", as: "privacy"
+  get "about" => "pages#about", as: "about"
   get "search" => "pages#search", as: "search"
 
   resources :event_comments, only: [:edit, :create, :update, :destroy]
@@ -16,9 +15,11 @@ Clubbiz::Application.routes.draw do
 
   resources :memberships, only: [:index, :edit, :create, :update, :destroy]
   get "memberships/new/:id" => "memberships#new", as: "new_membership"
+  
   resources :tickets
 
-  resources :ticket_allocations
+  resources :ticket_allocations, except: [:new]
+  get "ticket_allocations/new/:id" => "ticket_allocations#new", as: "new_ticket_allocation"
 
   resources :events, except: [:new]
   get "events/new/:id" => "events#new", as: "new_event"

@@ -23,7 +23,7 @@ class TicketAllocationsController < ApplicationController
     
     respond_to do |format|
       if @ticket_allocation.save
-        format.html { redirect_to ticket_allocations_path, notice: 'Ticket Allocation was successfully created.' }
+        format.html { redirect_to @ticket_allocation.ticket.event, notice: 'Ticket Allocation was successfully created.' }
         format.json { render action: 'show', status: :created, location: @ticket_allocation }
       else
         format.html { render action: 'new' }
@@ -65,7 +65,7 @@ class TicketAllocationsController < ApplicationController
     
     # Use callbacks to share common setup or constraints between actions.
     def set_ticket
-      @ticket = Ticket.find(params[:ticket_id])
+      @ticket = Ticket.find(params[:id])
     end
 
     # Use callbacks to share common setup or constraints between actions.

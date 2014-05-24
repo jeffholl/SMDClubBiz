@@ -9,19 +9,23 @@
 
     <div class="row">
       <div class="col-md-10">
+        
         <div class="row">
+          
           <img src="http://placehold.it/100x100" class = "pull-left" width="65px">
-            <h2>
-              <%= link_to @club.club_name, club_path(@club) %> 
-            </h2>
+          <h2> <%= link_to @club.club_name, club_path(@club) %></h2>
+
           <ul class="nav nav-tabs pull-right">
-            <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
-            <li><a href="#gallery" data-toggle="tab">Gallery</a></li>
+            <li class="active"><a href="#details" data-toggle="tab">Event Details</a></li>
             <li><a href="#discussions" data-toggle="tab">Discussions</a></li>
           </ul>
-        </div>  
+
+        </div> 
+
         <div class="tab-content row">
-          <div class="tab-pane fade in active" id="home">
+          
+          <div class="tab-pane fade in active" id="details">
+            
             <div class="col-md-8">
               <h2><%= @event.event_name %></h2>
               <small>
@@ -30,6 +34,7 @@
                 <%= @event.event_description %>
               </small>
             </div>
+
             <div class="col-md-4">
               <img src="http://placehold.it/170x170" width="100%">
             </div>
@@ -43,160 +48,123 @@
                 <% end %>
               </div>
             <% end %>
-            <div class ="col-md-12">
-              <% if @event.ticketed %>
-                <h4>Tickets</h4>
-                <% if @event.tickets.empty? %>
-                  <center>This event has not tickets on sale yet,<br>please check back soon</center>
-                <% else %>
-                  <em>RENDER TICKETS</em><br>
-                  <%= render @event.tickets %>
-                <% end %>
-                <% if signed_in? && @event.can_be_modified_by?(current_user) %>
-                  <%= form_for @new_ticket do |f| %>
-                    <%= f.hidden_field :event_id, :value => @event.id %>
-                    <div class="form-group col-md-6">
-                      <%= f.label :ticket_type %>
-                      <%= f.text_field :ticket_type, class: "form-control", placeholder: "Ticket type, eg genearl admission" %>
-                    </div>
-                    <div class="form-group col-md-4">
-                      <%= f.label :ticket_cost %>
-                      <%= f.text_field :ticket_cost, class: "form-control", placeholder: "Ticket type, eg genearl admission" %>
-                    </div>
-                    <div class="form-group col-md-2">
-                      <%= f.label :quantity %>
-                      <%= f.text_field :quantity, class: "form-control", placeholder: "Ticket type, eg genearl admission" %>
-                    </div>
-                    <div class="form-group col-md-6">
-                      <%= f.label :start_sale_date %>
-                      <%= f.text_field :start_sale_datetime, class: "form-control", placeholder: "Click to update" %>
-                    </div>
-                    <div class="form-group col-md-6">
-                      <%= f.label :end_sale_date %>
-                      <%= f.text_field :end_sale_datetime, class: "form-control", placeholder: "Click to udpate" %>
-                    </div>
-                    <%= f.submit "add ticket" %>
-                  <% end %>
-                <% end %>
-              <% else %>                
-                <h3>Attend</h3>
-                <p>
-                  <a href="#" class="btn btn-primary pull-right" role="button">I'm Going!</a>
-                  This event is free to attend, just press the button to add a reminder and party your little hearts out
-                </p>
+
+          </div>
+
+          <div class="tab-pane fade" id="discussions">
+            <em>TO BE ADDED</em>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-10 ">
+        <div class ="col-md-12">
+          <% if @event.ticketed %>
+            <h4>Tickets</h4>
+            <% if @event.tickets.empty? %>
+              <center>This event has not tickets on sale yet,<br>please check back soon</center>
+            <% else %>
+              <em>RENDER TICKETS</em><br>
+              <%= render @event.tickets %>
+            <% end %>
+            <% if signed_in? && @event.can_be_modified_by?(current_user) %>
+              <%= form_for @new_ticket do |f| %>
+                <%= f.hidden_field :event_id, :value => @event.id %>
+                <div class="form-group col-md-6">
+                  <%= f.label :ticket_type %>
+                  <%= f.text_field :ticket_type, class: "form-control", placeholder: "Ticket type, eg genearl admission" %>
+                </div>
+                <div class="form-group col-md-4">
+                  <%= f.label :ticket_cost %>
+                  <%= f.text_field :ticket_cost, class: "form-control", placeholder: "Ticket type, eg genearl admission" %>
+                </div>
+                <div class="form-group col-md-2">
+                  <%= f.label :quantity %>
+                  <%= f.text_field :quantity, class: "form-control", placeholder: "Ticket type, eg genearl admission" %>
+                </div>
+                <div class="form-group col-md-6">
+                  <%= f.label :start_sale_date %>
+                  <%= f.text_field :start_sale_datetime, class: "form-control", placeholder: "Click to update" %>
+                </div>
+                <div class="form-group col-md-6">
+                  <%= f.label :end_sale_date %>
+                  <%= f.text_field :end_sale_datetime, class: "form-control", placeholder: "Click to udpate" %>
+                </div>
+                <%= f.submit "add ticket" %>
               <% end %>
+            <% end %>
+          <% else %>                
+            <h3>Attend</h3>
+            <p>
+              <a href="#" class="btn btn-primary pull-right" role="button">I'm Going!</a>
+              This event is free to attend, just press the button to add a reminder and party your little hearts out
+            </p>
+          <% end %>
+        </div>
+        <hr>
+        <div class="">
+          <% if signed_in? && @event.can_be_modified_by?(current_user) %>
+            <h3>Manage Shared Clubs</h3>
+          <% end %>
+          <% if !@event.associate_clubs.empty? %>
+            <div>
+              <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                  <img src="http://placehold.it/75x75" alt="...">
+                  <div class="caption">
+                    <h4><center><a href="">Healthy Elbows Clubs</a></center></h4>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                  <img src="http://placehold.it/75x75" alt="...">
+                  <div class="caption">
+                    <h4><center><a href="">Feet First Club</a></center></h4>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                  <img src="http://placehold.it/75x75" alt="...">
+                  <div class="caption">
+                    <h4><center><a href="">nose Knows Club</a></center></h4>
+                  </div>
+                </div>
+              </div>   
             </div>
-
-
-          </div>
-
-          <div class="tab-pane fade" id="gallery">Images from our club.
-            <div class="row">
-              <div class="col-xs-6 col-md-4">
-                <a href="#" class="">
-                 <img src="http://placehold.it/150x150" class = "pull-right"  />
-               </a>
-             </div>
-             <div class="col-xs-6 col-md-4">
-              <a href="#" class="">
-                <img src="http://placehold.it/150x150" class = "pull-right"/>
-              </a>
-            </div>
-            <div class="col-xs-6 col-md-4">
-              <a href="#" class="">
-                <img src="http://placehold.it/150x150" class = "pull-right" />
-              </a>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-xs-6 col-md-4">
-              <a href="#" class="">
-               <img src="http://placehold.it/150x150" class = "pull-right"  />
-             </a>
-           </div>
-           <div class="col-xs-6 col-md-4">
-            <a href="#" class="">
-              <img src="http://placehold.it/150x150" class = "pull-right" />
-            </a>
-          </div>
-          <div class="col-xs-6 col-md-4">
-            <a href="#" class="">
-              <img src="http://placehold.it/150x150" class = "pull-right" />
-            </a>
-          </div>
+          <% elsif signed_in? && @event.can_be_modified_by?(current_user) %>
+            <div class="text-center"><strong>Add a new associate club</strong></div>
+          <% end %>
         </div>
 
       </div>
-
-      <div class="tab-pane fade" id="discussions">
-        <em>TO BE ADDED</em>
-      </div>
     </div>
-  </div>
-</div>
 
-<div class="row">
-  <div class="col-md-10 ">
-    <hr>
-    <div class="">
-      <% if signed_in? && @event.can_be_modified_by?(current_user) %>
-        <h3>Manage Shared Clubs</h3>
-      <% end %>
-      <% if !@event.associate_clubs.empty? %>
-        <div>
-          <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-              <img src="http://placehold.it/75x75" alt="...">
-              <div class="caption">
-                <h4><center><a href="">Healthy Elbows Clubs</a></center></h4>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-              <img src="http://placehold.it/75x75" alt="...">
-              <div class="caption">
-                <h4><center><a href="">Feet First Club</a></center></h4>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-              <img src="http://placehold.it/75x75" alt="...">
-              <div class="caption">
-                <h4><center><a href="">nose Knows Club</a></center></h4>
-              </div>
-            </div>
-          </div>   
+  </div>
+
+  <div class="col-sm-6 col-md-4">
+
+    <div class="row well">
+      <div id="featured_events">
+        <div class="">
+          <img class="pull-right" src="http://placehold.it/250x150"/>
+          <p>
+            <strong>Next Event</strong><br>
+            <small>7:00am South Lawn<br>28/7/12<br>Cold Hands Club<br></small><br>This event will get you going with hell-o-a-lot of handshaking opertunities. So get those handshaking gloves out
+          </p>
         </div>
-      <% elsif signed_in? && @event.can_be_modified_by?(current_user) %>
-        <div class="text-center"><strong>Add a new associate club</strong></div>
-      <% end %>
-    </div>
-
-  </div>
-</div>
-
-</div>
-
-<div class="col-sm-6 col-md-4">
-
-  <div class="row well">
-    <div id="featured_events">
-      <div class="">
-        <img class="pull-right" src="http://placehold.it/250x150"/>
-        <p>
-          <strong>Next Event</strong><br>
-          <small>7:00am South Lawn<br>28/7/12<br>Cold Hands Club<br></small><br>This event will get you going with hell-o-a-lot of handshaking opertunities. So get those handshaking gloves out
-        </p>
       </div>
     </div>
-  </div>
 
 
-  <div class="row">
-    <h2>Events</h2>
-    <%= render partial: "events/listall_cb", object: @club_events, as: :events %>
+    <div class="row">
+      <h2>Events</h2>
+      <%= render partial: "events/listall_cb", object: @club_events, as: :events %>
+    </div>
   </div>
+
 </div>

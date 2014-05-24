@@ -30,7 +30,7 @@
     <%= f.label :quantity %><br>
     <%= f.text_field :quantity %>
   </div>
-  <%= f.hidden_field :status, :value => "Ordered" %>
+  <%= f.hidden_field :status, :value => "ordered" %>
   <%= f.hidden_field :ticket_id, :value => @ticket.id %>
   <div class="actions">
     <%= f.submit %>
