@@ -24,6 +24,10 @@ class Club < ActiveRecord::Base
 		self.events.first || Event.all.first
 	end
 
+	def get_club_news
+		self.club_comments.where(comment_type: "news")
+	end
+
 	def pending_memberships
 		self.memberships.where(status: "pending")
 	end

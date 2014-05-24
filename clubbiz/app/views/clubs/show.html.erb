@@ -31,7 +31,7 @@
               <h3>Announcements</h3>
               
 
-              <%= render partial: "clubs/club_comment_display", object: @club %>
+              <%= render @club.get_club_news.limit(3) %>
 
             </div>
             <% if signed_in? %>

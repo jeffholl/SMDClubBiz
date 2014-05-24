@@ -15,6 +15,7 @@ class ClubsController < ApplicationController
     @club_comments = @club.club_comments
     @club_comment = ClubComment.new
     @membership = Membership.new
+    @club_news = ClubComment.new
   end
 
   # GET /clubs/new

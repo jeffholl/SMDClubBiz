@@ -7,7 +7,7 @@
 	<%= club_comment.comment_body %><br>
 	<small>
 		Posted by <%= club_comment.user.displayname %>, <%= distance_of_time_in_words_to_now(club_comment.created_at) + " ago" %>
-		<% if signed_in? && club_comment.user_id == current_user.id %>
+		<% if signed_in? && (club_comment.user_id == current_user.id || ( club_comment.comment_type =="news" && club_comment.club.can_be_modified_by?(current_user) )) %>
 			<%= link_to "remove", club_comment , method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-xs" %>
 			<%= link_to "edit", edit_club_comment_path(club_comment), class: "btn btn-default btn-xs" %>
 		<% end %>
