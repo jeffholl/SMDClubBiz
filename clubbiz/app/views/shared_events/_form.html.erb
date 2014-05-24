@@ -1,0 +1,9 @@
+<%= form_for @shared_event do |f| %>
+	<div class="form-group">
+		<%= f.label :club_id %>
+		<%= f.collection_select(:club_id, Club.all, :id, :club_name, {prompt: true}, {class: "form-control"}) %>
+	</div>
+	<%= f.hidden_field :event_id, :value => @event.id %>
+	<%= f.hidden_field :role, :value => "pending" %>
+	<%= f.submit "Add Club" %>
+<% end %>

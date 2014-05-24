@@ -117,34 +117,9 @@
             <h3>Manage Shared Clubs</h3>
           <% end %>
           <% if !@event.associate_clubs.empty? %>
-            <div>
-              <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                  <img src="http://placehold.it/75x75" alt="...">
-                  <div class="caption">
-                    <h4><center><a href="">Healthy Elbows Clubs</a></center></h4>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                  <img src="http://placehold.it/75x75" alt="...">
-                  <div class="caption">
-                    <h4><center><a href="">Feet First Club</a></center></h4>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                  <img src="http://placehold.it/75x75" alt="...">
-                  <div class="caption">
-                    <h4><center><a href="">nose Knows Club</a></center></h4>
-                  </div>
-                </div>
-              </div>   
-            </div>
+            <em>RENDER SHARED CLUBS 'ERE</em>
           <% elsif signed_in? && @event.can_be_modified_by?(current_user) %>
-            <div class="text-center"><strong>Add a new associate club</strong></div>
+            <%= render partial: "shared_events/form" %>
           <% end %>
         </div>
 

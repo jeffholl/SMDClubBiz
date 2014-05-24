@@ -1,11 +1,13 @@
 Clubbiz::Application.routes.draw do
+ 
 
-  
   get "about" => "pages#help", as: "help"
   get "about" => "pages#terms", as: "terms"
   get "about" => "pages#privacy", as: "privacy"
   get "about" => "pages#about", as: "about"
   get "search" => "pages#search", as: "search"
+
+  resources :shared_events, only: [:edit, :create, :update, :destroy]
 
   resources :event_comments, only: [:edit, :create, :update, :destroy]
   get "event_comments/new/:id" => "event_comments#new", as: "new_event_comment"

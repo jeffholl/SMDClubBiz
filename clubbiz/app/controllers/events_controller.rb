@@ -15,6 +15,7 @@ class EventsController < ApplicationController
     @club_events = @club.events.where(status: "active")
     @event_comment = EventComment.new
     @new_ticket = Ticket.new
+    @shared_event = SharedEvent.new
   end
 
   # GET /events/new
