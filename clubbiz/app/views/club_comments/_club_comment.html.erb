@@ -5,6 +5,11 @@
 <div class="media-body cb-comment-list-element">
 	<h4 class="media-heading"><%= club_comment.comment_title %></h4>
 	<%= club_comment.comment_body %><br>
-	<small>Posted by <%= club_comment.user.displayname %>, <%= distance_of_time_in_words_to_now(club_comment.created_at) + " ago" %></small>
+	<small>
+		Posted by <%= club_comment.user.displayname %>, <%= distance_of_time_in_words_to_now(club_comment.created_at) + " ago" %>
+		<% if signed_in? && club_comment.user_id == current_user.id %>
+			<%= link_to "remove", club_comment , method: :delete, data: { confirm: 'Are you sure?' } %>
+		<% end %>
+	</small>
 </div>
 	

@@ -1,0 +1,15 @@
+<a class="pull-left" href="#">
+	<span class="glyphicon glyphicon-chevron-right"></span>
+</a>
+
+<div class="media-body cb-comment-list-element">
+	<h4 class="media-heading"><%= event_comment.comment_title %></h4>
+	<%= event_comment.comment_body %><br>
+	<small>
+		Posted by <%= event_comment.user.displayname %>, <%= distance_of_time_in_words_to_now(event_comment.created_at) + " ago" %>
+		<% if signed_in? && event_comment.user_id == current_user.id %>
+			<%= link_to "remove", event_comment , method: :delete, data: { confirm: 'Are you sure?' } %>
+		<% end %>
+	</small>
+</div>
+	

@@ -15,10 +15,11 @@ class EventCommentsController < ApplicationController
     
     respond_to do |format|
       if @event_comment.save
-        format.html { redirect_to event_path(@event_comment.event_id), notice: 'Event comment was successfully created.' }
-#        format.json { render action: event_path(@event_comment.event_id), status: :created, location: @event_comment }
+        format.html { redirect_to @event_comment.event, notice: 'Event comment was successfully created.' }
+        format.js {}
+        format.json { render action: @event_comment.event, status: :created, location: @event_comment }
       else
-        format.html { render action: 'new' }
+        format.html { render action: @event_comment.event }
 #        format.json { render json: @event_comment.errors, status: :unprocessable_entity }
       end
     end
@@ -37,9 +38,9 @@ class EventCommentsController < ApplicationController
   end
 
   def destroy
-    @club_comment.destroy
+    @event_comment.destroy
     respond_to do |format|
-      format.html { redirect_to club_path(@club_comment.event_id) }
+      format.html { redirect_to event_path(@event_comment.event_id) }
       format.json { head :no_content }
     end
   end

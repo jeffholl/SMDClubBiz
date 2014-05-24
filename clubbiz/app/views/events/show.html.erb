@@ -52,7 +52,14 @@
           </div>
 
           <div class="tab-pane fade" id="discussions">
-            <em>TO BE ADDED</em>
+            <div id="cb-club-comment-wrapper">
+                        
+              <%= render @event.event_comments %>
+              
+            </div>
+            <% if signed_in? %>
+              <%= render partial: "event_comments/form", object: {:new_comment => @new_comment, :current_user => current_user, :event => @event} %>
+            <% end %>
           </div>
 
         </div>
