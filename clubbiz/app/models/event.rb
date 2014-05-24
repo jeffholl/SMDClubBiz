@@ -15,6 +15,10 @@ class Event < ActiveRecord::Base
 		where("event_name like ?", "%#{query}%")
 	end
 
+	def self.all_active
+		where(status: "active")
+	end
+
 	def host_club
 		Club.find(self.shared_events.where(role: "owner").first.club_id)
 	end

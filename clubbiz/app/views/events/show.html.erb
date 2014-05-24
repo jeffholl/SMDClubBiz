@@ -37,15 +37,23 @@
             <% if signed_in? && @event.can_be_modified_by?(current_user) && @event.status == "pending" %>
               <div class="col-md-12 alert alert-warning text-center">
                 Your event is currently hidden, 
-                <a href="#" class="btn btn-warning btn-xs">Go Live</a>
+                <%= form_for @event do |f| %>
+                  <%= f.hidden_field :status, :value => "active" %>
+                  <%= f.submit "Go Live" %>
+                <% end %>
               </div>
             <% end %>
             <div class ="col-md-12">
               <% if @event.ticketed %>
                 <h4>Tickets</h4>
-                <em>RENDER TICKETS</em><br>
+                <% if @event.tickets.empty? %>
+                  <center>This event has not tickets on sale yet,<br>please check back soon</center>
+                <% else %>
+                  <em>RENDER TICKETS</em><br>
+                  <%= render @event.tickets %>
+                <% end %>
                 <% if signed_in? && @event.can_be_modified_by?(current_user) %>
-                  <em>RENDER ADD TICKET</em>
+                <em>RENDER NEW TICKET FORM</em>
                 <% end %>
               <% else %>                
                 <h3>Attend</h3>

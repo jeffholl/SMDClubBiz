@@ -12,7 +12,7 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     @club = @event.host_club
-    @club_events = @club.events
+    @club_events = @club.events.where(status: "active")
   end
 
   # GET /events/new
