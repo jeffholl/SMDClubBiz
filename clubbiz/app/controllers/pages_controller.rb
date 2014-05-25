@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  before_action :admin_redirect, only: :home
   def home
     @clubs = Club.all
     @events = Event.all
@@ -29,4 +30,11 @@ class PagesController < ApplicationController
       @events = Event.all.order("created_at DESC").limit(3)
     end
   end
+
+  private
+    def admin_redirect
+      if signed_in? && current_user.admin?
+        render admins_dashboard_path
+      end
+    end
 end

@@ -18,6 +18,10 @@ class User < ActiveRecord::Base
 		club.pending_memberships.map(&:user_id).include? self.id
 	end
 
+	def admin?
+		self.role == "admin"
+	end
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
