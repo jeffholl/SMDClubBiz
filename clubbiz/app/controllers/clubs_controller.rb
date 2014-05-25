@@ -42,7 +42,7 @@ class ClubsController < ApplicationController
         format.json { render action: 'show', status: :created, location: @club }
       else
         format.html { render action: 'new' }
-        format.json { render json: @club.errors, status: :unprocessable_entity }
+        format.json { render :json => { :error => @club.errors.full_message }, :status => 422 }
       end
     end
   end

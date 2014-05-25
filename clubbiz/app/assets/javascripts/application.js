@@ -14,3 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).on "ajax:error", "form", (evt, xhr, status, error) ->
+	errors = xhr.responseJSON.error
+	
+		$("#cb-errors-ul").append "<li>" + errors + "</li>"

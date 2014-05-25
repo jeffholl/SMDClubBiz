@@ -1,0 +1,56 @@
+<div class="row" id="main-content">
+  
+
+  <div class="col-md-7">
+    <h2 style="margin-top:0">Register your Club</h2>                   
+  </div>
+
+  <div class="col-md-12"></div>
+
+  <div class="col-md-7">
+          
+    <%= form_for(@club) do |f| %>
+      <% if @club.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@club.errors.count, "error") %> prohibited this club from being saved:</h2>
+
+          <ul>
+          <% @club.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+      
+      <div class="form-group">
+        <%= f.label :club_name %>
+        <%= f.text_field :club_name, class: "form-control", placeholder: "Enter email" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :club_description %>
+        <%= f.text_field :club_description, class: "form-control", rows: "3", placeholder: "Description" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :club_website %>
+        <%= f.text_field :club_website, class: "form-control", placeholder: "Password" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :rego_number %>
+        <%= f.text_field :rego_number, class: "form-control", placeholder: "Password" %>
+      </div>
+      <%= f.hidden_field :status, :value => "prereg" %>
+      <%= f.submit "Create Club", :class => "btn btn-success pull-right" %>
+      
+    <% end %>
+
+  </div>
+  <div class="col-md-5">
+    <h4>Why ClubBiz?</h4>
+    <p>
+      Signing up for ClubBiz allows for your club to manage its events and tickets with ease. Take the worry out of promoting your event and informing your members of your latest event, and just get on with it.
+    </p>
+    <p>
+      With all of your current members, and hundreds of potential new members already using our site, you'd be stupid not to continue. Fill in your details and click 'Next'.
+    </p>
+  </div>
+</div>

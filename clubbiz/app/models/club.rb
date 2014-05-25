@@ -1,6 +1,8 @@
 class Club < ActiveRecord::Base
 	
-#	has_many :events
+	validates :club_name, presence: true
+	validates :club_description, presence: true
+	validates :rego_number, presence: true
 	
 	has_many :club_comments, dependent: :destroy
 	
