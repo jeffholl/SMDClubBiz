@@ -1,4 +1,6 @@
 class ClubsController < ApplicationController
+  
+  before_action :admin_redirect, except: :update
   before_action :set_club, only: [:show, :edit, :update, :destroy]
 
   # GET /clubs
@@ -78,5 +80,11 @@ class ClubsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def club_params
       params.require(:club).permit(:club_name, :club_description, :club_website, :rego_number, :status)
+    end
+
+    def admin_redirect
+      if signed_in? && current_user.admin?
+        redirect_to admins_dashboard_path
+      end
     end
 end

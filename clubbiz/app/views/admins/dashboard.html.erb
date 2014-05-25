@@ -8,6 +8,7 @@
 
 
 	<div class="col-md-6">		
+		<h4><em>Pending Club Requests</em></h4>
 		<table class="table table-striped">
 			<tr>
 				<th>Club Name</th>
@@ -16,6 +17,16 @@
 				<th>Details</th>
 			</tr>
 			<%= render partial: "pending_club_table", collection: @pending_clubs, as: :club %>
+		</table>
+		<h4><em>Clubs in Pre Registration</em></h4>
+		<table class="table table-striped">
+			<tr>
+				<th>Club Name</th>
+				<th>Rego Number</th>
+				<th>President</th>
+				<th>Details</th>
+			</tr>
+			<%= render partial: "pending_club_table", collection: @prereg_clubs, as: :club %>
 		</table>
 	</div>
 </div>

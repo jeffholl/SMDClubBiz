@@ -33,7 +33,7 @@ class Club < ActiveRecord::Base
 	end
 
 	def get_associate_clubs
-		#
+		SharedEvent.all.where(:event_id => self.shared_events.map(&:event_id)).group(:club_id).order(:updated_at)	
 	end
 
 	def get_president
@@ -45,7 +45,7 @@ class Club < ActiveRecord::Base
 	end
 
 	def moderators
-		self.memberships.where(role: "moderator")
+		self.memberships.where(:role => ["moderator","president"])
 	end
 
 	def is_member?(user)

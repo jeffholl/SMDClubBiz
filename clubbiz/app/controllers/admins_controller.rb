@@ -5,6 +5,7 @@ class AdminsController < ApplicationController
 
   def dashboard
   	@pending_clubs = Club.get_pending
+  	@prereg_clubs = Club.all.where(status: "prereg")
   end
 
   def pending_club

@@ -21,6 +21,9 @@ class PagesController < ApplicationController
   def privacy
   end
 
+  def permission_denied
+  end
+
   def search
     if params[:q] && params[:q] != ""
       @clubs = Club.search(params[:q]).order("created_at DESC")

@@ -120,36 +120,16 @@
     <hr>
     <div class="">
       <h3>Similar Clubs</h3>
-      <div>
-        <div class="col-sm-6 col-md-4">
-          <div class="thumbnail">
-            <img src="http://placehold.it/75x75" alt="...">
-            <div class="caption">
-              <h4><center><a href="">Healthy Elbows Clubs</a></center></h4>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-          <div class="thumbnail">
-            <img src="http://placehold.it/75x75" alt="...">
-            <div class="caption">
-              <h4><center><a href="">Feet First Club</a></center></h4>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-          <div class="thumbnail">
-            <img src="http://placehold.it/75x75" alt="...">
-            <div class="caption">
-              <h4><center><a href="">nose Knows Club</a></center></h4>
-            </div>
-          </div>
-        </div>   
+      <% @club.get_associate_clubs.limit(3).each do |shared_event| %>
+        <%= shared_event.club.club_name %>
+        <%= render partial: "clubs/associate_club", collection: shared_event.club, as: :club %>
+      <% end %>
+            
+        
       </div>
     </div>
 
   </div>
-</div>
 
 
 
