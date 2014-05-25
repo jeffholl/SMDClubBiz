@@ -34,7 +34,7 @@ class PagesController < ApplicationController
   private
     def admin_redirect
       if signed_in? && current_user.admin?
-        render admins_dashboard_path
+        redirect_to admins_dashboard_path
       end
     end
 end

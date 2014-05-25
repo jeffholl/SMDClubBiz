@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   	
-  	
+  	before_action :admin_check
   	before_action :configure_permitted_parameters, if: :devise_controller?
  	
 
@@ -14,6 +14,10 @@ class ApplicationController < ActionController::Base
 	# For APIs, you may want to use :null_session instead.
 	protect_from_forgery with: :exception
 
-
+	private
+		def admin_check
+			if signed_in? && current_user.admin?
+			end
+		end
 	
 end
