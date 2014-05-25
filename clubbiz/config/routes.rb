@@ -1,6 +1,8 @@
 Clubbiz::Application.routes.draw do
  
   get "admins/dashboard"
+  get "admins/pending_club/:id" => "admins#pending_club", as: "admins_pending_club"
+
   get 'club_admins/eventdisplay' => "club_admins#eventdisplay", as: "clubadmin_eventdisplay"
   get "club_admins/dashboard/:id" => "club_admins#dashboard", as: "dashboard"
   get "club_admins/events/:id" => "club_admins#events", as: "clubadmin_events"

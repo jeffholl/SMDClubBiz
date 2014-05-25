@@ -1,2 +1,21 @@
-<h1>Admins#dashboard</h1>
-<p>Find me in app/views/admins/dashboard.html.erb</p>
+<div class="row" id="main-content">
+
+  <div class="col-md-5">
+    <h2 style="margin-top:0">Admin Dashbaord</h2> 
+  </div>
+
+  <div class="col-md-12"></div>
+
+
+	<div class="col-md-6">		
+		<table class="table table-striped">
+			<tr>
+				<th>Club Name</th>
+				<th>Rego Number</th>
+				<th>President</th>
+				<th>Details</th>
+			</tr>
+			<%= render partial: "pending_club_table", collection: @pending_clubs, as: :club %>
+		</table>
+	</div>
+</div>

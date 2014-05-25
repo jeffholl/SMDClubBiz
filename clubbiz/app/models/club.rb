@@ -20,6 +20,10 @@ class Club < ActiveRecord::Base
 		self.memberships.where(status: "active")
 	end
 
+	def self.get_pending
+		where(status: "pending")
+	end
+
 	def get_next_event
 		self.events.first || Event.all.first
 	end
@@ -30,6 +34,10 @@ class Club < ActiveRecord::Base
 
 	def get_associate_clubs
 		#
+	end
+
+	def get_president
+		self.users.first
 	end
 
 	def pending_memberships
